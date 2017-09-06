@@ -49,6 +49,13 @@ export default class App extends Component {
         </ul>
 
       </div>
+        <Router>
+        <Route exact path="/" component={HomePage} />
+       <Route exact path="/home" component={LoginPage} />
+       <Route exact path="/login" component={LoginPage} />
+       <Route exact path="/regestration" component={LoginPage} />
+  
+        </Router>
 
     );
 
