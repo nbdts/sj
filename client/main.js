@@ -16,4 +16,3 @@ Meteor.startup(() => {
     <App/>, document.getElementById('render-target'));
 
 });
-//this is
