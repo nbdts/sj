@@ -8,6 +8,7 @@ export default class LoginPage extends Component {
        <div>
        <h1>LoginPage</h1>
        </div>
+       
     );
   }
 }
