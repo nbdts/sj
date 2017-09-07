@@ -23,8 +23,8 @@ body {
 }
 
 .login-form-wrapper h1 {
-  color         : #e0401d;
-  border        : solid #e0401d;
+  color         : #FFD700;
+  border        : solid #FF0000;
   border-width  : 0 0 0 3px;
   display       : block;
   font-family   : Arial, 'Helvetica Neue', Helvetica, sans-serif;
@@ -96,7 +96,7 @@ body {
 }
 
 .login-form-wrapper .form-body .fieldset .error-message {
-  color      : #e0401d;
+  color      : #FFD700;
   display    : block;
   font-size  : 15px;
   font-weight: 600;
@@ -109,7 +109,7 @@ body {
 }
 
 .login-form-wrapper .form-body .fieldset.invalid .highlighter {
-  background-color: #e0401d;
+  background-color: #FFD700;
 }
 
 .login-form-wrapper .form-body input[type=submit] {
@@ -129,12 +129,12 @@ body {
 }
 
 .login-form-wrapper .form-body input[type=submit]:hover {
-  border-color: #e0401d;
-  color       : #e0401d;
+  border-color: #FF0000;
+  color       : #FFD700;
 }
 
 .login-form-wrapper .form-body input[type=submit]:active {
-  background-color: #e0401d;
-  border-color    : #e0401d;
+  background-color: #FFD700;
+  border-color    : #FF0000;
   color           : #fff;
 }
