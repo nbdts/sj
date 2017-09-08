@@ -1,32 +1,52 @@
 import React, { Component } from 'react';
 import './LoginPage.css';
-export default class LoginPage extends Component {
+import  { withRouter } from 'react-router-dom';
+ class LoginPage extends Component {
   constructor() {
     super();
+    this.state = {
+      ShopeName: '',
+      password: '',
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+
   }
+  handleChange(arg,event) {
+               let object ={}
+               object[arg]=event.target.value;
+               this.setState(object);
+               }
+
+  handleSubmit(event) {
+    event.preventDefault();
+     if(this.state.ShopeName==='admin' && this.state.password==='admin'){
+        this.props.history.push('/admin')
+        return false ;
+      }
+      this.props.history.push('/home')
+    }
+
   render(){
     return(
-
 
        <div className="login-form-wrapper">
          <h1>
              Log In
          </h1>
          <div className="form-body">
-           <form name="auth-form"  method="POST">
-
-
+           <form name="auth-form"  method="POST" onSubmit={this.handleSubmit}>
              <div className="fieldset">
-               <input id="email" name="email" type="text" required />
-               <label for="email">
-                   Email
+               <input id="ShopeName" name="ShopeName" type="text" value={this.state.ShopeName} onChange={this.handleChange.bind(this, 'ShopeName')} required />
+               <label for="ShopeName">
+                   ShopeName
                </label>
                <div className="highlighter"></div>
 
              </div>
 
              <div className="fieldset">
-               <input id="password" name="password" type="password" required />
+               <input id="password" name="password" type="password" value={this.state.password} onChange={this.handleChange.bind(this, 'password')}required />
                <label for="password">
                    Password
                </label>
@@ -44,3 +64,4 @@ export default class LoginPage extends Component {
     );
   }
 }
+export default withRouter (LoginPage);
