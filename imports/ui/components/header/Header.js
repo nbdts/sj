@@ -6,7 +6,8 @@ export default class Header  extends Component {
   }
   render(){
     return(
-       <div>
+      <div className="header-container">
+          <div>
        <header>
      <nav>
        <h1>
@@ -26,6 +27,8 @@ export default class Header  extends Component {
 
    <div class="counter"></div>
        </div>
+       </div>
+
     );
   }
 }
