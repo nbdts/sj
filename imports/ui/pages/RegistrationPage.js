@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Meteor from 'meteor/meteor';
-import './mycss';
+import './registcss';
 export default class RegistrationPage extends Component {
   constructor() {
     super();
@@ -57,6 +57,7 @@ export default class RegistrationPage extends Component {
   }
 
   handleChange(event) {
+    Bert.alert( 'Yes, I do Mind!', 'danger', 'growl-top-right' );
     let object = {};
     object[event.target.id] = event.target.value
     console.log(event.target.value);
@@ -72,7 +73,7 @@ export default class RegistrationPage extends Component {
               <h1 className="page-section-header-title">Sandwich Junction Shop Registration</h1>
             </header>
             <div className="page-section-content">
-              <form method="POST" className="material-form">
+              <form onSubmil={this.handleSubmit} method="POST" className="material-form">
                 <Inputs type="text" id="shopname" label="NAME"/>
                 <Inputs type="text" id="shopemail" label="EMAIL"/>
                 <Inputs type="text" id="shopphno" label="PHONE NUMBER"/>
@@ -83,7 +84,14 @@ export default class RegistrationPage extends Component {
                 <Inputs type="text" id="shopacctype" label="ACCOUNT TYPE"/>
                 <Inputs type="text" id="shopaccno" label="ACCOUNT NUMBER"/>
                 <Inputs type="text" id="shopifsc" label="IFSC CODE"/>
-                <input className="material-form-field-input" type="submit" value="submit"/>
+
+
+                <div className="wrap">
+                <input className="button blue" type="submit" value="submit"/>
+                </div>
+
+
+
               </form>
             </div>
           </div>
@@ -103,7 +111,7 @@ class Inputs extends Component {
         <section className="material-form-field space">
           <div className="material-form-field-controls">
             <div className="form-field-controls-group">
-              <input id={this.props.id} required="required" placeholder={this.props.label} className="material-form-field-input" type={this.props.type}/>
+              <input id={this.props.id} required="required" placeholder={this.props.label} className="material-form-field-input" type={this.props.type} onChange={this.handleChange}/>
               <label htmlFor={this.props.id} className="material-form-field-label">{this.props.label}</label>
             </div>
           </div>
