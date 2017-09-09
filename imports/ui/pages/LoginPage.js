@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './css/LoginPage';
+import Header from  '../Component/header';
 import {withRouter} from 'react-router-dom';
 import {Session} from 'meteor/session';
 class LoginPage extends Component {
