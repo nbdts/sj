@@ -3,11 +3,21 @@ import { Meteor } from 'meteor/meteor';
 export const ShopsApi = new Mongo.Collection('shops');
 
 Meteor.methods({
-'shops.insert'(ShopName){
+'shops.insert'(shop){
 
   ShopsApi.insert({
-      Name: ShopName,
-     createdAt: new Date()
+    Name:shop.shopname,
+    Email: shop.shopemail
+    Phno:shop.shopphno,
+    Password:shop.shoppassword,
+    Gstin:shop.shopgstin,
+    Bankname:shop.shopbankname,
+    AccName:shop.shopaccname,
+    AccType:shop.shopacctype,
+    AccNumber:shop.shopaccno,
+    AccIfsc:shop.shopifsc,
+    CreatedAt:shop.shopcreatedat,
+    Status:shop.shopstatus
    });
 },
 'shops.remove'(shopid){
