@@ -35,16 +35,16 @@ this.state={
     const shopifsc= this.state.shopifsc;
 
     let shop={
-        shopname:shopname;
-        shopemail:shopemail;
-        shopphno:shopphno;
-        shoppassword:shoppassword;
-        shopgstin:shopgstin;
-        shopbankname:shopbankname;
-        shopaccname:shopaccname;
-        shopacctype:shopacctype;
-        shopaccno:shopaccno;
-        shopifsc:shopifsc;
+        shopname:shopname,
+        shopemail:shopemail,
+        shopphno:shopphno,
+        shoppassword:shoppassword,
+        shopgstin:shopgstin,
+        shopbankname:shopbankname,
+        shopaccname:shopaccname,
+        shopacctype:shopacctype,
+        shopaccno:shopaccno,
+        shopifsc:shopifsc,
         shopstatus:1,
         shopcreatedat:new Date(),
         }
