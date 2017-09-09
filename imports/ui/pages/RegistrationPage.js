@@ -15,7 +15,7 @@ export default class RegistrationPage extends Component {
       shopaccname: "",
       shopacctype: "",
       shopaccno: "",
-      shopifsc: ""
+      shopifsc: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -51,9 +51,9 @@ export default class RegistrationPage extends Component {
       shopaccno: shopaccno,
       shopifsc: shopifsc,
       shopstatus: 1,
-      shopcreatedat: new Date()
+      shopcreatedat: new Date(),
     }
-    Meteor.call('shops.insert', shop);
+    Meteor.call('shops.insert',shop);
   }
 
   handleChange(event) {
@@ -72,9 +72,7 @@ export default class RegistrationPage extends Component {
               <h1 className="page-section-header-title">Sandwich Junction Shop Registration</h1>
             </header>
             <div className="page-section-content">
-              <form  method="POST" className="material-form">
-
-
+              <form method="POST" className="material-form">
                 <Inputs type="text" id="shopname" label="NAME"/>
                 <Inputs type="text" id="shopemail" label="EMAIL"/>
                 <Inputs type="text" id="shopphno" label="PHONE NUMBER"/>
@@ -85,17 +83,7 @@ export default class RegistrationPage extends Component {
                 <Inputs type="text" id="shopacctype" label="ACCOUNT TYPE"/>
                 <Inputs type="text" id="shopaccno" label="ACCOUNT NUMBER"/>
                 <Inputs type="text" id="shopifsc" label="IFSC CODE"/>
-
-
-
-                  <section className="material-form-field">
-                  <div className="material-form-field-controls">
-                    <div className="form-field-controls-group">
-                      <input className="material-form-field-input" type="submit" value="submit"/>
-                    </div>
-                  </div>
-                </section>
-
+                <input className="material-form-field-input" type="submit" value="submit"/>
               </form>
             </div>
           </div>
@@ -105,23 +93,22 @@ export default class RegistrationPage extends Component {
   }
 }
 
-
 class Inputs extends Component {
- constructor() {
-   super();
- }
- render(){
-   return(
+  constructor() {
+    super();
+  }
+  render() {
+    return (
       <div>
-      <section className="material-form-field space">
-        <div className="material-form-field-controls">
-          <div className="form-field-controls-group">
-            <input id={this.props.id} required="required" placeholder={this.props.label} className="material-form-field-input" type={this.props.type}/>
-            <label htmlFor={this.props.id} className="material-form-field-label">{this.props.label}</label>
+        <section className="material-form-field space">
+          <div className="material-form-field-controls">
+            <div className="form-field-controls-group">
+              <input id={this.props.id} required="required" placeholder={this.props.label} className="material-form-field-input" type={this.props.type}/>
+              <label htmlFor={this.props.id} className="material-form-field-label">{this.props.label}</label>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
       </div>
-   );
- }
+    );
+  }
 }
