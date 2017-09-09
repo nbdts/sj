@@ -29,7 +29,7 @@ Meteor.methods({
 });
 
 if (Meteor.isServer) {
-  Meteor.publish('publlishallmyshops', function userPublication(){
+  Meteor.publish('shop', function userPublication(){
     return  ShopsApi.find();
   });
 }
