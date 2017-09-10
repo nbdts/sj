@@ -16,7 +16,7 @@ Meteor.methods({
 'category.update'(){
 
 },
-'checklogin'(shopname,password){
+'category.checklogin'(shopname,password){
   const shop= CategoryApi.find({name:shopname,password}).fetch();
   return shop;
 }
