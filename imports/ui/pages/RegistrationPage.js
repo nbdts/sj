@@ -66,13 +66,26 @@ componentWillUnmount(){
       shopcreatedat: new Date()
     }
     Meteor.call('shops.insert', shop);
+    this.setState({
+      shopname: "",
+      shopemail: "",
+      shopphno: "",
+      shoppassword: "",
+      shopgstin: "",
+      shopbankname: "",
+      shopaccname: "",
+      shopacctype: "",
+      shopaccno: "",
+      shopifsc: ""
+
+    });
   }
 
   handleChange(event) {
 
     let object = {};
     object[event.target.id] = event.target.value
-    this.setState(object, () => {console.log(this.state)});
+    this.setState(object);
   }
 
   render() {
