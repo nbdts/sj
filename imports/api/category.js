@@ -3,22 +3,22 @@ import { Meteor } from 'meteor/meteor';
 export const CategoryApi = new Mongo.Collection('category');
 
 Meteor.methods({
-'category.insert'(category){
+'catgory.insert'(category){
 
   CategoryApi.insert({
-    name:category.name,
+    category:category.newcategory,
 
    });
 },
-'category.remove'(shopid){
-  CategoryApi.remove(shopid);
+'category.remove'(category){
+  CategoryApi.remove(category);
 },
 'category.update'(){
 
 },
-'checklogin'(shopname,password){
-  const shop= CategoryApi.find({name:shopname,password}).fetch();
-  return shop;
+'category.checklogin'(shopname,password){
+  const category= CategoryApi.find({category:category,password}).fetch();
+  return category;
 }
 });
 if (Meteor.isServer) {

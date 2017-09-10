@@ -3,7 +3,6 @@ import {Route, Navkink,Redirect} from 'react-router-dom';
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import CategoryPage from "./pages/CategoryPage";
-import Invoice from "./pages/Invoice";
 import AdminPage from "./pages/AdminPage";
 import {Session} from 'meteor/session';
 import RegistrationPage from "./pages/RegistrationPage";
@@ -31,7 +30,6 @@ export default class App extends Component {
       <Route exact path = "/login" component = {LoginPage} />
       <Route exact path = "/admin" component = {AdminPage} />
       <Route exact path = "/registeration" component = {RegistrationPage} />
-      <Route exact path = "/invoice" component = {Invoice} />
       <Route exact path = "/category" component = {CategoryPage} />
 
       </div>

@@ -1,20 +1,47 @@
 import React, { Component } from 'react';
+import {Meteor} from 'meteor/meteor';
+import './css/registcss';
+import {CategoryApi} from '../../api/category';
+import { Tracker } from 'meteor/tracker';
+
 export default class CategoryPage  extends Component {
   constructor() {
     super();
 
     this.state = {
-          category: ""
+          newcategory: ""
         };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+  componentDidMount(){
+      this.linkracker = Tracker.autorun(()=> {
+        Meteor.subscribe("category");
+        let category = CategoryApi.find({}).fetch();
+      });
+  }
+  componentWillUnmount(){
+    this.linkracker.stop();
+  }
+
 
 
 
   handleSubmit(event) {
     event.preventDefault();
+    const newcategory = this.state.category;
+console.log(newcategory);
+
+    let categorys = {
+      category: newcategory,
+
+    }
+    Meteor.call('catgory.insert', categorys);
+    this.setState({
+      category: ""
+
+    });
     }
 
 
@@ -23,7 +50,7 @@ export default class CategoryPage  extends Component {
     let object = {};
     object[event.target.id] = event.target.value
     this.setState(object);
-    console.log(this.state.category);
+    console.log(this.state.newcategory);
   }
 
   render(){
