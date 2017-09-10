@@ -28,7 +28,7 @@ export default class App extends Component {
       <Route exact path = "/home" render={this.authentication.bind(this)} />
       <Route exact path = "/login" component = {LoginPage} />
       <Route exact path = "/admin" component = {AdminPage} />
-      <Route exact path = "/registration" component = {RegistrationPage} />
+      <Route exact path = "/registeration" component = {RegistrationPage} />
       </div>
       );
   }

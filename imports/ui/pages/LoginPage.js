@@ -73,6 +73,7 @@ class LoginPage extends Component {
               <input type="submit" value="Enter"/>
             </div>
           </form>
+          <h4><a style={{color:'blue'}} href="/registeration">Registeration ?</a></h4>
         </div>
       </div>
 

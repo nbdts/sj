@@ -97,9 +97,11 @@ componentWillUnmount(){
                 <Inputs type="text" id="shopifsc" onChange={this.handleChange} label="IFSC CODE"/>
                 <input className="button blue" type="submit" value="submit"/>
               </form>
+              <h4><a style={{color:'white'}} href="/login">Login ?</a></h4>
             </div>
           </div>
         </section>
+
       </div>
     );
   }
