@@ -63,7 +63,7 @@
   position: absolute;
   left: 0.5em;
 }
-body {
+.mainbody {
   font-family: "RobotoDraft", "Roboto", "Helvetica Neue, Helvetica, Arial", sans-serif;
   background: #3aadff;
   color: #fff;

@@ -6,18 +6,18 @@ Meteor.methods({
 'shops.insert'(shop){
 
   ShopsApi.insert({
-    Name:shop.shopname,
-    Email: shop.shopemail
-    Phno:shop.shopphno,
-    Password:shop.shoppassword,
-    Gstin:shop.shopgstin,
-    Bankname:shop.shopbankname,
-    AccName:shop.shopaccname,
-    AccType:shop.shopacctype,
-    AccNumber:shop.shopaccno,
-    AccIfsc:shop.shopifsc,
-    CreatedAt:shop.shopcreatedat,
-    Status:shop.shopstatus
+    name:shop.shopname,
+    email: shop.shopemail,
+    phno:shop.shopphno,
+    password:shop.shoppassword,
+    gstin:shop.shopgstin,
+    bankname:shop.shopbankname,
+    accName:shop.shopaccname,
+    accType:shop.shopacctype,
+    accNumber:shop.shopaccno,
+    accIfsc:shop.shopifsc,
+    createdAt:shop.shopcreatedat,
+    status:shop.shopstatus
    });
 },
 'shops.remove'(shopid){
@@ -25,9 +25,12 @@ Meteor.methods({
 },
 'shops.update'(){
 
+},
+'checklogin'(shopname,password){
+  const shop= ShopsApi.find({name:shopname,password}).fetch();
+  return shop;
 }
 });
-
 if (Meteor.isServer) {
   Meteor.publish('shop', function userPublication(){
     return  ShopsApi.find();

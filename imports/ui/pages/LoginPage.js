@@ -1,67 +1,82 @@
-import React, { Component } from 'react';
-import './LoginPage.css';
-import  { withRouter } from 'react-router-dom';
- class LoginPage extends Component {
+import React, {Component} from 'react';
+import './css/LoginPage';
+import {withRouter} from 'react-router-dom';
+import {Session} from 'meteor/session';
+class LoginPage extends Component {
   constructor() {
     super();
     this.state = {
-      ShopeName: '',
-      password: '',
+      shopname: '',
+      password: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
 
   }
-  handleChange(arg,event) {
-               let object ={}
-               object[arg]=event.target.value;
-               this.setState(object);
-               }
+  handleChange(arg, event) {
+    let object = {}
+    object[arg] = event.target.value;
+    this.setState(object);
+  }
 
   handleSubmit(event) {
     event.preventDefault();
-     if(this.state.ShopeName==='admin' && this.state.password==='admin'){
-        this.props.history.push('/admin')
-        return false ;
-      }
-      this.props.history.push('/home')
+    if (this.state.shopname === 'admin' && this.state.password === 'admin') {
+      this.props.history.push('/admin')
+      return false;
     }
+    Meteor.call('checklogin', this.state.shopname, this.state.password, (err, result) => {
+      if (err) {
+        Bert.alert('Error occured', 'danger', 'growl-top-right');
+        return false;
+      }
 
-  render(){
-    return(
+      if (result.length > 0) {
+        Session.setPersistent("shop", result[0]);
+        Bert.alert('Loggin in', 'success', 'growl-top-right');
+        this.props.history.push("/");
+      }else {
+        Bert.alert('User dosent exist', 'danger', 'growl-top-right');
 
-       <div className="login-form-wrapper">
-         <h1>
-             Log In
-         </h1>
-         <div className="form-body">
-           <form name="auth-form"  method="POST" onSubmit={this.handleSubmit}>
-             <div className="fieldset">
-               <input id="ShopeName" name="ShopeName" type="text" value={this.state.ShopeName} onChange={this.handleChange.bind(this, 'ShopeName')} required />
-               <label for="ShopeName">
-                   ShopeName
-               </label>
-               <div className="highlighter"></div>
+      }
+    })
+  }
 
-             </div>
+  render() {
+    return (
 
-             <div className="fieldset">
-               <input id="password" name="password" type="password" value={this.state.password} onChange={this.handleChange.bind(this, 'password')}required />
-               <label for="password">
-                   Password
-               </label>
-               <div className="highlighter"></div>
+      <div className="login-form-wrapper">
+        <h1>
+          Log In
+        </h1>
+        <div className="form-body">
+          <form name="auth-form" method="POST" onSubmit={this.handleSubmit}>
+            <div className="fieldset">
+              <input id="shopname" type="text" value={this.state.shopname} onChange={this.handleChange.bind(this, 'shopname')} required/>
+              <label for="shopname">
+                shopname
+              </label>
+              <div className="highlighter"></div>
 
-          </div>
+            </div>
 
-             <div className="fieldset button-set">
-               <input type="submit" value="Enter"/>
-             </div>
-           </form>
-         </div>
-       </div>
+            <div className="fieldset">
+              <input required id="password" type="password" value={this.state.password} onChange={this.handleChange.bind(this, 'password')}/>
+              <label for="password">
+                Password
+              </label>
+              <div className="highlighter"></div>
+
+            </div>
+
+            <div className="fieldset button-set">
+              <input type="submit" value="Enter"/>
+            </div>
+          </form>
+        </div>
+      </div>
 
     );
   }
 }
-export default withRouter (LoginPage);
+export default withRouter(LoginPage);

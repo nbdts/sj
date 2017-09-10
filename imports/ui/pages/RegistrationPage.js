@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
-import Meteor from 'meteor/meteor';
-import './registcss';
+import {Meteor} from 'meteor/meteor';
+import './css/registcss';
+import {ShopsApi} from '../../api/shops';
+import { Tracker } from 'meteor/tracker';
+
 export default class RegistrationPage extends Component {
   constructor() {
     super();
@@ -15,16 +18,25 @@ export default class RegistrationPage extends Component {
       shopaccname: "",
       shopacctype: "",
       shopaccno: "",
-      shopifsc: "",
+      shopifsc: ""
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidMount() {
-    Meteor.subscribe('shop');
-  }
+componentDidMount(){
+    this.linkracker = Tracker.autorun(()=> {
+      Meteor.subscribe("shop");
+      let shops = ShopsApi.find({}).fetch();
+      console.log(shops);
+
+    });
+}
+componentWillUnmount(){
+  this.linkracker.stop();
+}
+
 
   handleSubmit(event) {
     event.preventDefault();
@@ -51,47 +63,39 @@ export default class RegistrationPage extends Component {
       shopaccno: shopaccno,
       shopifsc: shopifsc,
       shopstatus: 1,
-      shopcreatedat: new Date(),
+      shopcreatedat: new Date()
     }
-    Meteor.call('shops.insert',shop);
+    Meteor.call('shops.insert', shop);
   }
 
   handleChange(event) {
-    Bert.alert( 'Yes, I do Mind!', 'danger', 'growl-top-right' );
+
     let object = {};
     object[event.target.id] = event.target.value
-    console.log(event.target.value);
-    this.setState(object, () => {});
+    this.setState(object, () => {console.log(this.state)});
   }
 
   render() {
     return (
-      <div>
+      <div className="mainbody">
         <section className="page-section">
           <div className="page-section-wrapper">
             <header className="page-section-header">
               <h1 className="page-section-header-title">Sandwich Junction Shop Registration</h1>
             </header>
             <div className="page-section-content">
-              <form onSubmil={this.handleSubmit} method="POST" className="material-form">
-                <Inputs type="text" id="shopname" label="NAME"/>
-                <Inputs type="text" id="shopemail" label="EMAIL"/>
-                <Inputs type="text" id="shopphno" label="PHONE NUMBER"/>
-                <Inputs type="password" id="shoppassword" label="PASSWORD"/>
-                <Inputs type="text" id="shopgstin" label="GSTIN"/>
-                <Inputs type="text" id="shopbankname" label="BANK NAME"/>
-                <Inputs type="text" id="shopaccname" label="ACCOUNT HOLDER'S NAME"/>
-                <Inputs type="text" id="shopacctype" label="ACCOUNT TYPE"/>
-                <Inputs type="text" id="shopaccno" label="ACCOUNT NUMBER"/>
-                <Inputs type="text" id="shopifsc" label="IFSC CODE"/>
-
-
-                <div className="wrap">
+              <form onSubmit={this.handleSubmit} method="POST" className="material-form">
+                <Inputs type="text" id="shopname" onChange={this.handleChange} label="NAME" />
+                <Inputs type="text" id="shopemail" onChange={this.handleChange} label="EMAIL"/>
+                <Inputs type="text" id="shopphno" onChange={this.handleChange} label="PHONE NUMBER"/>
+                <Inputs type="password" id="shoppassword" onChange={this.handleChange} label="PASSWORD"/>
+                <Inputs type="text" id="shopgstin" onChange={this.handleChange} label="GSTIN"/>
+                <Inputs type="text" id="shopbankname" onChange={this.handleChange} label="BANK NAME"/>
+                <Inputs type="text" id="shopaccname" onChange={this.handleChange} label="ACCOUNT HOLDER'S NAME"/>
+                <Inputs type="text" id="shopacctype" onChange={this.handleChange} label="ACCOUNT TYPE"/>
+                <Inputs type="text" id="shopaccno" onChange={this.handleChange} label="ACCOUNT NUMBER"/>
+                <Inputs type="text" id="shopifsc" onChange={this.handleChange} label="IFSC CODE"/>
                 <input className="button blue" type="submit" value="submit"/>
-                </div>
-
-
-
               </form>
             </div>
           </div>
@@ -100,7 +104,6 @@ export default class RegistrationPage extends Component {
     );
   }
 }
-
 class Inputs extends Component {
   constructor() {
     super();
@@ -111,7 +114,7 @@ class Inputs extends Component {
         <section className="material-form-field space">
           <div className="material-form-field-controls">
             <div className="form-field-controls-group">
-              <input id={this.props.id} required="required" placeholder={this.props.label} className="material-form-field-input" type={this.props.type} onChange={this.handleChange}/>
+              <input id={this.props.id} required="required" placeholder={this.props.label} className="material-form-field-input" type={this.props.type} onChange={this.props.onChange}/>
               <label htmlFor={this.props.id} className="material-form-field-label">{this.props.label}</label>
             </div>
           </div>
