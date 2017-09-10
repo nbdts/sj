@@ -93,10 +93,7 @@ componentWillUnmount(){
       <div className="mainbody">
         <section className="page-section">
           <div className="page-section-wrapper">
-            <header className="page-section-header">
-              <h1 className="page-section-header-title">Sandwich Junction Shop Registration</h1>
-            </header>
-            <div className="page-section-content">
+                        <div className="page-section-content">
               <form onSubmit={this.handleSubmit} method="POST" className="material-form">
                 <Inputs type="text" id="shopname" onChange={this.handleChange} label="NAME" />
                 <Inputs type="text" id="shopemail" onChange={this.handleChange} label="EMAIL"/>

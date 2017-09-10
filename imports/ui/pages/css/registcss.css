@@ -54,7 +54,7 @@
   left: 0;
   top: 0.55em;
   position: absolute;
-  color: #fff;
+  color: black;
 }
 .material-form-field-input:focus {
   outline: none;
@@ -65,8 +65,8 @@
 }
 .mainbody {
   font-family: "RobotoDraft", "Roboto", "Helvetica Neue, Helvetica, Arial", sans-serif;
-  background: #3aadff;
-  color: #fff;
+  background-color: white;
+  color: black;
 }
 .page-section {
   min-height: 100vh;
