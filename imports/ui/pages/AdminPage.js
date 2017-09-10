@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import RegistrationPage from './RegistrationPage'
-import CategoryPage from './CategoryPage'
 import './css/AdminPage'
 export default class AdminPage extends Component {
   constructor() {
@@ -16,8 +15,7 @@ export default class AdminPage extends Component {
            <a href/>
          </div>
          <ul>
-           <li><a href="#RegistrationPage" id="targeted">New Branch</a></li>
-           <li><a href="#CategoryPage" id="targeted">New Category</a></li>
+           <li><a href="#dashboard" id="targeted">New Branch</a></li>
             </ul>
        </div>
 
@@ -32,11 +30,8 @@ export default class AdminPage extends Component {
          </ul>
          <div className="mainContent clearfix">
 
-           <div id="RegistrationPage">
+           <div id="dashboard">
             <RegistrationPage/>
-           </div>
-           <div id="CategoryPage">
-            <CategoryPage/>
            </div>
 
 

@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-import {Meteor} from 'meteor/meteor';
-import {CategoryApi} from '../../api/category';
-import { Tracker } from 'meteor/tracker';
-import './css/registcss';
-
 export default class CategoryPage  extends Component {
   constructor() {
     super();
@@ -16,31 +11,10 @@ export default class CategoryPage  extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidMount(){
-      this.linkracker = Tracker.autorun(()=> {
-        Meteor.subscribe("category");
-        let category = CategoryApi.find({}).fetch();
-        console.log(category);
 
-      });
-  }
-
-  componentWillUnmount(){
-    this.linkracker.stop();
-  }
 
   handleSubmit(event) {
     event.preventDefault();
-    const category = this.state.category;
-
-        let category1 = {
-      category: category
-    }
-    Meteor.call('category.insert', category1);
-    this.setState({
-      category: ""
-
-    });
     }
 
 

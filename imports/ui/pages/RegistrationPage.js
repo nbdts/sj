@@ -94,10 +94,6 @@ componentWillUnmount(){
         <section className="page-section">
           <div className="page-section-wrapper">
                         <div className="page-section-content">
-                        <div className="page-section-header ">
-                        <header className="page-section-header-title">New Branch Registration</header>
-                        </div>
-
               <form onSubmit={this.handleSubmit} method="POST" className="material-form">
                 <Inputs type="text" id="shopname" onChange={this.handleChange} label="NAME" />
                 <Inputs type="text" id="shopemail" onChange={this.handleChange} label="EMAIL"/>
