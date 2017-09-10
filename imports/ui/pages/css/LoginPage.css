@@ -1,11 +1,6 @@
-body,
-html {
-  height : 100%;
-  margin : 0;
-  padding: 0;
-}
 
-body {
+.login-container {
+  height: 100vh;
   align-items     : center;
   background-color: #e8e8e8;
   display         : flex;

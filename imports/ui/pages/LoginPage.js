@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Header from'../Components/header/Header';
+import Header from'../components/header/Header';
 import {withRouter} from 'react-router-dom';
 import {Session} from 'meteor/session';
 class LoginPage extends Component {
@@ -44,7 +44,7 @@ class LoginPage extends Component {
 
   render() {
     return (
-
+      <div className="login-container">
       <div className="login-form-wrapper">
         <h1>
           Log In
@@ -76,7 +76,7 @@ class LoginPage extends Component {
           <h4><a style={{color:'blue'}} href="/registeration">Registeration ?</a></h4>
         </div>
       </div>
-
+      </div>
     );
   }
 }
