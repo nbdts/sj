@@ -18,7 +18,7 @@ export default class AdminPage extends Component {
          </div>
          <ul>
            <li><a href="#RegistrationPage" id="targeted">New Branch</a></li>
-           <li><a href="#CategoryPage" id="targeted">New Branch</a></li>
+           <li><a href="#CategoryPage" id="targeted">New Category</a></li>
            <li><a href="#ProductPage" id="targeted">New Product</a></li>
             </ul>
        </div>
