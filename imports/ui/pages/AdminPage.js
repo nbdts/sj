@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import RegistrationPage from './RegistrationPage'
-import CategoryPage from './CategoryPage'
-import './css/AdminPage'
+import RegistrationPage from './RegistrationPage';
+import CategoryPage from './CategoryPage';
+import ProductPage from './ProductPage';
+import './css/AdminPage';
 export default class AdminPage extends Component {
   constructor() {
     super();
@@ -13,11 +14,12 @@ export default class AdminPage extends Component {
       <div className="admin-panel clearfix">
        <div className="slidebar">
          <div className="logo">
-           <a href/>
+           <a href='#'/>
          </div>
          <ul>
            <li><a href="#RegistrationPage" id="targeted">New Branch</a></li>
            <li><a href="#CategoryPage" id="targeted">New Branch</a></li>
+           <li><a href="#ProductPage" id="targeted">New Product</a></li>
             </ul>
        </div>
 
@@ -30,17 +32,21 @@ export default class AdminPage extends Component {
            <li><a href="#">f</a></li>
            <li><a href="#">n</a></li>
          </ul>
-         <div className="mainContent clearfix">
 
+
+         <div className="mainContent clearfix">
            <div id="RegistrationPage">
-            <RegistrationPage/>
+            <RegistrationPage id="RegistrationPage" />
            </div>
+
            <div id="CategoryPage">
             <CategoryPage/>
            </div>
+           <div id="ProductPage">
+            <ProductPage/>
+           </div>
 
-
-          </div>
+           </div>
          </div>
      </div>
 

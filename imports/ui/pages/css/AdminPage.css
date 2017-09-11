@@ -91,6 +91,7 @@
 }
 .main .topbar {
 	border-bottom: 1px solid rgb(235,235,235);
+	border-top: 1px solid rgb(235,235,235);
 	margin: 0;
 	padding: 0;
 }
@@ -104,7 +105,7 @@
 	font-family: 'icomoon';
 	display: block;
 	line-height: 50px;
-	width: 50px;
+	width: 50px;  //remove if needed to expand space in topbar
 	text-align: center;
 	text-decoration: none;
 	color: rgb(102,102,102);
