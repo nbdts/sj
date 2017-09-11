@@ -80,12 +80,11 @@
 	background-color: rgb(255,255,255);
 	box-shadow: 1px 0 0 rgb(255,255,255),inset 5px 0 0 -1px rgb(234,83,63);
 }
-/*main*/
 .main {
 	float: left;
 	width: 79%;
 	height: 690px;
-	background-color: white;
+	background-color: #D5D5D5;
 	//background-color: rgb(255,255,255);
 	position: relative;
 	font-family: helvetica,verdana,sans-serif;

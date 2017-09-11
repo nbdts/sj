@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import RegistrationPage from './RegistrationPage';
-import CategoryPage from './CategoryPage';
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 import ProductPage from './ProductPage';
 import './css/AdminPage';
@@ -20,7 +19,6 @@ export default class AdminPage extends Component {
        </div>
          <ul>
            <li><a href="/admin/registeration" id="targeted">Add Shop</a></li>
-           <li><a href="/admin/category" id="targeted">Add Category</a></li>
            <li><a href="/admin/product" id="targeted">Add Product</a></li>
          </ul>
        </div>
@@ -29,7 +27,6 @@ export default class AdminPage extends Component {
                 <div className="main">
                   <Route exact path="/admin/registeration" component={RegistrationPage}/>
                   <Route exact path="/admin/product" component={ProductPage}/>
-                  <Route exact path="/admin/category" component={CategoryPage}/>
 
                 </div>
      </div>

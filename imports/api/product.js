@@ -8,7 +8,10 @@ Meteor.methods({
   ProductApi.insert({
     name:product.name,
     price:product.price,
-    category:product.category
+    category:product.category,
+    image:product.image,
+    status:1,
+    createdAt:new Date()
     });
 },
 'product.remove'(product){
@@ -16,10 +19,6 @@ Meteor.methods({
 },
 'product.update'(){
 
-},
-'product.checklogin'(shopname,password){
-  const product= ProductApi.find({product:product,password}).fetch();
-  return product;
 }
 });
 if (Meteor.isServer) {
