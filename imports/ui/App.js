@@ -29,6 +29,9 @@ export default class App extends Component {
       <Route exact path = "/home" render={this.authentication.bind(this)} />
       <Route exact path = "/login" component = {LoginPage} />
       <Route exact path = "/admin" component = {AdminPage} />
+      <Route exact path = "/admin/product" component = {AdminPage} />
+      <Route exact path = "/admin/category" component = {AdminPage} />
+      <Route exact path = "/admin/registeration" component = {AdminPage} />
       <Route exact path = "/registeration" component = {RegistrationPage} />
       <Route exact path = "/category" component = {CategoryPage} />
 
