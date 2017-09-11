@@ -2,15 +2,6 @@
   display: none;
 }
 
-
-/*
-	 CSS-Tricks Example
-	 by Chris Coyier
-	 https://css-tricks.com
-*/
-
-
-
 .body {
   font: 14px/1.4 Georgia, serif;
 }
@@ -25,6 +16,7 @@ textarea {
   font: 14px Georgia, Serif;
   overflow: hidden;
   resize: none;
+  color: black;
 }
 
 

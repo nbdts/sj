@@ -17,7 +17,6 @@
 	width: 100%;
 	margin: 50px auto;
 }
-/*slidebar侧边栏*/
 .slidebar {
 	width: 20%;
 	min-height: 690px;
@@ -52,7 +51,7 @@
 	right: 20px;
 	-webkit-font-smoothing: antialiased;
 }
-/*插入icon图标*/
+
 .slidebar li:nth-child(1):before {content: "\63";}
 .slidebar li:nth-child(2):before {content: "\64";}
 .slidebar li:nth-child(3):before {content: "\62";}
@@ -95,7 +94,7 @@
 	margin: 0;
 	padding: 0;
 }
-/*topbar顶部按钮栏*/
+
 .topbar li {
 	float: right;
 	list-style: none;
@@ -284,7 +283,7 @@
 	background: -ms-linear-gradient(top,rgb(220,85,70),rgb(210,65,53));
 	background: linear-gradient(top,rgb(220,85,70),rgb(210,65,53));
 }
-/*logo*/
+
 .logo a {
 	width: 88px;
 	height: 88px;
@@ -314,7 +313,7 @@
 	background: -ms-linear-gradient(top,rgb(255,255,255),rgb(245,245,245));
 	background: linear-gradient(top,rgb(255,255,255),rgb(245,245,245));
 }
-/*statusbar底部功能按钮*/
+
 .statusbar {
 	position: absolute;
 	bottom: 0;

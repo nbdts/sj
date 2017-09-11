@@ -99,13 +99,8 @@
 .space{
   margin-bottom: 10px;
 }
-
-
-
-
-* {
-  color: white;
-  font-family: 'Open Sans', sans-serif;
+*{
+  color: black;
 }
 .wrap {
   margin-top: 20px;
