@@ -17,9 +17,10 @@ export default class AdminPage extends Component {
            <a href='#'/>
          </div>
          <ul>
-           <li><a href="#RegistrationPage" id="targeted">New Branch</a></li>
-           <li><a href="#CategoryPage" id="targeted">New Branch</a></li>
-           <li><a href="#ProductPage" id="targeted">New Product</a></li>
+           <li><a href="#RegistrationPage" id="targeted">Add Branch</a></li>
+           <li><a href="#CategoryPage" id="targeted">Add Category</a></li>
+           <li><a href="#ProductPage" id="targeted">Add Product</a></li>
+           <li><a href="#ReportPage" id="targeted">Report</a></li>
             </ul>
        </div>
 
@@ -44,6 +45,9 @@ export default class AdminPage extends Component {
            </div>
            <div id="ProductPage">
             <ProductPage/>
+           </div>
+           <div id="ReportPage">
+            <h1>Report Page</h1>
            </div>
 
            </div>
