@@ -32,6 +32,7 @@ export default class AdminPage extends Component {
                   <Route exact path="/admin/registeration" component={RegistrationPage}/>
                   <Route exact path="/admin/product" component={ProductPage}/>
                   <Route exact path="/admin/category" component={CategoryPage}/>
+                  
                 </div>
      </div>
       </div>
