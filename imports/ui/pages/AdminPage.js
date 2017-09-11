@@ -16,6 +16,16 @@ export default class AdminPage extends Component {
        <div className="slidebar">
          <div className="logo">
            <a href='#'/>
+<<<<<<< HEAD
+=======
+         </div>
+         <ul>
+           <li><a href="#RegistrationPage" id="targeted">New Branch</a></li>
+           <li><a href="#CategoryPage" id="targeted">New Category</a></li>
+           <li><a href="#ProductPage" id="targeted">New Product</a></li>
+            </ul>
+       </div>
+>>>>>>> product
 
 
 

@@ -15,22 +15,23 @@ export default class CategoryPage  extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
-  componentDidMount(){
-      this.linkracker = Tracker.autorun(()=> {
+componentDidMount(){
+      this.linktracker = Tracker.autorun(()=> {
         Meteor.subscribe("category");
         let category = CategoryApi.find({}).fetch();
-        
-      });
+         });
   }
   componentWillUnmount(){
-    this.linkracker.stop();
+    this.linktracker.stop();
   }
+
 
 
 
 
   handleSubmit(event) {
     event.preventDefault();
+
     const category = this.state.category;
 
     let cat = {
@@ -43,6 +44,7 @@ export default class CategoryPage  extends Component {
       category: ""
 
     });
+
     }
 
 
