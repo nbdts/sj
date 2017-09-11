@@ -9,7 +9,7 @@ export default class CategoryPage  extends Component {
     super();
 
     this.state = {
-          newcategory: ""
+          category: ""
         };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,6 +19,7 @@ export default class CategoryPage  extends Component {
       this.linkracker = Tracker.autorun(()=> {
         Meteor.subscribe("category");
         let category = CategoryApi.find({}).fetch();
+        
       });
   }
   componentWillUnmount(){
@@ -30,14 +31,14 @@ export default class CategoryPage  extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const newcategory = this.state.category;
-console.log(newcategory);
+    const category = this.state.category;
 
-    let categorys = {
-      category: newcategory,
+    let cat = {
+      category: category
 
     }
-    Meteor.call('catgory.insert', categorys);
+    console.log(cat);
+    Meteor.call('category.insert', cat);
     this.setState({
       category: ""
 
@@ -50,7 +51,6 @@ console.log(newcategory);
     let object = {};
     object[event.target.id] = event.target.value
     this.setState(object);
-    console.log(this.state.newcategory);
   }
 
   render(){

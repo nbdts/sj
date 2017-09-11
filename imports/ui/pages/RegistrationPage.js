@@ -29,8 +29,7 @@ componentDidMount(){
     this.linkracker = Tracker.autorun(()=> {
       Meteor.subscribe("shop");
       let shops = ShopsApi.find({}).fetch();
-      console.log(shops);
-
+      
     });
 }
 componentWillUnmount(){

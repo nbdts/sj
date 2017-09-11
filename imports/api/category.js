@@ -3,10 +3,10 @@ import { Meteor } from 'meteor/meteor';
 export const CategoryApi = new Mongo.Collection('category');
 
 Meteor.methods({
-'catgory.insert'(category){
+'category.insert'(category){
 
   CategoryApi.insert({
-    category:category.newcategory,
+    category:category.category,
 
    });
 },
