@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {Session} from 'meteor/session';
+import './css/LoginPage'
 class LoginPage extends Component {
   constructor() {
     super();
