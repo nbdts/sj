@@ -3,7 +3,6 @@ import {Meteor} from 'meteor/meteor';
 import './css/ProductPage.css';
 import {ProductApi} from '../../api/product';
 import { Tracker } from 'meteor/tracker';
-import { FilesCollection } from 'meteor/ostrio:files';
 
 export default class ProductPage  extends Component {
   constructor() {

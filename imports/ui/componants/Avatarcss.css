@@ -1,0 +1,21 @@
+.Amain{
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  justify-content: space-between;
+
+}
+.dimension{
+  height: 80px;
+
+
+}
+.image{
+    flex:2;
+    justify-content: center;
+    margin-top: 8px;
+}
+.text{
+  flex:1 ;
+
+}
