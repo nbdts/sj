@@ -27,7 +27,7 @@ export default class AdminPage extends Component {
                 <div className="main">
                   <Route exact path="/admin/registeration" component={RegistrationPage}/>
                   <Route exact path="/admin/product" component={ProductPage}/>
-                
+
                 </div>
      </div>
       </div>
