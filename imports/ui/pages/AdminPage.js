@@ -16,18 +16,6 @@ export default class AdminPage extends Component {
        <div className="slidebar">
          <div className="logo">
            <a href='#'/>
-<<<<<<< HEAD
-=======
-         </div>
-         <ul>
-           <li><a href="#RegistrationPage" id="targeted">New Branch</a></li>
-           <li><a href="#CategoryPage" id="targeted">New Category</a></li>
-           <li><a href="#ProductPage" id="targeted">New Product</a></li>
-            </ul>
-       </div>
->>>>>>> product
-
-
 
        </div>
          <ul>
@@ -42,7 +30,7 @@ export default class AdminPage extends Component {
                   <Route exact path="/admin/registeration" component={RegistrationPage}/>
                   <Route exact path="/admin/product" component={ProductPage}/>
                   <Route exact path="/admin/category" component={CategoryPage}/>
-                  
+
                 </div>
      </div>
       </div>
