@@ -5,13 +5,9 @@
 }
 .material-form-field-input {
   padding: 0.5em 0;
-<<<<<<< Updated upstream
+
   font-size: 1em;
   color: #4f4c4c;
-=======
-  font-size: 1.5em;
-  color: inherit;
->>>>>>> Stashed changes
   font-family: inherit;
   width: 100%;
   background: transparent;
@@ -53,7 +49,7 @@
   cursor: pointer;
   -webkit-transform: translateY(0);
           transform: translateY(0);
-  font-size: 1.5em;
+  font-size: 1em;
   left: 0;
   top: 0.55em;
   position: absolute;
@@ -70,15 +66,10 @@
 }
 .mainbody {
   font-family: "RobotoDraft", "Roboto", "Helvetica Neue, Helvetica, Arial", sans-serif;
-<<<<<<< Updated upstream
+
   background: white;
   color: #4f4c4c;
   align-items: center;
-
-=======
-  background: #3aadff;
-  color: #fff;
->>>>>>> Stashed changes
 }
 .page-section {
   min-height: 100vh;
@@ -96,7 +87,7 @@
   width: 100%;
 }
 .page-section-header-title {
-  font-size: 2.5em;
+  font-size: 1em;
   margin-bottom: 1em;
   font-weight: 300;
 }
