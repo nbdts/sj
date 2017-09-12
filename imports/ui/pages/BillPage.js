@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-export default class AdminPage extends Component {
+export default class BillPage extends Component {
   constructor() {
     super();
   }
@@ -21,8 +21,6 @@ export default class AdminPage extends Component {
 
 
                 <div className="main">
-                  <Route exact path="/admin/registeration" component={RegistrationPage}/>
-                  <Route exact path="/admin/product" component={ProductPage}/>
 
                 </div>
      </div>
