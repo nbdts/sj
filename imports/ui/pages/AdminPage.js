@@ -14,7 +14,7 @@ export default class AdminPage extends Component {
       <div>
       <div className="admin-panel clearfix">
        <div className="slidebar">
-         <div className="logo">
+       <div className="logo">
            <a href='#'/>
 
        </div>
