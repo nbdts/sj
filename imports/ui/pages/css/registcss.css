@@ -113,14 +113,11 @@
 
 
 
-<<<<<<< Updated upstream
-=======
+
 * {
   color: white;
   font-family: 'Open Sans', sans-serif;
 }
-
->>>>>>> Stashed changes
 .wrap {
   margin-top: 20px;
   text-align: center;
@@ -142,7 +139,7 @@
   transition: 0.3s;
   box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
   border: none;
-  font-size: 25px;
+  font-size: 15px;
   text-align: center;
 }
 
