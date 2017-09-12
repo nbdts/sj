@@ -232,7 +232,6 @@
 	border: none;
 	text-indent: 10px;
 }
-/*统一各浏览器下placeholder内的字体样式*/
 .quick-press input[type="text"]::-webkit-input-placeholder {font-size: 14px;}
 .quick-press input[type="text"]:-moz-input-placeholder {font-size: 14px;}
 .quick-press input[type="text"]::-moz-input-placeholder {font-size: 14px;}
