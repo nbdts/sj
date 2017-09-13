@@ -16,7 +16,7 @@
   text-decoration: none;
 }
 .header {
-  background-color: #3F51B5;
+  background-color: #F2C71E;
   min-height: 200px;
   display: flex;
   justify-content: left;
@@ -28,7 +28,7 @@
 }
 
 .nav {
-  background-color: #303F9F;
+  background-color: #EC1414;
 }
 .nav .wrap {
   padding: 0;
@@ -51,8 +51,8 @@
 }
 .nav .ul > .li > .header-a:hover,
 .nav .ul > .li > .header-a.active {
-  background-color: #283593;
+  background-color: #EC1414;
 }
 .nav .ul > .li > .header-a.active:hover {
-  background-color: #1A237E;
+  background-color: #FAF217;
 }
