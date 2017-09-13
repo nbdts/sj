@@ -11,7 +11,7 @@ export default class Header  extends Component {
       <div className="header-container header-body">
       <header className="header">
          <div className="wrap">
-          <h1 className="headerh1">SANDWICH JUNCTIONS</h1>
+          <h1 className="headerh1">SANDWICH JUNCTION</h1>
 
         </div>
       </header>

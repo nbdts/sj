@@ -24,7 +24,7 @@
 }
 .headerh1 {
   font-size: 5rem;
-  color: #FFFFFF;
+  color: #0F0F0F;
 }
 
 .nav {
@@ -46,7 +46,7 @@
 .nav .ul > .li > .header-a {
   display: block;
   padding: 1em 1.5em;
-  color: #FFFFFF;
+  color: #0F0F0F;
   transition: all 0.2s ease;
 }
 .nav .ul > .li > .header-a:hover,
