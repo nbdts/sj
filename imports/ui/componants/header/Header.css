@@ -16,7 +16,7 @@
   text-decoration: none;
 }
 .header {
-  background-color: #3F51B5;
+  background-color: #F2C71E;
   min-height: 200px;
   display: flex;
   justify-content: left;
@@ -24,11 +24,11 @@
 }
 .headerh1 {
   font-size: 5rem;
-  color: #FFFFFF;
+  color: #0F0F0F;
 }
 
 .nav {
-  background-color: #303F9F;
+  background-color: #EC1414;
 }
 .nav .wrap {
   padding: 0;
@@ -46,13 +46,13 @@
 .nav .ul > .li > .header-a {
   display: block;
   padding: 1em 1.5em;
-  color: #FFFFFF;
+  color: #0F0F0F;
   transition: all 0.2s ease;
 }
 .nav .ul > .li > .header-a:hover,
 .nav .ul > .li > .header-a.active {
-  background-color: #283593;
+  background-color: #EC1414;
 }
 .nav .ul > .li > .header-a.active:hover {
-  background-color: #1A237E;
+  background-color: #FAF217;
 }
