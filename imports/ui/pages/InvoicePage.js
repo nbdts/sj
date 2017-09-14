@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './css/InvoicePage';
-export default class invoice  extends Component {
+export default class InvoicePage  extends Component {
   constructor() {
     super();
   }
