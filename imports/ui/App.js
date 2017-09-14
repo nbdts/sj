@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import AdminPage from "./pages/AdminPage";
 import BillPage from "./pages/BillPage";
 import InvoicePage from "./pages/InvoicePage";
+import Report from "./pages/Report";
 import {Session} from 'meteor/session';
 import RegistrationPage from "./pages/RegistrationPage";
 export default class App extends Component {
@@ -36,6 +37,7 @@ export default class App extends Component {
       <Route exact path = "/admin/registeration" component = {AdminPage} />
       <Route exact path = "/registeration" component = {RegistrationPage} />
       <Route exact path = "/invoice" component = {InvoicePage} />
+      <Route exact path = "/Report" component = {Report} />
       </div>
       );
   }
