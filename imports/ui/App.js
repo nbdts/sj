@@ -37,7 +37,7 @@ export default class App extends Component {
       <Route exact path = "/admin/registeration" component = {AdminPage} />
       <Route exact path = "/registeration" component = {RegistrationPage} />
       <Route exact path = "/invoice" component = {InvoicePage} />
-      <Route exact path = "/Report" component = {Report} />
+      <Route exact path = "/report" component = {Report} />
       </div>
       );
   }
