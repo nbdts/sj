@@ -33,6 +33,7 @@ export default class App extends Component {
       <Route exact path = "/admin" component = {AdminPage} />
       <Route exact path = "/admin/product" component = {AdminPage} />
       <Route exact path = "/admin/bill" component = {AdminPage} />
+      <Route exact path = "/admin/report" component = {AdminPage} />
       <Route exact path = "/bill" component = {BillPage} />
       <Route exact path = "/admin/registeration" component = {AdminPage} />
       <Route exact path = "/registeration" component = {RegistrationPage} />

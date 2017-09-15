@@ -3,6 +3,7 @@ import RegistrationPage from './RegistrationPage';
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 import ProductPage from './ProductPage';
 import BillPage from './BillPage';
+import Report from "./Report";
 import './css/AdminPage';
 export default class AdminPage extends Component {
   constructor() {
@@ -22,6 +23,7 @@ export default class AdminPage extends Component {
            <li><a href="/admin/registeration" id="targeted">Add Shop</a></li>
            <li><a href="/admin/product" id="targeted">Add Product</a></li>
            <li><a href="/admin/bill" id="targeted">Create Bill</a></li>
+           <li><a href="/admin/report" id="targeted">Report</a></li>
          </ul>
        </div>
 
@@ -30,6 +32,8 @@ export default class AdminPage extends Component {
                   <Route exact path="/admin/registeration" component={RegistrationPage}/>
                   <Route exact path="/admin/product" component={ProductPage}/>
                   <Route exact path="/admin/bill" component={BillPage}/>
+                  <Route exact path="/admin/report" component={Report}/>
+
 
                 </div>
      </div>
