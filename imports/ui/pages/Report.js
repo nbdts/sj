@@ -8,14 +8,6 @@ export default class Report extends Component {
   render(){
     return(
       <div className="body">
-      <div className='title'>
-  <h1>
-  Sandwich Junction
-  </h1>
-  <h2>
-  Sales report overView
-  </h2>
-</div>
 <div className='ui'>
   <div className='ui_box'>
     <div className='ui_box__inner'>

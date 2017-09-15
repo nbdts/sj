@@ -7,18 +7,6 @@
   margin: 0 auto;
   text-align: center;
 }
-.body .title h1 {
-  margin: 30px 0px 0px 0px;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 400;
-  color: #e60000;
-}
-.body .title h2 {
-  margin: 10px 0px 0px 0px;
-  font-size: 18px;
-  color: #0000b3;
-  font-weight: 400;
-  font-family: 'Source Sans Pro', sans-serif;
 }
 .body .ui {
   width: 900px;
