@@ -53,16 +53,18 @@
   position: relative;
   background: #3d3d3d;
   float: left;
-
+  margin: 10px;
   box-shadow: -1px 0px rgba(255, 255, 255, 0.07);
 
 }
 .body .ui_box__inner {
   padding: 30px;
+
 }
 .body .ui_box__inner span {
   font-size: 36px;
   font-weight: 700;
+
 }
 .body .ui_box__inner .progress {
   width: 100%;
