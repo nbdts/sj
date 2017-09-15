@@ -13,6 +13,7 @@
     "react-addons-pure-render-mixin": "^15.6.0",
     "react-bootstrap": "^0.31.2",
     "react-dom": "^15.6.1",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2",
+    "react-simple-pie-chart": "^0.4.1"
   }
 }

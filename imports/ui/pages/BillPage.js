@@ -54,7 +54,7 @@ export default class BillPage extends Component {
 
 
                 <div className="main box">
-                
+
                   {products.map((product,i)=><div key={i}>
                         <input  className="productmenu" type="button" value={product.name}/>
                   </div>)}
