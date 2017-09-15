@@ -40,17 +40,17 @@ export default class InvoicePage  extends Component {
 
                       <table id="meta">
                           <tr>
-                              <td className="meta-head">Invoice no:</td>
+                              <td class="meta-head">Invoice no:</td>
                               <td><textarea>000123</textarea></td>
                           </tr>
                           <tr>
 
-                              <td className="meta-head">Date:</td>
+                              <td class="meta-head">Date:</td>
                               <td><textarea id="date">December 15, 2009</textarea></td>
                           </tr>
                           <tr>
-                              <td className="meta-head">Amount:</td>
-                              <td><div className="due">€900.00</div></td>
+                              <td class="meta-head">Amount:</td>
+                              <td><div class="due">€900.00</div></td>
                           </tr>
 
                       </table>
