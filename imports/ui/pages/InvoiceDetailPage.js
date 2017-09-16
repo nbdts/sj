@@ -63,6 +63,7 @@ export default class InvoiceDetailPage  extends Component {
                   </div>
 
 	</div>
+  
 
           <div id="customer">
 
