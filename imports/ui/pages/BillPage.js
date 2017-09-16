@@ -20,7 +20,7 @@ export default class BillPage extends Component {
     }
   }
   componentWillMount(){
-      this.linkracker = Tracker.autorun(()=> {
+      this.linktracker = Tracker.autorun(()=> {
         Meteor.subscribe("product");
         Meteor.subscribe("invoice");
         let products = ProductApi.find({}).fetch();
@@ -28,7 +28,7 @@ export default class BillPage extends Component {
       });
   }
   componentWillUnmount(){
-    this.linkracker.stop();
+    this.linktracker.stop();
   }
 
 

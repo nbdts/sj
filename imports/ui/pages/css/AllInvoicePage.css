@@ -1,0 +1,38 @@
+.boxmain{
+  padding: 30px;
+}
+.mainbox{
+  margin-bottom: 5px;
+  border: groove;
+  display: flex;
+  height: 50px;
+  width: 500px;
+  background: #D7D7D7;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}.name{
+  padding: 10px;
+  border-radius: 5px;
+  margin: 3px;
+  background-color:#F7F7F7;
+  justify-content: center;
+  flex: 5;
+}
+.status{
+  padding: 10px;
+  border-radius: 5px;
+  margin: 3px;
+  background-color:#F7F7F7;
+  justify-content: center;
+  flex: 3;
+}
+.x{
+  border-radius: 5px;
+  margin: 3px;
+  padding: 10px;
+  background-color:#F7F7F7;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}

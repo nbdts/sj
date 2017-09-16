@@ -18,6 +18,10 @@ Meteor.methods({
 'invoice.update'(){
 
 },
+'invoice.invoiceById'(id){
+const myInvoice=InvoiceApi.findOne({_id:id})
+return myInvoice
+},
 
 });
 if (Meteor.isServer) {
