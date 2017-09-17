@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import './Avatarcss';
-export default class Avatar extends Component {
+import './css/TestPage';
+import {NavLink} from 'react-router-dom';
+
+export default class TestPage extends Component {
   constructor() {
     super();
   }
@@ -15,9 +17,9 @@ export default class Avatar extends Component {
                 <div className='icon'>
                   <img src={this.props.image} width='42' height='42' alt=""/>
                 </div>
-                <span className="span">
-                  <div id='tt'>{this.props.text}</div>
-                </span>
+                <NavLink id="a" activeClassName="selected" to={this.props.link}>
+                  <span className="span"><div id='tt'>{this.props.text}</div></span>
+                </NavLink>
               </div>
             </li>
 

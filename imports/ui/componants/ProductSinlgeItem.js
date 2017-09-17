@@ -12,19 +12,19 @@ if (result) {
 
   render(){
     return(
-       <div style={{padding:10 , marginBottom:10}}>
-       <div className="material-card">
+       <div style={{padding:10 , marginBottom:10 }}>
+       <div className="material-card" style={{backgroundImage:`url(${this.props.product.image})` }}>
          <div className="title-row">
            <div className="title-txt">
             {this.props.product.name}<br />
-             <span className="date-txt">{`${this.props.product.createdAt.getDate()}/${this.props.product.createdAt.getMonth()}/${this.props.product.createdAt.getYear()}`}</span>
+            <div className="pos">
+             <span className="price-txt">₹ {this.props.product.price}</span>
+             </div>
            </div>
-           <span className="glyphicon glyphicon-trash" onClick={this.deleteProduct.bind(this) }>X</span>
+           <span className="glyphicon glyphicon-trash" onClick={this.deleteProduct.bind(this) }></span>
          </div>
 
-         <div className="sales-row" >
-         <img src={this.props.product.image}  width="184px" height="80px" className="myimage"/>
-         </div>
+
        </div>
        </div>
     );

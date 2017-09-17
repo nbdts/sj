@@ -45,8 +45,7 @@ class LoginPage extends Component {
 
   render() {
     return (
-<div><Header> </Header>
-
+      <div>
       <div className="login-container">
 
       <div className="login-form-wrapper">

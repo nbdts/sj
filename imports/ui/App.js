@@ -8,6 +8,12 @@ import InvoicePage from "./pages/InvoicePage";
 import Report from "./pages/Report";
 import {Session} from 'meteor/session';
 import RegistrationPage from "./pages/RegistrationPage";
+
+
+import TestPage from "./pages/TestPage";
+
+
+
 export default class App extends Component {
   constructor() {
     super();
@@ -32,11 +38,11 @@ export default class App extends Component {
       <Route exact path = "/login" component = {LoginPage} />
       <Route exact path = "/admin" component = {AdminPage} />
       <Route exact path = "/admin/product" component = {AdminPage} />
-      <Route exact path = "/admin/bill" component = {AdminPage} />
       <Route exact path = "/admin/report" component = {AdminPage} />
       <Route exact path = "/admin/registeration" component = {AdminPage} />
       <Route exact path = "/admin/allinvoice" component = {AdminPage} />
       <Route exact path="/admin/allinvoice/:id" component={AdminPage}/>
+      <Route exact path = "/bill" component = {BillPage} />
       </div>
       );
   }
