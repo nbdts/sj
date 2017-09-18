@@ -145,9 +145,9 @@ input:focus ~ .bar:before {
 
 
 .material-card {
-  width:250px;
-  height:200px;
-  background-size:250px 200px ;
+  width:200px;
+  height:180px;
+  background-size:200px 180px ;
   border-radius:4px;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, .3);
   background-position: center;
@@ -177,8 +177,8 @@ input:focus ~ .bar:before {
 
 .price-txt {
   position: relative;
-  top: 90px;
-  left: 10px;
+  top: 80px;
+  left: 0px;
   background: red;
   color:white;
   font-size:20px;

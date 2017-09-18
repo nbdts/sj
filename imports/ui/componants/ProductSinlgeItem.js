@@ -12,7 +12,7 @@ if (result) {
 
   render(){
     return(
-       <div style={{padding:10 , marginBottom:10 }}>
+       <div style={{padding:5 , marginBottom:5 }}>
        <div className="material-card" style={{backgroundImage:`url(${this.props.product.image})` }}>
          <div className="title-row">
            <div className="title-txt">
