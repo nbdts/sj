@@ -74,28 +74,13 @@
 	position: relative;
 	font-family: helvetica,verdana,sans-serif;
 }
-.main .topbar {
+.main {
 	border-bottom: 1px solid rgb(235,235,235);
 	border-top: 1px solid rgb(235,235,235);
 	margin: 0;
 	padding: 0;
 }
 
-.topbar li {
-	float: right;
-	list-style: none;
-}
-.topbar li:first-child {float: left;}
-.topbar a {
-	font-family: 'icomoon';
-	display: block;
-	line-height: 50px;
-	width: 50px;  //remove if needed to expand space in topbar
-	text-align: center;
-	text-decoration: none;
-	color: rgb(102,102,102);
-	border-left: 1px solid rgb(235,235,235);
-}
 .mainContent h4 {
 	line-height: 1;
 	font-size: 18px;

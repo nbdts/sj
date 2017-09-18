@@ -27,7 +27,7 @@ Meteor.methods({
 
 },
 'checklogin'(shopname,password){
-  const shop= ShopsApi.find({name:shopname,password}).fetch();
+  const shop= ShopsApi.find({email:shopname,password}).fetch();
   return shop;
 }
 });

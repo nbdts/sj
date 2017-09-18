@@ -3,3 +3,21 @@ display: flex;
 flex-flow: row;
 flex-wrap: wrap;
 }
+.main{
+background-color: white;
+}
+#Bill{
+  display:flex;
+  width: 352px;
+  flex-wrap:wrap;
+  justify-content: space-around;
+  flex-flow: column;
+}
+#MenuOptions{
+  display: flex;
+  flex-flow: row;
+  flex:1;
+  flex-wrap:wrap;
+}
+#slidebar{
+}

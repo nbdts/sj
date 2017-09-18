@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import './Header.css';
+import {Session} from 'meteor/session';
+import {withRouter} from 'react-router-dom';
 
-export default class Header  extends Component {
+
+class Header  extends Component {
   constructor() {
     super();
   }
   // componentDidMount(){
   //   document.getElementById('stickyContent').innerHTML = document.getElementById('main').innerHTML;
   // }
+  handleLogout(){
+    Session.clear();
+      }
 
   render(){
     return(
@@ -19,9 +25,9 @@ export default class Header  extends Component {
       <ul>
         <li className="active-link"><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
-        <li className="folder"> 
+        <li className="folder">
           <input type="checkbox" name="folder-toggle-1" id="folder-toggle-1" className="folder-toggle-box hidden" />
-          <label for="folder-toggle-1" className="folder-toggle-label"><a>Folder</a></label>
+          <label htmlFor="folder-toggle-1" className="folder-toggle-label"><a>Folder</a></label>
           <ul>
             <li><a href="#">Link</a></li>
             <li><a href="#">Linkus</a></li>
@@ -29,13 +35,18 @@ export default class Header  extends Component {
             <li><a href="#">Link</a></li>
           </ul>
         </li>
-        <li><a href="#">Contact Us</a></li>
+        <li>{
+          Session.get('shop') ?
+          <a onClick={this.handleLogout.bind(this)} href="#">Logout</a>:
+          <a href="#"></a>
+        }</li>
       </ul>
     </nav>
-    <label for="mobile-menu-toggle" className="mobile-menu-label hidden"></label>
+    <label htmlFor="mobile-menu-toggle" className="mobile-menu-label hidden"></label>
   </div>
 
 </header>
     );
   }
 }
+export default withRouter(Header)

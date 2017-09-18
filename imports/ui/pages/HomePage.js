@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Session} from 'meteor/session';
+import Header from '../componants/header/Header';
+import BillPage from './BillPage';
 export default class HomePage extends Component {
   constructor() {
     super();
@@ -7,7 +8,8 @@ export default class HomePage extends Component {
   render(){
     return(
       <div>
-      <h1>HomePage </h1>
+      <Header/>
+      <BillPage/>
       </div>
     );
   }
