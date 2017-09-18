@@ -5,8 +5,7 @@ export default class InvoicePage extends Component {
     super(props);
     this.state={
       products:props.products,
-      total:0,
-    }
+      }
   }
   MyInvoiceHandel(){
     this.props.MyInvoice()  }
@@ -50,7 +49,7 @@ export default class InvoicePage extends Component {
 
               <section>
                 <span>Total</span>
-                <span>{this.state.total}</span>
+                <span>{this.props.total}</span>
               </section>
             </main>
 

@@ -18,6 +18,7 @@ export default class BillPage extends Component {
       bill: 0,
       billprod: [],
       username: 'cash',
+      total:0,
     }
   }
   componentWillMount() {
@@ -39,9 +40,9 @@ export default class BillPage extends Component {
   addToBill(newprod) {
     let billprod = this.state.billprod;
     billprod.push(newprod);
-    this.setState({
-      billprod
-    })
+    this.setState({billprod})
+    let total=Number(Number(this.state.total)+Number(newprod.price))
+    this.setState({total})
   }
 
   createInvoice() {
@@ -52,7 +53,7 @@ export default class BillPage extends Component {
     }
   }
 
-  render() {
+  render(){
     let products = this.state.products.filter((product) => {
       if (this.state.category==0) {
         return (product);
@@ -95,7 +96,7 @@ export default class BillPage extends Component {
                 </div>
 
                 <div id="Bill">
-                <InvoicePage products={this.state.billprod} MyInvoice={this.createInvoice.bind(this)}/>
+                <InvoicePage products={this.state.billprod} total={this.state.total} MyInvoice={this.createInvoice.bind(this)}/>
 
                 </div>
 
