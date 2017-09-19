@@ -61,6 +61,7 @@ export default class BillPage extends Component {
         return (product.category == this.state.category);
       }
     })
+    console.log(this.state.billprod);
     return (
       <Router>
         <div>
@@ -80,9 +81,6 @@ export default class BillPage extends Component {
             </div>
 
             <div className="main box">
-
-
-
               <div style={{display: 'flex',flex:1}}>
 
               <div id="MenuOptions">
