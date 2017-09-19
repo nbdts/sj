@@ -54,8 +54,8 @@ export default class InvoicePage extends Component {
             </main>
 
             <footer>
-              <a href="#0">Later</a>
-              <a onClick={this.MyInvoiceHandel.bind(this)} href="#0">Pay Now</a>
+              <span><a href="">Later</a></span>
+              <span><a onClick={this.MyInvoiceHandel.bind(this)} href="#0">Pay Now</a></span>
             </footer>
           </div>
         </div>

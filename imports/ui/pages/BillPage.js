@@ -48,6 +48,7 @@ export default class BillPage extends Component {
   createInvoice() {
     if (this.state.billprod.length !== 0) {
       Meteor.call('invoice.insert', Session.get('shop')._id, this.state.username, this.state.billprod)
+      Bert.alert('Done', 'success', 'growl-top-right');
     } else {
       Bert.alert('please add products too invoice', 'danger', 'growl-top-right');
     }
