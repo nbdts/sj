@@ -1,12 +1,24 @@
 import React, {Component} from 'react';
 import './css/InvoicePage';
+import {Tracker} from 'meteor/tracker';
+
 export default class InvoicePage extends Component {
   constructor(props) {
     super(props);
     this.state={
       products:props.products,
+      prodqty:{},
       }
   }
+prodqty(){
+  let prodqty = this.state.products.reduce( (acc, o) => (acc[o._id] = (acc[o._id] || 0)+1, acc), {} );
+  this.setState({prodqty})
+  console.log(this.state.prodqty);
+
+}
+
+
+
   MyInvoiceHandel(){
     this.props.MyInvoice()  }
   render() {
@@ -36,12 +48,12 @@ export default class InvoicePage extends Component {
                     <div key={i}>
                       <figure>
                         <span>
-                          <strong>{product.name}</strong>
+                        <strong>{product.name}</strong>
                         </span>
                         <span>1</span>
                         <span>{product.price}</span>
                       </figure>
-                    </div>
+                      </div>
                   )
                 })}
 

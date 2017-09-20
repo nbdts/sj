@@ -52,7 +52,7 @@ render() {
                 : Session.get('admin')
                   ? <a id="login" onClick={this.handleLogout.bind(this)} href="/login">Logout</a>
                   : <a id="login" href="/login">Login</a>
-}</li>
+              }</li>
           </ul>
         </nav>
         <label htmlFor="mobile-menu-toggle" className="mobile-menu-label hidden"></label>

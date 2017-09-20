@@ -15,7 +15,6 @@ export default class BillPage extends Component {
     this.state = {
       products: [],
       category: 0,
-      bill: 0,
       billprod: [],
       username: 'cash',
       total:0,
@@ -27,7 +26,7 @@ export default class BillPage extends Component {
       Meteor.subscribe("invoice");
       let products = ProductApi.find({}).fetch();
       this.setState({products});
-    });
+});
   }
   componentWillUnmount() {
     this.linktracker.stop();
@@ -62,8 +61,7 @@ export default class BillPage extends Component {
         return (product.category == this.state.category);
       }
     })
-    console.log(this.state.billprod);
-    return (
+return (
       <Router>
         <div>
           <div className="admin-panel clearfix">

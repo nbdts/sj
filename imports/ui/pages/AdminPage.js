@@ -20,7 +20,7 @@ export default class AdminPage extends Component {
       <Router>
         <div>
         <Header/>
-          <div className="admin-panel clearfix">
+          <div  className="admin-panel clearfix">
             <div className="slidebar">
               <ul>
                 <li><TestPage link="/admin/registeration" text="Add Shop" image="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/black-white-pearls-icons-business/078053-black-white-pearl-icon-business-home6.png"/></li>

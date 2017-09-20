@@ -23,7 +23,13 @@ export default class App extends Component {
     const shop = Session.get('shop')
     if (shop) {
         return <HomePage />
-    }else {
+    }
+      const admin = Session.get('admin')
+      if (admin) {
+        return <AdminPage />
+      }
+
+    else {
       Bert.alert('Loggin in to continue', 'success', 'growl-top-right');
       return <Redirect to="/login" />
     }
@@ -36,7 +42,7 @@ export default class App extends Component {
       <Route exact path = "/" render={this.authentication.bind(this)} />
       <Route exact path = "/home" render={this.authentication.bind(this)} />
       <Route exact path = "/login" component = {LoginPage} />
-      <Route exact path = "/admin" component = {AdminPage} />
+      <Route exact path = "/admin" render={this.authentication.bind(this)} />
       <Route exact path = "/admin/product" component = {AdminPage} />
       <Route exact path = "/admin/report" component = {AdminPage} />
       <Route exact path = "/admin/registeration" component = {AdminPage} />
