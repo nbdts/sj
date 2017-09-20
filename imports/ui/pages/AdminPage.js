@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import RegistrationPage from './RegistrationPage';
 import {BrowserRouter as Router, Route,} from 'react-router-dom';
 import ProductPage from './ProductPage';
+import Header from '../componants/header/Header';
 import BillPage from './BillPage';
 import Report from "./Report";
 import AllInvoicePage from "./AllInvoicePage";
@@ -18,9 +19,9 @@ export default class AdminPage extends Component {
     return (
       <Router>
         <div>
+        <Header/>
           <div className="admin-panel clearfix">
             <div className="slidebar">
-              <div className="logo"><a href='#'/></div>
               <ul>
                 <li><TestPage link="/admin/registeration" text="Add Shop" image="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/black-white-pearls-icons-business/078053-black-white-pearl-icon-business-home6.png"/></li>
                 <li><TestPage link="/admin/product" text="Add Product" image="http://aceautomation.eu/wp-content/uploads/2016/02/shoppingcart.png"/></li>

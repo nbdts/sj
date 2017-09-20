@@ -23,6 +23,8 @@ class LoginPage extends Component {
   handleSubmit(event) {
     event.preventDefault();
     if (this.state.shopname === 'admin' && this.state.password === 'admin') {
+      Session.setPersistent("admin","admin");
+      Bert.alert('Admin Loggedin', 'success', 'growl-top-right');
       this.props.history.push('/admin')
       return false;
     }
@@ -56,7 +58,7 @@ class LoginPage extends Component {
           <form name="auth-form" method="POST" onSubmit={this.handleSubmit}>
             <div className="fieldset">
               <input id="shopname" type="text" value={this.state.shopname} onChange={this.handleChange.bind(this, 'shopname')} required/>
-              <label for="shopname">
+              <label htmlFor="shopname">
                 shopname
               </label>
               <div className="highlighter"></div>
@@ -65,7 +67,7 @@ class LoginPage extends Component {
 
             <div className="fieldset">
               <input required id="password" type="password" value={this.state.password} onChange={this.handleChange.bind(this, 'password')}/>
-              <label for="password">
+              <label htmlFor="password">
                 Password
               </label>
               <div className="highlighter"></div>
