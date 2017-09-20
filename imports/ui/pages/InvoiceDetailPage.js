@@ -78,11 +78,7 @@ createInvoice(){}
             </section>
           </main>
 
-          <footer>
-            <span><a href="">Later</a></span>
-            <span><a onClick={this.MyInvoiceHandel.bind(this)} href="#0">Pay Now</a></span>
-          </footer>
-        </div>
+          </div>
       </div>
       </div>
     );

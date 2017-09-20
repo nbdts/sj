@@ -15,7 +15,7 @@
 }
 .admin-panel {
 	width: 100%;
-	margin: 0px auto;
+	margin: 5px auto;
 }
 .slidebar {
 	width: 20%;
@@ -70,11 +70,8 @@
 	width: 79%;
 	height: 690px;
 	background-color: white;
-	//background-color: rgb(255,255,255);
 	position: relative;
 	font-family: helvetica,verdana,sans-serif;
-}
-.main {
 	border-bottom: 1px solid rgb(235,235,235);
 	border-top: 1px solid rgb(235,235,235);
 	margin: 0;

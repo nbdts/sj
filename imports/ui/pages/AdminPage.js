@@ -25,7 +25,7 @@ export default class AdminPage extends Component {
               <ul>
                 <li><TestPage link="/admin/registeration" text="Add Shop" image="http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/black-white-pearls-icons-business/078053-black-white-pearl-icon-business-home6.png"/></li>
                 <li><TestPage link="/admin/product" text="Add Product" image="http://aceautomation.eu/wp-content/uploads/2016/02/shoppingcart.png"/></li>
-                <li><TestPage link="/bill" text="Create Bill" image="http://www.scotiabank.com/digitalcentre/images/advice-hub/icons/icon-managing-bills.svg"/></li>
+                <li><TestPage link="/admin/bill" text="Create Bill" image="http://www.scotiabank.com/digitalcentre/images/advice-hub/icons/icon-managing-bills.svg"/></li>
                 <li><TestPage link="/admin/report" text="Report" image="https://www.bsr.org/images/icons/bsr-reports-icon.svg"/></li>
                 <li><TestPage link="/admin/allinvoice" text="All Invoice" image="http://www.entypo.com/images/fingerprint.svg"/></li>
               </ul>
@@ -37,6 +37,7 @@ export default class AdminPage extends Component {
               <Route exact path="/admin/report" component={Report}/>
               <Route exact path="/admin/allinvoice" component={AllInvoicePage}/>
               <Route exact path="/admin/allinvoice/:id" component={InvoiceDetailPage}/>
+              <Route exact path="/admin/bill" component={BillPage}/>
             </div>
           </div>
         </div>
