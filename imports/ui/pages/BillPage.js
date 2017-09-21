@@ -59,6 +59,7 @@ export default class BillPage extends Component {
       this.setState({billprod:mynewstateproduct})
     }
   }
+  
 
   createInvoice() {
     if (this.state.billprod.length !== 0) {
