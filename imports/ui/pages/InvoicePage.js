@@ -10,18 +10,18 @@ export default class InvoicePage extends Component {
       prodqty:{},
       }
   }
-prodqty(){
-  let prodqty = this.state.products.reduce( (acc, o) => (acc[o._id] = (acc[o._id] || 0)+1, acc), {} );
-  this.setState({prodqty})
-  console.log(this.state.prodqty);
 
-}
 
 
 
   MyInvoiceHandel(){
     this.props.MyInvoice()  }
   render() {
+    let price=0;
+    let mytotal= this.state.products.map((product)=>{
+          return(price=parseFloat(price)+parseFloat(product.tempprice));
+    })
+    console.log(mytotal);
     return (
 
       <div className="mybody">
@@ -43,15 +43,15 @@ prodqty(){
               </section>
 
               <section>
-                {this.state.products.map((product, i) => {
+                {this.props.products.map((product, i) => {
                   return (
                     <div key={i}>
                       <figure>
                         <span>
                         <strong>{product.name}</strong>
                         </span>
-                        <span>1</span>
-                        <span>{product.price}</span>
+                        <span>{product.quantity}</span>
+                        <span>{product.price*product.quantity}</span>
                       </figure>
                       </div>
                   )
@@ -61,7 +61,7 @@ prodqty(){
 
               <section>
                 <span>Total</span>
-                <span>{this.props.total}</span>
+                <span>{mytotal[mytotal.length-1]}</span>
               </section>
             </main>
 

@@ -38,10 +38,26 @@ export default class BillPage extends Component {
 
   addToBill(newprod) {
     let billprod = this.state.billprod;
-    billprod.push(newprod);
-    this.setState({billprod})
-    let total=Number(Number(this.state.total)+Number(newprod.price))
-    this.setState({total})
+    let isavailable= billprod.filter((product)=>{
+          return (product._id===newprod._id);
+    });
+    if (isavailable.length == 0) {
+      newprod.quantity=1;
+      newprod.tempprice=newprod.price;
+      let prodwithqty =newprod;
+      billprod.push(prodwithqty);
+      this.setState({billprod})
+    }else {
+      let mynewproduct= isavailable[0];
+      let  mynewstateproduct= billprod.map((product)=>{
+        if (product==mynewproduct) {
+           product.quantity=product.quantity+1;
+           product.tempprice=product.quantity*product.price;
+        }
+        return(product);
+      })
+      this.setState({billprod:mynewstateproduct})
+    }
   }
 
   createInvoice() {

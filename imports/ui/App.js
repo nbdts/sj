@@ -8,8 +8,6 @@ import InvoicePage from "./pages/InvoicePage";
 import Report from "./pages/Report";
 import {Session} from 'meteor/session';
 import RegistrationPage from "./pages/RegistrationPage";
-
-
 import TestPage from "./pages/TestPage";
 
 

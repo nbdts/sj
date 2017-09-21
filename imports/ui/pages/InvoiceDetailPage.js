@@ -42,7 +42,7 @@ createInvoice(){}
         <div className="invoice">
           <header>
             <section>
-              <h1>Sandwich Junction</h1>
+          <img style={{height:'20%',width:'100%',borderRadius:20}} src='/sjflex.jpg' alt="flex"/>
               <span>16/02/2016</span>
             </section>
 
