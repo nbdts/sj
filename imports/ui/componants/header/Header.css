@@ -1,6 +1,5 @@
 .header-banner-top .primary-wrapper {
   margin: 0 auto;
-  max-width: 900px;
 
   }
   .header-banner-top{
@@ -11,7 +10,6 @@
 .primary-wrapper {
   margin: 0 auto;
   align-items: center;
-  max-width: 900px;
 }
 .header-banner-top .hidden {
   display: none;
@@ -101,10 +99,12 @@
   }
 }
 .header-banner-top {
-  text-align: center;
+  text-align: right;
 }
-.header-banner-top .main-navigation {
+.header-banner-top {
   background: #222;
+}
+.main-navigation{
 }
 .header-banner-top .horizontal-nav a {
   padding: 1.5em 1em;
@@ -169,6 +169,8 @@
   }
   .header-banner-top .horizontal-nav li {
     display: block;
+    display: flex;
+    justify-content: space-between;
   }
   .header-banner-top .horizontal-nav .folder ul {
     text-align: center;
@@ -187,4 +189,8 @@
   position: relative;
   top:0;
   left: 0;
+}
+.banner{
+  height: 10px;
+  width: 100px;
 }

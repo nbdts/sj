@@ -3,7 +3,8 @@
 padding:0px;
 color: white;
 list-style-type:none;
--webkit-backface-visibility: hidden; backface-visibility: hidden;
+-webkit-backface-visibility: hidden;
+backface-visibility: hidden;
 }
 .var_nav
 {
@@ -63,13 +64,8 @@ color: white;
  transition:all .5s ease-in-out;
 }
 .icon
-{
-width:100px;
-height:100px;
-margin-left: -5px;
-text-align:center;
-color:#fff;
--webkit-transition:all .5s ease-in-out;
+{  padding-top: 5px;
+  -webkit-transition:all .5s ease-in-out;
 -moz-transition:all .5s ease-in-out;
 -o-transition:all .5s ease-in-out;
 -ms-transition:all .5s ease-in-out;

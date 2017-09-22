@@ -15,37 +15,31 @@ class Header extends Component {
 render() {
   return (
     <header className="header-banner-top">
+    <div style={{backgroundColor:'#272727'}} >
+    <img style={{padding:'5px',borderRadius:'1em', height:'70px',width:'200px'}} src='/sjflex.jpg' alt="flex"/>
+    </div>
     <div style={{flex:5}} className="main-navigation">
-        <input type="checkbox" name="mobile-menu-toggle" id="mobile-menu-toggle" className="mobile-menu-box"/>
         <nav className="horizontal-nav primary-wrapper" role='navigation'>
-        <div style={{flex:1,height:'100%',width:'100%'}}>
-        <img style={{height:55,width:'100%'}} src='/sjflex.jpg' alt="flex"/>
-        </div>
-          <ul>
-          <li className="active-link">
-              <a href="#">Home</a>
-            </li>
-            <li>
-              <a href="#">About</a>
-            </li>
+          <ul style={{marginRight:'20px'}}>
             <li className="folder">
-              <input type="checkbox" name="folder-toggle-1" id="folder-toggle-1" className="folder-toggle-box hidden"/>
               <label htmlFor="folder-toggle-1" className="folder-toggle-label">
-                <a></a>
+                <a className="glyphicon glyphicon-cog"> Check</a>
               </label>
               <ul>
-                <li>
-                  <a href="#">Link</a>
-                </li>
+              <li>
+                { Session.get('shop')
+                ? <a id="login" onClick={this.handleLogout.bind(this)} href="/login">Logout</a>
+                : Session.get('admin')
+                  ? <a id="login" onClick={this.handleLogout.bind(this)} href="/login">Logout</a>
+                  : <a id="login" href="/login">Login</a>
+
+              }
+              </li>
+
                 <li>
                   <a href="#">Linkus</a>
                 </li>
-                <li>
-                  <a href="#">Linkorama</a>
-                </li>
-                <li>
-                  <a href="#">Link</a>
-                </li>
+
               </ul>
             </li>
             <li>
@@ -54,8 +48,7 @@ render() {
         </nav>
         <label htmlFor="mobile-menu-toggle" className="mobile-menu-label hidden"></label>
       </div>
-
-    </header>
+      </header>
   );
 }
 }

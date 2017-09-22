@@ -85,8 +85,8 @@ return (
             <div className="slidebar" id="slidebar">
               <ul>
                 <li onClick={this.handleClick.bind(this, 1)}>
-                
-                  <a href="#" id="targeted"><Avatar image="https://image.flaticon.com/icons/svg/167/167247.svg" text="Juice"/></a>
+
+                  <a href="#" id="targeted"><Avatar image="/juice3.svg" text="Juice"/></a>
                 </li>
                 <li onClick={this.handleClick.bind(this, 2)}>
                   <a href="#" id="targeted"><Avatar image="http://www.italysgr.com/images/icon/Pizza-icon.png" text="Fruit Shakes"/></a>
