@@ -1,5 +1,6 @@
 .header-banner-top .primary-wrapper {
   margin: 0 auto;
+  position:sticky;
 
   }
   .header-banner-top{

@@ -31,7 +31,7 @@ render() {
                 ? <a id="login" onClick={this.handleLogout.bind(this)} href="/login">Logout</a>
                 : Session.get('admin')
                   ? <a id="login" onClick={this.handleLogout.bind(this)} href="/login">Logout</a>
-                  : <a id="login" href="/login">Login</a>
+                  : <a id="login" href="/login"></a>
 
               }
               </li>
