@@ -49,10 +49,9 @@ class LoginPage extends Component {
     return (
       <div>
       <div className="login-container">
-
-      <div className="login-form-wrapper">
+        <div className="login-form-wrapper">
         <h1>
-          Log In
+        <img className="sjimage" src='/sjflex.jpg' alt="flex"/>
         </h1>
         <div className="form-body">
           <form name="auth-form" method="POST" onSubmit={this.handleSubmit}>
@@ -79,7 +78,7 @@ class LoginPage extends Component {
             </div>
           </form>
 
-          <h4><a style={{color:'blue'}} href="/registeration">Registeration ?</a></h4>
+
         </div>
       </div>
 

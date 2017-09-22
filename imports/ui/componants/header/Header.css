@@ -1,6 +1,17 @@
 .header-banner-top .primary-wrapper {
   margin: 0 auto;
   max-width: 900px;
+
+  }
+  .header-banner-top{
+    display: flex;
+    flex-flow:row;
+    align-items: center;
+  }
+.primary-wrapper {
+  margin: 0 auto;
+  align-items: center;
+  max-width: 900px;
 }
 .header-banner-top .hidden {
   display: none;

@@ -64,10 +64,9 @@ color: white;
 }
 .icon
 {
-position:relative;
 width:100px;
 height:100px;
-padding-top: 5px;
+margin-left: -5px;
 text-align:center;
 color:#fff;
 -webkit-transition:all .5s ease-in-out;
@@ -78,7 +77,6 @@ float:left;
 transition:all .5s ease-in-out;
 float:left;
 }
-.icon i{top:22px;position:relative;}
 .a{
 display:block;
 position:absolute;

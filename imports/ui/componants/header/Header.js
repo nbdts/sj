@@ -15,12 +15,14 @@ class Header extends Component {
 render() {
   return (
     <header className="header-banner-top">
-
-      <div className="main-navigation">
+    <div style={{flex:5}} className="main-navigation">
         <input type="checkbox" name="mobile-menu-toggle" id="mobile-menu-toggle" className="mobile-menu-box"/>
         <nav className="horizontal-nav primary-wrapper" role='navigation'>
+        <div style={{flex:1,height:'100%',width:'100%'}}>
+        <img style={{height:55,width:'100%'}} src='/sjflex.jpg' alt="flex"/>
+        </div>
           <ul>
-            <li className="active-link">
+          <li className="active-link">
               <a href="#">Home</a>
             </li>
             <li>
@@ -29,7 +31,7 @@ render() {
             <li className="folder">
               <input type="checkbox" name="folder-toggle-1" id="folder-toggle-1" className="folder-toggle-box hidden"/>
               <label htmlFor="folder-toggle-1" className="folder-toggle-label">
-                <a>Folder</a>
+                <a></a>
               </label>
               <ul>
                 <li>
@@ -47,12 +49,7 @@ render() {
               </ul>
             </li>
             <li>
-              {Session.get('shop')
-                ? <a id="login" onClick={this.handleLogout.bind(this)} href="/login">Logout</a>
-                : Session.get('admin')
-                  ? <a id="login" onClick={this.handleLogout.bind(this)} href="/login">Logout</a>
-                  : <a id="login" href="/login">Login</a>
-              }</li>
+              </li>
           </ul>
         </nav>
         <label htmlFor="mobile-menu-toggle" className="mobile-menu-label hidden"></label>

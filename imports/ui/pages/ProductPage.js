@@ -96,11 +96,13 @@ export default class ProductPage  extends Component {
           <div className="group">
               <select name="MySelect" placeholder="Favourite" value={this.state.category}  onChange={this.setValue.bind(this, 'category')} required>
                 <option value="">Select Category</option>
-                <option value="1">Ice Cream</option>
-                <option value="2">Sandwich</option>
-                <option value="3">Juice</option>
-                <option value="4">Shakes</option>
-                <option value="5">Energy Drink</option>
+                <option value="1">Juice</option>
+                <option value="2">Fruit Shakes</option>
+                <option value="3">Chocolate Shakes</option>
+                <option value="4">Beverages</option>
+                <option value="5">Sandwich</option>
+                <option value="6">Chocolate Sandwich</option>
+                <option value="7">Italian</option>
                </select>
           </div>
           <div className="group">
@@ -115,7 +117,7 @@ export default class ProductPage  extends Component {
       <div style={{display:'flex',flexWrap:'wrap'}}>
       {
         this.state.products.map((product,i)=>{
-          return (<ProductSinlgeItem product={product}  key={i} />)
+          return (<ProductSinlgeItem product={product}  key={i} isAdmin={true} />)
         })
       }
       </div>

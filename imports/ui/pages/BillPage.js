@@ -59,7 +59,7 @@ export default class BillPage extends Component {
       this.setState({billprod:mynewstateproduct})
     }
   }
-  
+
 
   createInvoice() {
     if (this.state.billprod.length !== 0) {
@@ -84,14 +84,26 @@ return (
           <div className="admin-panel clearfix">
             <div className="slidebar" id="slidebar">
               <ul>
-                <li onClick={this.handleClick.bind(this, 3)}>
+                <li onClick={this.handleClick.bind(this, 1)}>
                   <a href="#" id="targeted"><Avatar image="https://image.flaticon.com/icons/svg/167/167247.svg" text="Juice"/></a>
                 </li>
                 <li onClick={this.handleClick.bind(this, 2)}>
-                  <a href="#" id="targeted"><Avatar image="http://www.italysgr.com/images/icon/Pizza-icon.png" text="Pizza"/></a>
+                  <a href="#" id="targeted"><Avatar image="http://www.italysgr.com/images/icon/Pizza-icon.png" text="Fruit Shakes"/></a>
                 </li>
-                <li onClick={this.handleClick.bind(this, 1)}>
-                  <a href="#" id="targeted"><Avatar image="http://icons.iconarchive.com/icons/dapino/beach/256/icecream-icon.png" text="Icecream"/></a>
+                <li onClick={this.handleClick.bind(this, 3)}>
+                  <a href="#" id="targeted"><Avatar image="http://icons.iconarchive.com/icons/dapino/beach/256/icecream-icon.png" text="Chocolate Shakes"/></a>
+                </li>
+                <li onClick={this.handleClick.bind(this, 4)}>
+                  <a href="#" id="targeted"><Avatar image="http://icons.iconarchive.com/icons/dapino/beach/256/icecream-icon.png" text="Beverages"/></a>
+                </li>
+                <li onClick={this.handleClick.bind(this, 5)}>
+                  <a href="#" id="targeted"><Avatar image="http://icons.iconarchive.com/icons/dapino/beach/256/icecream-icon.png" text="Sandwich"/></a>
+                </li>
+                <li onClick={this.handleClick.bind(this, 6)}>
+                  <a href="#" id="targeted"><Avatar image="http://icons.iconarchive.com/icons/dapino/beach/256/icecream-icon.png" text="Chocolate Sandwich"/></a>
+                </li>
+                <li onClick={this.handleClick.bind(this, 7)}>
+                  <a href="#" id="targeted"><Avatar image="http://icons.iconarchive.com/icons/dapino/beach/256/icecream-icon.png" text="Italian"/></a>
                 </li>
               </ul>
             </div>
@@ -102,7 +114,7 @@ return (
               <div id="MenuOptions">
                   {products.map((product, i) => {
                     return (
-                      <div onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product}/></div>
+                      <div onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
 
                     )
                   })

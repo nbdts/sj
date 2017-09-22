@@ -13,7 +13,7 @@ export default class Avatar extends Component {
               <div className="link_bg"></div>
               <div className="link_title">
                 <div className='icon'>
-                  <img src={this.props.image} width='42' height='42' alt=""/>
+                  <img src={this.props.image} width='30' height='30' alt=""/>
                 </div>
                 <span className="span">
                   <div id='tt'>{this.props.text}</div>

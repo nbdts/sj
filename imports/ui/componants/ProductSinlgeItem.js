@@ -21,7 +21,13 @@ if (result) {
              <span className="price-txt">₹ {this.props.product.price}</span>
              </div>
            </div>
-           <span className="glyphicon glyphicon-trash" onClick={this.deleteProduct.bind(this) }></span>
+          {
+
+            this.props.isAdmin ?
+             <span className="glyphicon glyphicon-trash" onClick={this.deleteProduct.bind(this) }></span>
+            :
+            null
+          }
          </div>
 
 
