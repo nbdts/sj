@@ -16,10 +16,10 @@ if (result) {
        <div className="material-card" style={{backgroundImage:`url(${this.props.product.image})` }}>
          <div className="title-row">
            <div className="title-txt">
+           <div className="pos">
+           <span className="price-txt">₹ {this.props.product.price}</span>
+           </div>
             {this.props.product.name}<br />
-            <div className="pos">
-             <span className="price-txt">₹ {this.props.product.price}</span>
-             </div>
            </div>
           {
 

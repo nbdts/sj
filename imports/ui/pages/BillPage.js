@@ -17,6 +17,7 @@ export default class BillPage extends Component {
       category: 0,
       billprod: [],
       username: 'cash',
+      usernumber:'unknown',
       total:0,
     }
   }
@@ -63,7 +64,7 @@ export default class BillPage extends Component {
 
   createInvoice() {
     if (this.state.billprod.length !== 0) {
-      Meteor.call('invoice.insert', Session.get('shop')._id, this.state.username, this.state.billprod)
+      Meteor.call('invoice.insert', Session.get('shop')._id, this.state.username,this.state.usernumber, this.state.billprod)
       Bert.alert('Done', 'success', 'growl-top-right');
     } else {
       Bert.alert('please add products too invoice', 'danger', 'growl-top-right');
@@ -89,16 +90,16 @@ return (
                   <a href="#" id="targeted"><Avatar image="/juice3.svg" text="Juice"/></a>
                 </li>
                 <li onClick={this.handleClick.bind(this, 2)}>
-                  <a href="#" id="targeted"><Avatar image="http://www.italysgr.com/images/icon/Pizza-icon.png" text="Fruit Shakes"/></a>
+                  <a href="#" id="targeted"><Avatar image="https://maxcdn.icons8.com/Share/icon/Food//cherry1600.png" text="Fruit Shakes"/></a>
                 </li>
                 <li onClick={this.handleClick.bind(this, 3)}>
-                  <a href="#" id="targeted"><Avatar image="http://icons.iconarchive.com/icons/dapino/beach/256/icecream-icon.png" text="Chocolate Shakes"/></a>
+                  <a href="#" id="targeted"><Avatar image="https://www.alpro.com/img/layout/product_new/usageicons/usageicon-drink-v2.png" text="Chocolate Shakes"/></a>
                 </li>
                 <li onClick={this.handleClick.bind(this, 4)}>
-                  <a href="#" id="targeted"><Avatar image="http://icons.iconarchive.com/icons/dapino/beach/256/icecream-icon.png" text="Beverages"/></a>
+                  <a href="#" id="targeted"><Avatar image="/food.png" text="Beverages"/></a>
                 </li>
                 <li onClick={this.handleClick.bind(this, 5)}>
-                  <a href="#" id="targeted"><Avatar image="http://icons.iconarchive.com/icons/dapino/beach/256/icecream-icon.png" text="Sandwich"/></a>
+                  <a href="#" id="targeted"><Avatar image="https://maxcdn.icons8.com/office/PNG/512/Food/sandwich-512.png" text="Sandwich"/></a>
                 </li>
                 <li onClick={this.handleClick.bind(this, 6)}>
                   <a href="#" id="targeted"><Avatar image="http://icons.iconarchive.com/icons/dapino/beach/256/icecream-icon.png" text="Chocolate Sandwich"/></a>

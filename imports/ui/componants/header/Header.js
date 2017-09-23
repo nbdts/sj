@@ -14,11 +14,11 @@ class Header extends Component {
 
 render() {
   return (
-    <header className="header-banner-top">
-    <div style={{backgroundColor:'#272727'}} >
+    <header style={{backgroundColor:'#CC0F2F'}} className="header-banner-top">
+    <div style={{backgroundColor:'#CC0F2F'}} >
     <img style={{padding:'5px',borderRadius:'1em', height:'70px',width:'200px'}} src='/sjflex.jpg' alt="flex"/>
     </div>
-    <div style={{flex:5}} className="main-navigation">
+    <div style={{flex:5,backgroundColor:'#CC0F2F'}} className="main-navigation">
         <nav className="horizontal-nav primary-wrapper" role='navigation'>
           <ul style={{marginRight:'20px'}}>
             <li className="folder">

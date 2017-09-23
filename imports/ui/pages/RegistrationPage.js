@@ -125,7 +125,7 @@ class Inputs extends Component {
         <section className="material-form-field space">
           <div className="material-form-field-controls">
             <div className="form-field-controls-group">
-              <input id={this.props.id} required="required" placeholder={this.props.label} className="material-form-field-input" type={this.props.type} onChange={this.props.onChange}/>
+              <input id={this.props.id} required="required" className="material-form-field-input" type={this.props.type} onChange={this.props.onChange}/>
               <label htmlFor={this.props.id} className="material-form-field-label">{this.props.label}</label>
             </div>
           </div>

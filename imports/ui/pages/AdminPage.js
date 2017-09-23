@@ -25,9 +25,8 @@ export default class AdminPage extends Component {
               <ul>
                 <li><TestPage link="/admin/registeration" text="Add Shop" image="/shop.png"/></li>
                 <li><TestPage link="/admin/product" text="Add Product" image="/addProduct.png"/></li>
-                <li><TestPage link="/admin/bill" text="Create Bill" image="/plus.png"/></li>
-                <li><TestPage link="/admin/report" text="Report" image="bar-chart.png"/></li>
-                <li><TestPage link="/admin/allinvoice" text="All Invoice" image="addall.png"/></li>
+                <li><TestPage link="/admin/report" text="Report" image="/bar-chart.png"/></li>
+                <li><TestPage link="/admin/allinvoice" text="All Invoice" image="/addall.png"/></li>
               </ul>
             </div>
 
@@ -37,8 +36,7 @@ export default class AdminPage extends Component {
               <Route exact path="/admin/report" component={Report}/>
               <Route exact path="/admin/allinvoice" component={AllInvoicePage}/>
               <Route exact path="/admin/allinvoice/:id" component={InvoiceDetailPage}/>
-              <Route exact path="/admin/bill" component={BillPage}/>
-            </div>
+              </div>
           </div>
         </div>
       </Router>

@@ -6,9 +6,13 @@
   align-items: center;
   padding: 10px 50px 50px;
 }
+#productcategory:hover{
+  background-color:#D20034;
+  color: red;
+}
 
 .myheader {
-  color: #3399cc;
+  color: #D20034;
   font-weight: bold;
   font-size: 22px;
   text-align: center;
@@ -51,7 +55,7 @@
 .group input:focus~label, .group input:valid~label {
   top: -10px;
   font-size: 14px;
-  color: #3399cc;
+  color: #D20034;
 }
 
 .group label {
@@ -75,7 +79,7 @@
   left: 50%;
   right: 50%;
   bottom: 0;
-  background: #3399cc;
+  background: #D20034;
   height: 4px;
   -webkit-transition: left 0.2s ease-out, right 0.2s ease-out;
   transition: left 0.2s ease-out, right 0.2s ease-out;
@@ -85,6 +89,10 @@ input:focus~.bar:before {
   left: 0;
   right: 0;
 }
+.blue {
+    background-color: #D20034;
+    color: white;
+}
 
 .mybutton {
   position: relative;
@@ -92,12 +100,12 @@ input:focus~.bar:before {
   margin: 0 auto;
   padding: 10px 35px;
   border: none;
-  border-radius: 3px;
-  background-color: whitesmoke;
+  border-radius: 0px;
+  background-color:white;
   font-family: 'Open Sans', sans-serif !important;
   font-size: 16px;
-  font-weight: 100;
-  color: #4f6f8f;
+  font-weight: 100px;
+  color: #D20034;
   letter-spacing: 1px;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
   overflow: hidden;
@@ -113,7 +121,7 @@ input:focus~.bar:before {
   height: 120px;
   margin-left: -60px;
   margin-top: -60px;
-  background: #4f6f8f;
+  background: #D20034;
   border-radius: 100%;
   opacity: .6;
   transform: scale(0);
@@ -121,7 +129,10 @@ input:focus~.bar:before {
 }
 
 .mybutton:hover {
-  background-color: #e8e8e8;
+  background-color: #D20034;
+  color:white;
+  font-size: 16px;
+  font-weight: 100px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -182,8 +193,8 @@ input:focus~.bar:before {
 
 .price-txt {
   position: relative;
-  top: 80px;
-  left: 0px;
+  text-outline:80px;
+  right: -130px;
   background: red;
   color: white;
   font-size: 20px;
@@ -193,7 +204,7 @@ input:focus~.bar:before {
 
 .view-txt {
   cursor: pointer;
-  color: #50a5de;
+  color: ;
   font-size: 12px;
 }
 
@@ -226,21 +237,9 @@ input:focus~.bar:before {
   flex-grow: 1;
 }
 
-.fytd-sales-row {
-  background: #9ebb3b;
-  font-size: 14px;
-  color: white;
-  display: flex;
-  display: -webkit-flex;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-  padding: 8px;
-  flex-grow: 1;
-}
-
 .right-sec {
   padding: 8px 15px;
-  background: #8bc7ef;
+  background: #D20034;
   display: flex;
   display: -webkit-flex;
 }

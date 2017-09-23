@@ -18,6 +18,11 @@ background-color: white;
   flex-flow: row;
   flex:1;
   flex-wrap:wrap;
+  position: relative;
+  top: 65px;
 }
 #slidebar{
+  box-shadow: 2px 0px 10px #777777;
+  margin-right: 3px;
+  z-index: 1;
 }

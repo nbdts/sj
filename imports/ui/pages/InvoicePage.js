@@ -8,6 +8,7 @@ export default class InvoicePage extends Component {
     this.state={
       products:props.products,
       prodqty:{},
+
       }
   }
 
@@ -24,8 +25,8 @@ export default class InvoicePage extends Component {
     console.log(mytotal);
     return (
 
-      <div className="mybody">
-        <div className="mycontainer">
+      <div  className="mybody">
+        <div  className="mycontainer">
           <div className="invoice">
             <header>
               <section>
@@ -33,24 +34,28 @@ export default class InvoicePage extends Component {
               </section>
 
             </header>
-            <h2 className="h2">Name:</h2>
-            <main>
+            <div style={{position:"relative"}}>
+            <input style={{border:'none',borderBottom:'2px'}} type="text" placeholder="NAME"/>
+            <input style={{border:'none'}} type="number" placeholder="PHONE"/>
+            </div>
+
+            <main style={{position:'absolute',bottom:50,width:'90%',height:'60%'}} >
               <section>
                 <span>Product</span>
                 <span>Unit</span>
                 <span>Price</span>
               </section>
 
-              <section>
+              <section className='invoiceProductList' >
                 {this.props.products.map((product, i) => {
                   return (
                     <div key={i}>
                       <figure>
-                        <span>
-                        <strong>{product.name}</strong>
+                        <span style={{flex:1}}>
+                      {product.name}
                         </span>
-                        <span>{product.quantity}</span>
-                        <span> ₹ {product.price*product.quantity}</span>
+                        <span style={{flex:1}} >{product.quantity}</span>
+                        <span style={{flex:1}}> ₹ {product.price*product.quantity}</span>
                       </figure>
                       </div>
                   )
@@ -67,8 +72,8 @@ export default class InvoicePage extends Component {
               </section>
             </main>
 
-            <footer>
-              <span><a href="">Later</a></span>
+            <footer style={{position:'absolute',bottom:10,right:40}}>
+              <span ><a style={{color:'#999'}} href="">Later</a></span>
               <span><a onClick={this.MyInvoiceHandel.bind(this)} href="#0">Pay Now</a></span>
             </footer>
           </div>

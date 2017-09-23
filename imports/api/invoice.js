@@ -3,11 +3,12 @@ import { Meteor } from 'meteor/meteor';
 export const InvoiceApi = new Mongo.Collection('invoice');
 
 Meteor.methods({
-'invoice.insert'(shopid,name,products){
+'invoice.insert'(shopid,name,phno,products){
 
   InvoiceApi.insert({
     shopid:shopid,
     name,
+    phno,
     products,
     createdAt:new Date(),
     status:1,

@@ -18,6 +18,7 @@
 	margin: 5px auto;
 }
 .slidebar {
+	margin-left: 5px;
 	width: 20%;
 	height:100%;
 	float: left;

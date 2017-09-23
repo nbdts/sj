@@ -94,7 +94,7 @@ export default class ProductPage  extends Component {
             <label>Price</label>
           </div>
           <div className="group">
-              <select name="MySelect" placeholder="Favourite" value={this.state.category}  onChange={this.setValue.bind(this, 'category')} required>
+              <select  name="MySelect" placeholder="Favourite" value={this.state.category}  onChange={this.setValue.bind(this, 'category')} required>
                 <option value="">Select Category</option>
                 <option value="1">Juice</option>
                 <option value="2">Fruit Shakes</option>
