@@ -34,12 +34,12 @@ export default class InvoicePage extends Component {
               </section>
 
             </header>
-            <div style={{position:"relative"}}>
+            <div style={{position:"absolute",top:120}}>
             <input style={{border:'none',borderBottom:'2px'}} type="text" placeholder="NAME"/>
             <input style={{border:'none'}} type="number" placeholder="PHONE"/>
             </div>
 
-            <main style={{position:'absolute',bottom:50,width:'90%',height:'60%'}} >
+            <main style={{position:'relative',bottom:50,top:0,width:'80%',height:'60%'}} >
               <section>
                 <span>Product</span>
                 <span>Unit</span>
