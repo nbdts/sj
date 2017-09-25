@@ -8,6 +8,7 @@ flex-flow: row;
 flex-wrap: wrap;
 }
 .main{
+  width: 82% !important;
 }
 #Bill{
   display:flex;
@@ -24,21 +25,21 @@ flex-wrap: wrap;
   flex:10;
   flex-wrap:wrap;
   position: relative;
-  top: 65px;
+  top: 0px;
 }
 #slidebar{
-  background-color: blue;
   box-shadow: 2px 0px 10px #777777;
   margin-right: 3px;
   z-index: 1;
 }
 .menubox{
   border: groove;
-  position:fixed;
+  position:relative;
+  background-color: black;
   left:2px;
-  top: 70px;
+  top: 0px;
   bottom: 0;
-  width: 75%;
+  width: 100%;
   height: auto;
   display: flex;
   flex-flow: column;

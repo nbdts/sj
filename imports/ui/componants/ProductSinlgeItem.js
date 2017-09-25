@@ -14,7 +14,6 @@ if (result) {
     return(
        <div style={{padding:10}}>
           <div className="title-row">
-
            <div className="title-txt">
            {this.props.product.name}<br/>
            </div>

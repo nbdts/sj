@@ -28,14 +28,13 @@ import { Tracker } from 'meteor/tracker';
 
 
   render() {
-
     return (
       <div className="boxmain" >
       <h1>
       All Invoice
       </h1>
-      {this.state.invoice.map((invoices,i)=>{return
-         (
+      {this.state.invoice.map((invoices,i)=>{
+        return(
         <div onClick={()=>{this.props.history.push(`/admin/allinvoice/${invoices._id}`)}} key={i} className="mainbox">
         <div className="name">{invoices.name}</div>
         <div className="name">{`${invoices.createdAt.getDay()}/${invoices.createdAt.getMonth()}/${invoices.createdAt.getFullYear()}`}</div>
@@ -46,7 +45,6 @@ import { Tracker } from 'meteor/tracker';
         })
       }
       </div>
-
     );
   }
 }

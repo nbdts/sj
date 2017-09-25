@@ -163,7 +163,9 @@ input:focus~.bar:before {
 
 .title-row {
   display: -webkit-flex;
-  background-color:#D20034;
+  border:groove;
+  border-radius: 1em;
+  background-color:transparent;
   flex: 1;
   display: flex;
   flex-flow: row;
@@ -185,7 +187,7 @@ input:focus~.bar:before {
   position: relative;
   text-outline:10px;
   right: 0px;
-  color: white;
+  color: red;
   font-size: 15px;
   padding: 5px;
   border-radius: 5px;
