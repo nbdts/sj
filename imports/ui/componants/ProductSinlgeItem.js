@@ -21,10 +21,7 @@ if (result) {
            <div className="price-txt">
            ₹{this.props.product.price}
            </div>
-           <div className="price-txt">
-           cat:{this.props.product.category}
-           </div>
-
+           
           {
 
           this.props.isAdmin ?
