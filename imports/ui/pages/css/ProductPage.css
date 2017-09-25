@@ -194,7 +194,7 @@ input:focus~.bar:before {
 
 .view-txt {
   cursor: pointer;
-  color: ;
+  color:white ;
   font-size: 12px;
 }
 

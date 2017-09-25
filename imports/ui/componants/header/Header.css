@@ -112,15 +112,15 @@
   color: #fff;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 13px;
-  letter-spacing: 1px;
+  font-size: 19px;
+  letter-spacing: 0;
 }
 .header-banner-top .horizontal-nav a:hover,
 .header-banner-top .horizontal-nav .active-link a {
   color: #fff;
 }
 .header-banner-top .horizontal-nav .folder ul {
-  background-color: #962b1b;
+  background-color:#ba922e;
   transition: padding 0.14s ease-out;
   text-align: left;
 }
@@ -132,7 +132,7 @@
   padding: 0.5em 0;
 }
 .header-banner-top .banner {
-  background-color: #962b1b;
+  background-color:#ba922e;
 }
 .header-banner-top .banner .banner-image {
   background: url(http://farm7.staticflickr.com/6169/6161511237_c1834b35bc_b.jpg) center center;
