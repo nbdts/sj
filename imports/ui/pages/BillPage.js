@@ -14,11 +14,10 @@ export default class BillPage extends Component {
     super();
     this.state = {
       products: [],
-      category: 0,
       billprod: [],
       username: 'cash',
-      usernumber:'unknown',
-      total:0,
+      usernumber: 'unknown',
+      total: 0
     }
   }
   componentWillMount() {
@@ -27,7 +26,7 @@ export default class BillPage extends Component {
       Meteor.subscribe("invoice");
       let products = ProductApi.find({}).fetch();
       this.setState({products});
-});
+    });
   }
   componentWillUnmount() {
     this.linktracker.stop();
@@ -39,103 +38,149 @@ export default class BillPage extends Component {
 
   addToBill(newprod) {
     let billprod = this.state.billprod;
-    let isavailable= billprod.filter((product)=>{
-          return (product._id===newprod._id);
+    let isavailable = billprod.filter((product) => {
+      return (product._id === newprod._id);
     });
     if (isavailable.length == 0) {
-      newprod.quantity=1;
-      newprod.tempprice=newprod.price;
-      let prodwithqty =newprod;
+      newprod.quantity = 1;
+      newprod.tempprice = newprod.price;
+      let prodwithqty = newprod;
       billprod.push(prodwithqty);
       this.setState({billprod})
-    }else {
-      let mynewproduct= isavailable[0];
-      let  mynewstateproduct= billprod.map((product)=>{
-        if (product==mynewproduct) {
-           product.quantity=product.quantity+1;
-           product.tempprice=product.quantity*product.price;
+    } else {
+      let mynewproduct = isavailable[0];
+      let mynewstateproduct = billprod.map((product) => {
+        if (product == mynewproduct) {
+          product.quantity = product.quantity + 1;
+          product.tempprice = product.quantity * product.price;
         }
-        return(product);
+        return (product);
       })
-      this.setState({billprod:mynewstateproduct})
+      this.setState({billprod: mynewstateproduct})
     }
   }
 
-
   createInvoice() {
     if (this.state.billprod.length !== 0) {
-      Meteor.call('invoice.insert', Session.get('shop')._id, this.state.username,this.state.usernumber, this.state.billprod)
+      Meteor.call('invoice.insert', Session.get('shop')._id, this.state.username, this.state.usernumber, this.state.billprod)
       Bert.alert('Done', 'success', 'growl-top-right');
     } else {
       Bert.alert('please add products too invoice', 'danger', 'growl-top-right');
     }
   }
 
-  render(){
-    let products = this.state.products.filter((product) => {
-      if (this.state.category==0) {
-        return (product);
-      }else {
-        return (product.category == this.state.category);
-      }
-    })
-return (
-      <Router>
-        <div>
-          <div className="admin-panel clearfix">
-            <div className="slidebar" id="slidebar">
-              <ul>
-                <li onClick={this.handleClick.bind(this, 1)}>
 
-                  <a href="#" id="targeted"><Avatar image="/juice3.svg" text="Juice"/></a>
-                </li>
-                <li onClick={this.handleClick.bind(this, 2)}>
-                  <a href="#" id="targeted"><Avatar image="https://maxcdn.icons8.com/Share/icon/Food//cherry1600.png" text="Fruit Shakes"/></a>
-                </li>
-                <li onClick={this.handleClick.bind(this, 3)}>
-                  <a href="#" id="targeted"><Avatar image="https://www.alpro.com/img/layout/product_new/usageicons/usageicon-drink-v2.png" text="Chocolate Shakes"/></a>
-                </li>
-                <li onClick={this.handleClick.bind(this, 4)}>
-                  <a href="#" id="targeted"><Avatar image="/food.png" text="Beverages"/></a>
-                </li>
-                <li onClick={this.handleClick.bind(this, 5)}>
-                  <a href="#" id="targeted"><Avatar image="https://maxcdn.icons8.com/office/PNG/512/Food/sandwich-512.png" text="Sandwich"/></a>
-                </li>
-                <li onClick={this.handleClick.bind(this, 6)}>
-                  <a href="#" id="targeted"><Avatar image="http://icons.iconarchive.com/icons/dapino/beach/256/icecream-icon.png" text="Chocolate Sandwich"/></a>
-                </li>
-                <li onClick={this.handleClick.bind(this, 7)}>
-                  <a href="#" id="targeted"><Avatar image="http://icons.iconarchive.com/icons/dapino/beach/256/icecream-icon.png" text="Italian"/></a>
-                </li>
-              </ul>
+
+  render() {
+
+    let juice = this.state.products.filter((product) => {
+      return (product.category == 1);
+      })
+
+    let fruitShake = this.state.products.filter((product) => {
+      return (product.category == 2);
+      })
+
+    let chocolateShake = this.state.products.filter((product) => {
+      return (product.category == 3);
+      })
+
+    let beverages = this.state.products.filter((product) => {
+      return (product.category == 4);
+      })
+
+    let Sandwich = this.state.products.filter((product) => {
+      return (product.category == 5);
+      })
+
+    let chocolateSandwich = this.state.products.filter((product) => {
+      return (product.category == 6);
+      })
+
+    let italian = this.state.products.filter((product) => {
+      return (product.category == 7);
+      })
+
+
+    return (
+          <div className="main box">
+                <div id="MenuOptions">
+                <div className="menubox">
+                <strong>Juice</strong>
+                {juice.map((product, i) => {
+                  return (
+                    <div style={{
+                      width:'20%'
+                    }} onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
+                  )
+                })
+              }
+              <strong>Fruit Shake</strong>
+                {fruitShake.map((product, i) => {
+                  return (
+                    <div style={{
+                      width:'20%'
+                    }} onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
+                  )
+                })
+              }
+
+                <strong>Chocolate Shake</strong>
+                {chocolateShake.map((product, i) => {
+                  return (
+                    <div style={{
+                      width:'20%'
+                    }} onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
+                  )
+                })
+              }
+
+                <strong>Beverages</strong>
+                {beverages.map((product, i) => {
+                  return (
+                    <div style={{
+                      width:'20%'
+                    }} onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
+                  )
+                })
+              }
+              <strong>Sandwich</strong>
+              {Sandwich.map((product, i) => {
+                return (
+                  <div style={{
+                    width:'20%'
+                  }} onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
+                )
+              })
+            }
+              <strong>Chocolate Sandwich</strong>
+              {chocolateSandwich.map((product, i) => {
+                return (
+                  <div style={{
+                    width:'20%'
+                  }} onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
+                )
+              })
+            }
+              <strong>Italian</strong>
+              {italian.map((product, i) => {
+                return (
+                  <div style={{
+                    width:'20%'
+                  }} onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
+                )
+              })
+            }
+
+
+
+              </div>
             </div>
-
-            <div className="main box">
-              <div style={{display: 'flex',flex:1}}>
-
-              <div id="MenuOptions">
-                  {products.map((product, i) => {
-                    return (
-                      <div onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
-
-                    )
-                  })
-}
-                </div>
-
                 <div id="Bill">
-                <InvoicePage products={this.state.billprod} total={this.state.total} MyInvoice={this.createInvoice.bind(this)}/>
-
+                  <InvoicePage products={this.state.billprod} total={this.state.total} MyInvoice={this.createInvoice.bind(this)}/>
                 </div>
 
               </div>
-
-
-
-            </div>
-          </div>
-        </div>
-      </Router>
     );
   }
 }

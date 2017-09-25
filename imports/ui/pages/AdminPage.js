@@ -21,7 +21,7 @@ export default class AdminPage extends Component {
         <div>
         <Header/>
           <div  className="admin-panel clearfix">
-            <div className="slidebar">
+            <div className="slidebar" style={{position:'relat'}}>
               <ul>
                 <li><TestPage link="/admin/registeration" text="Add Shop" image="/shop.png"/></li>
                 <li><TestPage link="/admin/product" text="Add Product" image="/addProduct.png"/></li>

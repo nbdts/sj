@@ -22,15 +22,14 @@ export default class InvoicePage extends Component {
     let mytotal= this.props.products.map((product)=>{
           return(price=parseFloat(price)+parseFloat(product.tempprice));
     })
-    console.log(mytotal);
-    return (
+  return (
 
       <div  className="mybody">
         <div  className="mycontainer">
           <div className="invoice">
             <header>
               <section>
-              <img style={{height:'20%',width:'100%',borderRadius:20}} src='/sjflex.jpg' alt="flex"/>
+              <img style={{height:'20%',width:'100%',borderRadius:20}} src='/sjflex.jpg' alt="Brand Logo"/>
               </section>
 
             </header>
@@ -39,7 +38,7 @@ export default class InvoicePage extends Component {
             <input style={{border:'none'}} type="number" placeholder="PHONE"/>
             </div>
 
-            <main style={{position:'relative',bottom:50,top:0,width:'80%',height:'60%'}} >
+            <main style={{position:'relative',bottom:50,top:0,width:'100%',height:'60%'}} >
               <section>
                 <span>Product</span>
                 <span>Unit</span>
@@ -65,9 +64,7 @@ export default class InvoicePage extends Component {
 
               <section>
                 <span>Total</span>
-                <span><strong style={{color:'#D50000',fontSize:20}}>
-                ₹ {mytotal[mytotal.length-1]}
-                </strong>
+                <span><strong style={{color:'#D50000',fontSize:20}}>₹{mytotal[mytotal.length-1]}</strong>
                 </span>
               </section>
             </main>

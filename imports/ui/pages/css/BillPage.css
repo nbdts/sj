@@ -1,28 +1,47 @@
 .box{
+  position:fixed;
+  right: 2px;
+  top: 70px;
+  bottom: 0;
 display: flex;
 flex-flow: row;
 flex-wrap: wrap;
 }
 .main{
-background-color: white;
 }
 #Bill{
   display:flex;
-  width: 352px;
+  flex: 1;
   flex-wrap:wrap;
   justify-content: space-around;
   flex-flow: column;
+  height: 100vh;
+  width: 0px;
 }
 #MenuOptions{
   display: flex;
   flex-flow: row;
-  flex:1;
+  flex:10;
   flex-wrap:wrap;
   position: relative;
   top: 65px;
 }
 #slidebar{
+  background-color: blue;
   box-shadow: 2px 0px 10px #777777;
   margin-right: 3px;
   z-index: 1;
+}
+.menubox{
+  border: groove;
+  position:fixed;
+  left:2px;
+  top: 70px;
+  bottom: 0;
+  width: 75%;
+  height: auto;
+  display: flex;
+  flex-flow: column;
+  flex-wrap: wrap;
+
 }

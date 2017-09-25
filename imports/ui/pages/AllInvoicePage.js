@@ -34,7 +34,6 @@ import { Tracker } from 'meteor/tracker';
       <h1>
       All Invoice
       </h1>
-
       {this.state.invoice.map((invoices,i)=>{return
          (
         <div onClick={()=>{this.props.history.push(`/admin/allinvoice/${invoices._id}`)}} key={i} className="mainbox">

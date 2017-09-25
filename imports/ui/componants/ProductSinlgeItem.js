@@ -13,25 +13,27 @@ if (result) {
   render(){
     return(
        <div style={{padding:10}}>
-       <div className="material-card" style={{backgroundImage:`url(${this.props.product.image})` }}>
-         <div className="title-row">
+          <div className="title-row">
+
            <div className="title-txt">
-           <div className="pos">
-           <span className="price-txt">₹ {this.props.product.price}</span>
+           {this.props.product.name}<br/>
            </div>
-            {this.props.product.name}<br />
+
+           <div className="price-txt">
+           ₹{this.props.product.price}
            </div>
+           <div className="price-txt">
+           cat:{this.props.product.category}
+           </div>
+
           {
 
-            this.props.isAdmin ?
-             <span className="glyphicon glyphicon-trash" onClick={this.deleteProduct.bind(this) }></span>
-            :
-            null
+          this.props.isAdmin ?
+          <span className="glyphicon glyphicon-trash" onClick={this.deleteProduct.bind(this) }></span>
+          :
+          null
           }
          </div>
-
-
-       </div>
        </div>
     );
   }

@@ -161,43 +161,32 @@ input:focus~.bar:before {
   }
 }
 
-.material-card {
-  width: 200px;
-  height: 180px;
-  background-size: 200px 180px;
-  border-radius: 4px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, .3);
-  background-position: center;
-  background-attachment: local;
-}
-
-.material-card:hover {
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, .4);
-}
-
 .title-row {
   display: -webkit-flex;
+  background-color:#D20034;
+  flex: 1;
   display: flex;
+  flex-flow: row;
   -webkit-justify-content: space-between;
   justify-content: space-between;
-  padding: 10px 10px;
+  padding: 5px 5px;
 }
 
 .title-txt {
+  flex: 9;
   color: White;
-  font-size: 30px;
-  font-weight: bolder;
+  font-size: 15px;
   text-shadow: 2px 2px 5px #777777;
   filter: blur(2);
 }
 
 .price-txt {
+  flex: 1;
   position: relative;
-  text-outline:80px;
-  right: -130px;
-  background: red;
+  text-outline:10px;
+  right: 0px;
   color: white;
-  font-size: 20px;
+  font-size: 15px;
   padding: 5px;
   border-radius: 5px;
 }
@@ -267,10 +256,3 @@ input:focus~.bar:before {
   font-weight: 600;
   color: white;
 }
-
-.myimage {
-  width: 100%;
-  height: 180px;
-}
-
-.pos {}

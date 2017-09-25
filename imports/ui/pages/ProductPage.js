@@ -106,9 +106,6 @@ export default class ProductPage  extends Component {
                </select>
           </div>
           <div className="group">
-          <button onClick={this.uploadWidget.bind(this)} className="mybutton" >Add Image</button>
-          </div>
-          <div className="group">
           <button type="submit" className="mybutton"> Submit</button>
           </div>
         </form>
