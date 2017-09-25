@@ -6,9 +6,8 @@
   align-items: center;
   padding: 10px 50px 50px;
 }
-#productcategory:hover{
-  background-color:#D20034;
-  color: red;
+.title-row:hover{
+  box-shadow: 0 0 20px yellow;
 }
 
 .myheader {
@@ -163,9 +162,9 @@ input:focus~.bar:before {
 
 .title-row {
   display: -webkit-flex;
-  border:groove;
   border-radius: 1em;
-  background-color:transparent;
+  background-color:#111;
+  box-shadow: 2px 2px 5px #333
   flex: 1;
   display: flex;
   flex-flow: row;
