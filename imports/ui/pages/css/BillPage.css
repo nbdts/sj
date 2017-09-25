@@ -7,8 +7,19 @@ display: flex;
 flex-flow: row;
 flex-wrap: wrap;
 }
-.main{
+.mainBill{
   width: 82% !important;
+  float: left;
+	width: 79%;
+	height: 690px;
+	background-color: white;
+	position: relative;
+	font-family: helvetica,verdana,sans-serif;
+	border-bottom: 1px solid rgb(235,235,235);
+	border-top: 1px solid rgb(235,235,235);
+	margin: 0;
+	padding: 0;
+
 }
 #Bill{
   display:flex;

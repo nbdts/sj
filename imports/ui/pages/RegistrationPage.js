@@ -92,8 +92,9 @@ componentWillUnmount(){
       <div className="mainbody">
         <section className="page-section">
           <div className="page-section-wrapper">
-                        <div className="page-section-content">
-              <form onSubmit={this.handleSubmit} method="POST" className="material-form">
+            <div className="page-section-content">
+            <h1 className="myheader" style={{marginTop:30}}>Shop Entry</h1>
+              <form style={{marginTop:-50}} onSubmit={this.handleSubmit} method="POST" className="material-form">
                 <Inputs type="text" id="shopname" onChange={this.handleChange} label="NAME" />
                 <Inputs type="text" id="shopemail" onChange={this.handleChange} label="EMAIL"/>
                 <Inputs type="text" id="shopphno" onChange={this.handleChange} label="PHONE NUMBER"/>

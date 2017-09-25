@@ -103,7 +103,7 @@ export default class BillPage extends Component {
 
 
     return (
-          <div className="main box">
+          <div className="mainBill box">
                 <div id="MenuOptions">
                 <div className="menubox">
                 <strong style={{color:'white',paddingLeft:15,backgroundColor:'#444'}}>Juice</strong>
