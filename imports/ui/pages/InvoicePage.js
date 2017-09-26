@@ -27,18 +27,12 @@ export default class InvoicePage extends Component {
       <div  className="mybody">
         <div  className="mycontainer">
           <div className="invoice">
-            <header>
-              <section>
-              <img style={{height:'20%',width:'100%',borderRadius:20}} src='/sjflex.jpg' alt="Brand Logo"/>
-              </section>
-
-            </header>
-            <div style={{position:"absolute",top:120}}>
+            <div style={{position:"relative",top:10}}>
             <input style={{border:'none',borderBottom:'2px'}} type="text" placeholder="NAME"/>
             <input style={{border:'none'}} type="number" placeholder="PHONE"/>
             </div>
 
-            <main style={{position:'relative',bottom:50,top:0,width:'100%',height:'60%'}} >
+            <main style={{position:'relative',bottom:50,top:20,width:'100%',height:'80%'}} >
               <section>
                 <span>Product</span>
                 <span>Unit</span>
@@ -50,11 +44,11 @@ export default class InvoicePage extends Component {
                   return (
                     <div key={i}>
                       <figure>
-                        <span style={{flex:1}}>
+                        <span style={{flex:2,fontSize:'13px'}}>
                       {product.name}
                         </span>
-                        <span style={{flex:1}} >{product.quantity}</span>
-                        <span style={{flex:1}}> ₹ {product.price*product.quantity}</span>
+                        <span style={{flex:1,fontSize:'13px'}}>{product.quantity}</span>
+                        <span style={{flex:3,fontSize:'13px'}}> ₹ {product.price*product.quantity}</span>
                       </figure>
                       </div>
                   )
@@ -70,7 +64,7 @@ export default class InvoicePage extends Component {
             </main>
 
             <footer style={{position:'absolute',bottom:10,right:40}}>
-              <span ><a style={{color:'#999'}} href="">Later</a></span>
+              <span ><a style={{color:'#999'}}  href="">Later</a></span>
               <span><a onClick={this.MyInvoiceHandel.bind(this)} href="#0">Pay Now</a></span>
             </footer>
           </div>

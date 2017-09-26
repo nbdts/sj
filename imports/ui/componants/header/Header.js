@@ -16,16 +16,22 @@ render() {
   return (
     <header style={{backgroundColor:'#ffc300'}} className="header-banner-top">
     <div style={{backgroundColor:'#ffc300'}} >
-    <img style={{padding:'5px',borderRadius:'1em', height:'70px',width:'200px'}} src='/sjflex.jpg' alt="flex"/>
+    <img style={{padding:'5px',borderRadius:'1em',height:'60px',width:'200px'}} src='/sjflex.jpg' alt="flex"/>
     </div>
     <div style={{flex:5,backgroundColor:'#ffc300'}} className="main-navigation">
         <nav className="horizontal-nav primary-wrapper" role='navigation'>
           <ul style={{marginRight:'20px'}}>
             <li className="folder">
               <label htmlFor="folder-toggle-1" className="folder-toggle-label">
-                <a className="glyphicon glyphicon-cog"> Check</a>
+                <a className="glyphicon glyphicon-cog">Settings</a>
               </label>
               <ul>
+              <li>
+              <a href="#">Report</a>
+              </li>
+              <li>
+              <a href="#">Add Product</a>
+              </li>
               <li>
                 { Session.get('shop')
                 ? <a id="login" onClick={this.handleLogout.bind(this)} href="/login">Logout</a>
@@ -35,10 +41,6 @@ render() {
 
               }
               </li>
-
-                <li>
-                  <a href="#">Linkus</a>
-                </li>
 
               </ul>
             </li>

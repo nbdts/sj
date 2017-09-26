@@ -1,7 +1,7 @@
 .box{
   position:fixed;
   right: 2px;
-  top: 70px;
+  top: 65px;
   bottom: 0;
 display: flex;
 flex-flow: row;
@@ -44,16 +44,30 @@ flex-wrap: wrap;
   z-index: 1;
 }
 .menubox{
-  border: groove;
   position:relative;
-  background-color: black;
   left:2px;
   top: 0px;
   bottom: 0;
   width: 100%;
-  height: 100;
+  background-color:#2d1e1b;
   display: flex;
   flex-flow: column;
   flex-wrap: wrap;
 
 }
+.menubox strong{
+ color:#fcb900;
+ padding:10px;
+ text-transform: uppercase;
+ font-size: 15px;
+ text-align: center;
+ border-radius:3px;
+ width:200px;
+ background-color:transparent;
+}
+.menubox u{
+ color:#fcb900;
+ }
+#menuProduct{
+  width:200px;
+    }

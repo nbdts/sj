@@ -106,68 +106,69 @@ export default class BillPage extends Component {
           <div className="mainBill box">
                 <div id="MenuOptions">
                 <div className="menubox">
-                <strong style={{color:'white',paddingLeft:15,backgroundColor:'#444'}}>Juice</strong>
+                <u >
+                <strong>Juice</strong>
+                </u>
+
                 {juice.map((product, i) => {
                   return (
-                    <div style={{
-                      width:'23%',paddingRight:2
-                    }} onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
+                    <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
                   )
                 })
               }
-              <strong style={{color:'white',paddingLeft:15,backgroundColor:'#444'}}>Fruit Shake</strong>
+              <u>
+              <strong>Fruit Shake</strong>
+              </u>
                 {fruitShake.map((product, i) => {
                   return (
-                    <div style={{
-                      width:'23%',paddingRight:2
-                    }} onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
+                    <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
                   )
                 })
               }
-
-                <strong style={{color:'white',paddingLeft:15,backgroundColor:'#444'}}>Chocolate Shake</strong>
+              <u>
+              <strong>Chocolate Shake</strong>
+              </u>
                 {chocolateShake.map((product, i) => {
                   return (
-                    <div style={{
-                      width:'23%',paddingRight:2
-                    }} onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
+                    <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
                   )
                 })
               }
-
-                <strong style={{color:'white',paddingLeft:15,backgroundColor:'#444'}}>Beverages</strong>
+                <u>
+                <strong>Beverages</strong>
+                </u>
                 {beverages.map((product, i) => {
                   return (
-                    <div style={{
-                      width:'23%',paddingRight:2
-                    }} onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
+                    <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
                   )
                 })
               }
-              <strong style={{color:'white',paddingLeft:15,backgroundColor:'#444'}}>Sandwich</strong>
+              <u>
+              <strong>Sandwich</strong>
+              </u>
               {Sandwich.map((product, i) => {
                 return (
-                  <div style={{
-                    width:'23%',paddingRight:2
-                  }} onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
+                  <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
                 )
               })
             }
-              <strong style={{color:'white',paddingLeft:15,backgroundColor:'#444'}}>Chocolate Sandwich</strong>
+
+             <u>
+              <strong>Chocolate Sandwich</strong>
+              </u>
+
               {chocolateSandwich.map((product, i) => {
                 return (
-                  <div style={{
-                    width:'23%',paddingRight:2
-                  }} onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
+                  <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
                 )
               })
             }
-              <strong style={{color:'white',paddingLeft:15,backgroundColor:'#444'}}>Italian</strong>
+              <u>
+              <strong>Italian</strong>
+              </u>
               {italian.map((product, i) => {
                 return (
-                  <div style={{
-                    width:'23%',paddingRight:2
-                  }} onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
+                  <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
                 )
               })
             }

@@ -162,8 +162,7 @@ input:focus~.bar:before {
 
 .title-row {
   display: -webkit-flex;
-  border-radius: 1em;
-  background-color:#111;
+  background-color:#2d1e1b;
   box-shadow: 2px 2px 5px #333
   flex: 1;
   display: flex;
@@ -174,6 +173,9 @@ input:focus~.bar:before {
 }
 
 .title-txt {
+  text-align: left;
+  position: relative;
+  padding: 5px;
   flex: 9;
   color: White;
   font-size: 15px;
@@ -184,11 +186,13 @@ input:focus~.bar:before {
 .price-txt {
   flex: 1;
   position: relative;
+  padding: 5px;
+  text-align: right;
   text-outline:10px;
   right: 0px;
-  color: red;
-  font-size: 15px;
-  padding: 5px;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
   border-radius: 5px;
 }
 
