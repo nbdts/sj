@@ -61,7 +61,7 @@ export default class InvoicePage extends Component {
                 <span><strong style={{color:'#D50000',fontSize:20}}>₹{mytotal[mytotal.length-1]}</strong>
                 </span>
               </section>
-            </main>
+            </main> 
 
             <footer style={{position:'absolute',bottom:10,right:40}}>
               <span ><a style={{color:'#999'}}  href="">Later</a></span>
