@@ -15,8 +15,6 @@ export default class BillPage extends Component {
     this.state = {
       products: [],
       billprod: [],
-      username: 'cash',
-      usernumber: 'unknown',
       total: 0
     }
   }
@@ -60,9 +58,9 @@ export default class BillPage extends Component {
     }
   }
 
-  createInvoice() {
+  createInvoice(uname,unumber) {
     if (this.state.billprod.length !== 0) {
-      Meteor.call('invoice.insert', Session.get('shop')._id, this.state.username, this.state.usernumber, this.state.billprod)
+      Meteor.call('invoice.insert', Session.get('shop')._id, uname,unumber, this.state.billprod)
       Bert.alert('Done', 'success', 'growl-top-right');
     } else {
       Bert.alert('please add products too invoice', 'danger', 'growl-top-right');

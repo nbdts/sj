@@ -8,15 +8,18 @@ export default class InvoicePage extends Component {
     this.state={
       products:props.products,
       prodqty:{},
+      uname:'',
+      unumber:''
 
       }
   }
-
-
-
-
+  handleChange(event){
+    let object = {};
+    object[event.target.id] = event.target.value
+    this.setState(object);
+    }
   MyInvoiceHandel(){
-    this.props.MyInvoice()  }
+    this.props.MyInvoice(this.state.uname,this.state.unumber)  }
   render() {
     let price=0;
     let mytotal= this.props.products.map((product)=>{
@@ -27,11 +30,10 @@ export default class InvoicePage extends Component {
       <div  className="mybody">
         <div  className="mycontainer">
           <div className="invoice">
-            <div style={{position:"relative",top:10}}>
-            <input style={{border:'none',borderBottom:'2px'}} type="text" placeholder="NAME"/>
-            <input style={{border:'none'}} type="number" placeholder="PHONE"/>
-            </div>
-
+                <div style={{position:"relative",top:10}}>
+                 <input id='uname' style={{border:'none'}} onChange={this.handleChange.bind(this)} type="text" placeholder="NAME"/>
+                 <input  id='unumber' style={{border:'none'}} onChange={this.handleChange.bind(this)} type="number" placeholder="PHONE"/>
+                 </div>
             <main style={{position:'relative',bottom:50,top:20,width:'100%',height:'80%'}} >
               <section>
                 <span>Product</span>
@@ -61,7 +63,7 @@ export default class InvoicePage extends Component {
                 <span><strong style={{color:'#D50000',fontSize:20}}>₹{mytotal[mytotal.length-1]}</strong>
                 </span>
               </section>
-            </main> 
+            </main>
 
             <footer style={{position:'absolute',bottom:10,right:40}}>
               <span ><a style={{color:'#999'}}  href="">Later</a></span>
