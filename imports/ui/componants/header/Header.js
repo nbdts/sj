@@ -16,9 +16,9 @@ render() {
   return (
     <header style={{backgroundColor:'#ffc300'}} className="header-banner-top">
     <div style={{backgroundColor:'#ffc300'}} >
-    <img style={{padding:'5px',borderRadius:'1em',height:'60px',width:'200px'}} src='/sjflex.jpg' alt="flex"/>
     </div>
-    <div style={{flex:5,backgroundColor:'#ffc300'}} className="main-navigation">
+    <div style={{flex:5,backgroundColor:'#ffc300',height:'65px'}} className="main-navigation">
+        <img style={{position:'absolute',left:'40%',height:'100%',width:'200px'}} src='/sjflex.jpg' alt="flex"/>
         <nav className="horizontal-nav primary-wrapper" role='navigation'>
           <ul style={{marginRight:'20px'}}>
             <li className="folder">
