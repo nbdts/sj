@@ -121,6 +121,7 @@
 }
 .header-banner-top .horizontal-nav .folder ul {
   background-color:#ba922e;
+  font-size: 10px;
   transition: padding 0.14s ease-out;
   text-align: left;
 }
@@ -132,6 +133,7 @@
   padding: 0.5em 0;
 }
 .header-banner-top .banner {
+  font-size: 10px;
   background-color:#ba922e;
 }
 .header-banner-top .banner .banner-image {

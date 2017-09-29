@@ -23,21 +23,21 @@ render() {
           <ul style={{marginRight:'20px'}}>
             <li className="folder">
               <label htmlFor="folder-toggle-1" className="folder-toggle-label">
-                <a className="glyphicon glyphicon-cog">Settings</a>
+                <a className="glyphicon glyphicon-cog"> Settings</a>
               </label>
               <ul>
               <li>
-              <a href="#">Report</a>
+              <a style={styles.dropDown} href="#">Report</a>
               </li>
               <li>
-              <a href="#">Add Product</a>
+              <a style={styles.dropDown} href="#">Add Product</a>
               </li>
               <li>
                 { Session.get('shop')
-                ? <a id="login" onClick={this.handleLogout.bind(this)} href="/login">Logout</a>
+                ? <a style={styles.dropDown} id="login" onClick={this.handleLogout.bind(this)} href="/login">Logout</a>
                 : Session.get('admin')
-                  ? <a id="login" onClick={this.handleLogout.bind(this)} href="/login">Logout</a>
-                  : <a id="login" href="/login"></a>
+                  ? <a style={styles.dropDown} id="login" onClick={this.handleLogout.bind(this)} href="/login">Logout</a>
+                  : <a style={styles.dropDown} id="login" href="/login"></a>
 
               }
               </li>
@@ -55,3 +55,7 @@ render() {
 }
 }
 export default withRouter(Header)
+
+const styles={
+  dropDown:{fontSize:'15'}
+}

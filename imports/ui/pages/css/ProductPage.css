@@ -8,6 +8,7 @@
 }
 .title-row:hover{
   box-shadow: 0 0 20px yellow;
+  border-radius:2em;
 }
 
 .myheader {

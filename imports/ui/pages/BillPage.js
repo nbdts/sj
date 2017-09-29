@@ -14,7 +14,7 @@ export default class BillPage extends Component {
     super();
     this.state = {
       products: [],
-      billprod: [],
+      billprod: [], 
       total: 0
     }
   }
