@@ -19,7 +19,13 @@ export default class InvoicePage extends Component {
     this.setState(object);
     }
   MyInvoiceHandel(){
-    this.props.MyInvoice(this.state.uname,this.state.unumber)  }
+    if (this.state.uname!='') {
+      this.props.MyInvoice(this.state.uname,this.state.unumber)
+    }
+    else {
+      alert('Enter customer name ')
+    }
+  }
   render() {
     let price=0;
     let mytotal= this.props.products.map((product)=>{
@@ -31,7 +37,7 @@ export default class InvoicePage extends Component {
         <div  className="mycontainer">
           <div className="invoice">
                 <div style={{position:"relative",top:10}}>
-                 <input id='uname' style={{border:'none'}} onChange={this.handleChange.bind(this)} type="text" placeholder="NAME"/>
+                 <input  id='uname' style={{border:'none'}} onChange={this.handleChange.bind(this)} type="text" placeholder="NAME"/>
                  <input  id='unumber' style={{border:'none'}} onChange={this.handleChange.bind(this)} type="number" placeholder="PHONE"/>
                  </div>
             <main style={{position:'relative',bottom:50,top:20,width:'100%',height:'80%'}} >

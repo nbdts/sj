@@ -14,7 +14,7 @@ export default class BillPage extends Component {
     super();
     this.state = {
       products: [],
-      billprod: [], 
+      billprod: [],
       total: 0
     }
   }
@@ -101,8 +101,7 @@ export default class BillPage extends Component {
 
 
     return (
-          <div className="mainBill box">
-                <div id="MenuOptions">
+            <div id="MenuOptions">
                 <div className="menubox">
                 <u >
                 <strong>Juice</strong>
@@ -174,7 +173,8 @@ export default class BillPage extends Component {
 
 
               </div>
-            </div>
+
+
                 <div id="Bill">
                   <InvoicePage products={this.state.billprod} total={this.state.total} MyInvoice={this.createInvoice.bind(this)}/>
                 </div>

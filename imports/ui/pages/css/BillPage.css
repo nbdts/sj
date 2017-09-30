@@ -1,18 +1,17 @@
 .box{
-  position:fixed;
+  position:absolute;
   right: 2px;
   top: 65px;
-  bottom: 0;
-display: flex;
-flex-flow: row;
-flex-wrap: wrap;
+  bottom:0px;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
 }
 .mainBill{
   width: 82% !important;
   float: left;
-	width: 79%;
-	height: 690px;
-	background-color: white;
+	height: 100vh;
+  background-color: white;
 	position: relative;
 	font-family: helvetica,verdana,sans-serif;
 	border-bottom: 1px solid rgb(235,235,235);
@@ -31,24 +30,28 @@ flex-wrap: wrap;
   width: 0px;
 }
 #MenuOptions{
+  position:relative !important;
+  right: 2px;
+  top: 65px !important ;
+  bottom:65px !important ;
+  height: 90%;
   display: flex;
   flex-flow: row;
   flex:10;
   flex-wrap:wrap;
-  position: relative;
-  top: 0px;
-}
+  background-color: red;
+  }
 #slidebar{
   box-shadow: 2px 0px 10px #777777;
   margin-right: 3px;
   z-index: 1;
 }
 .menubox{
-  position:relative;
+  position:absolute;
   left:2px;
   top: 0px;
-  bottom: 0;
-  width: 100%;
+  height: 90vh;
+  width: 75%;
   background-color:#2d1e1b;
   display: flex;
   flex-flow: column;
@@ -57,17 +60,20 @@ flex-wrap: wrap;
 }
 .menubox strong{
  color:#fcb900;
- padding:10px;
- text-transform: uppercase;
  font-size: 15px;
- text-align: center;
+ text-transform: uppercase;
  border-radius:3px;
  width:200px;
  background-color:transparent;
 }
 .menubox u{
- color:#fcb900;
+  padding-top:22px;
+  padding-bottom:21px;
+  box-shadow: 2px 0px 1px #f23;
+  color:#fcb900;
+  text-align: center;
  }
 #menuProduct{
+  box-shadow: 2px 0px 1px #f23;
   width:200px;
     }
