@@ -7,7 +7,7 @@
   padding: 10px 50px 50px;
 }
 .title-row:hover{
-  box-shadow: 0 0 20px yellow;
+  box-shadow: 0 0 20px #FFCC3E;
   border-radius:2em;
 }
 
@@ -170,7 +170,7 @@ input:focus~.bar:before {
   flex-flow: row;
   -webkit-justify-content: space-between;
   justify-content: space-between;
-  padding: 5px 5px;
+  padding: 2px 2px;
 }
 
 .title-txt {
