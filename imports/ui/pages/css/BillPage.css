@@ -32,7 +32,7 @@
 #MenuOptions{
   position:relative !important;
   right: 2px;
-  width: 94%;
+  width: 75%;
   top: 65px !important ;
   bottom:0px !important ;
   display: flex;
@@ -51,7 +51,7 @@
   left:2px;
   top: 0px;
   height: 90vh;
-  width: 75%;
+  width: 100%;
   background-color:#2d1e1b;
   display: flex;
   flex-flow: column;
@@ -67,6 +67,7 @@
  background-color:transparent;
 }
 .menubox u{
+  width: 200px;
   padding-top:5px;
   padding-bottom:5px;
   box-shadow: 2px 0px 1px #f23;
