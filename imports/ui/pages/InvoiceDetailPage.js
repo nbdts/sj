@@ -22,7 +22,7 @@ export default class InvoiceDetailPage  extends Component {
          Meteor.call('invoice.invoiceById', this.props.match.params.id,(err,invoice)=>{
            this.setState({invoice});
            this.setState({products:invoice.products})
-           console.log(this.state.products);
+           console.log(this.state.invoice);
 
               });
         });
@@ -38,16 +38,15 @@ createInvoice(){}
   render(){
     return(
       <div>
-      <div className="mycontainer">
-        <div className="invoice">
+      <div className="mycontainer" style={{width:'100%',top:0,right:'10%',left:'10%',height:'100%'}}>
+        <div className="invoice" style={{position:'relative',width:'100%',top:0,height:'100%'}} >
           <header>
             <section>
-          <img style={{height:'20%',width:'100%',borderRadius:20}} src='/sjflex.jpg' alt="flex"/>
-              <span>16/02/2016</span>
+                <span>16/02/2016</span>
             </section>
 
           </header>
-          <h2 className="h2">Name:</h2>
+          <h2 className="h2">Name:{this.state.invoice.name}</h2>
           <main>
             <section>
               <span>Product</span>
@@ -74,7 +73,7 @@ createInvoice(){}
 
             <section>
               <span>Total</span>
-              <span>{this.props.total}</span>
+              <span>total</span>
             </section>
           </main>
 
