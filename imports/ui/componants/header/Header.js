@@ -10,10 +10,11 @@ class Header extends Component {
     super();
     this.state={
       isModalOpen: false,
-      }
+          }
           this.closeModal = this.closeModal.bind(this);
 		this.openModal = this.openModal.bind(this);
   }
+  y
 
   closeModal() {
     this.setState({
@@ -22,7 +23,6 @@ class Header extends Component {
   }
 
   openModal() {
-    console.log('open');
     this.setState({
       isModalOpen: true
     })
@@ -51,7 +51,7 @@ render() {
               <a style={styles.dropDown} href="#">Report</a>
               </li>
               <li>
-              <button style={mainStyle.button} onClick={this.openModal} >Add Product</button>
+                <button style={mainStyle.button} onClick={this.openModal} >Add Product</button>
               </li>
               <li>
                 { Session.get('shop')
@@ -71,21 +71,15 @@ render() {
         </nav>
         <label htmlFor="mobile-menu-toggle" className="mobile-menu-label hidden"></label>
       </div>
-        <Modal
-           isModalOpen={this.state.isModalOpen}
-           closeModal={this.closeModal}
-           style={modalStyle}>
+      <Modal
+         isModalOpen={this.state.isModalOpen}
+         closeModal={this.closeModal}
+         style={modalStyle}>
 
-           <button style={{
-            ...mainStyle.button,
-            margin: 0,
-            width: 'auto',
-            marginTop: 10
-          }} onClick={this.closeModal}>Close</button>
-          <h1>
+         <span style={{fontSize:30,textAlign:'right',color:'red'}} className='glyphicon glyphicon-remove-sign' onClick={this.closeModal}/>
 
-       </Modal>
-
+        <h1>Rohit</h1>
+     </Modal>
       </header>
   );
 }
