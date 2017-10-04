@@ -30,19 +30,23 @@ export default class BalanceForm  extends Component {
       this.setState(object);
     }
     handleClick(event){
-      this.setState({type:event.target.value})
-      console.log(event.target.value);
+      this.setState({type:event.target.value},()=>{console.log(this.state.type)})
     }
-    handleSubmit(event){
+    handleSubmit(){
       let type=this.state.type
       let balance=this.state.balance
       balanceobj={
         type:type,
         balance:balance
       }
-      console.log(balanceobj);
-      Meteor.call('balance.insert',balanceobj);
-      Bert.alert('Balance Added', 'success', 'growl-top-right');
+        Meteor.call('balance.check',function(err,res){
+          console.log(err);
+          console.log(res);
+          if (!err) {
+            Meteor.call('balance.insert',balanceobj)
+            Bert.alert('Balance Added', 'success', 'growl-top-right')
+          }
+        })
     }
 
 
@@ -56,7 +60,6 @@ export default class BalanceForm  extends Component {
         <option value="1">OPENING</option>
         <option value="0">CLOSING</option>
       </select>
-
 
          <input required style={{margin:5}} type="number" id='balance' placeholder='BALANCE' onChange={this.handleChange.bind(this)} />
          <button className='btn btn-danger' style={{margin:5}} onClick={this.handleSubmit.bind(this)} >Submit</button>
