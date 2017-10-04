@@ -9,8 +9,7 @@ import Report from "./pages/Report";
 import {Session} from 'meteor/session';
 import RegistrationPage from "./pages/RegistrationPage";
 import TestPage from "./pages/TestPage";
-
-
+import ExpenseForm from "./componants/ExpenseForm";
 
 export default class App extends Component {
   constructor() {
@@ -53,6 +52,7 @@ export default class App extends Component {
       <Route exact path = "/admin/bill" component = {AdminPage} />
       <Route exact path = "/bill" component = {BillPage} />
       <Route exact path = "/invoice" component = {InvoicePage} />
+      <Route exact path = "/exp" component = {ExpenseForm} />
       </div>
       );
   }

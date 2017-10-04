@@ -3,6 +3,7 @@ import './Header.css';
 import {Session} from 'meteor/session';
 import {withRouter, Redirect,} from 'react-router-dom';
 import Modal from '../modal';
+import ExpenseForm from '../ExpenseForm';
 
 
 class Header extends Component {
@@ -51,7 +52,7 @@ render() {
               <a style={styles.dropDown} href="#">Report</a>
               </li>
               <li>
-                <button style={mainStyle.button} onClick={this.openModal} >Add Product</button>
+                <button id='login' style={mainStyle.button} onClick={this.openModal} >Modal</button>
               </li>
               <li>
                 { Session.get('shop')
@@ -75,11 +76,9 @@ render() {
          isModalOpen={this.state.isModalOpen}
          closeModal={this.closeModal}
          style={modalStyle}>
-
          <span style={{fontSize:30,textAlign:'right',color:'red'}} className='glyphicon glyphicon-remove-sign' onClick={this.closeModal}/>
-
-        <h1>Rohit</h1>
-     </Modal>
+         <ExpenseForm/>
+       </Modal>
       </header>
   );
 }
