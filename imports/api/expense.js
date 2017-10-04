@@ -14,7 +14,6 @@ Meteor.methods({
 'expense.remove'(expenceid){
   ExpenseApi.remove(expenceid);
 }
-
 });
 if (Meteor.isServer) {
   Meteor.publish('expense', function userPublication(){
