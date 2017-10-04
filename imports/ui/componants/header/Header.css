@@ -189,6 +189,8 @@
     cursor: pointer;
   }
 #login{
+  background-color: #ba922e;
+  color: white;
   position: relative;
   top:0;
   left: 0;
@@ -196,4 +198,7 @@
 .banner{
   height: 10px;
   width: 100px;
+}
+.style{
+
 }

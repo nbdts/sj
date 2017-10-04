@@ -4,6 +4,7 @@ import {Session} from 'meteor/session';
 import {withRouter, Redirect,} from 'react-router-dom';
 import Modal from '../modal';
 import ExpenseForm from '../ExpenseForm';
+import BalanceForm from '../BalanceForm';
 
 
 class Header extends Component {
@@ -11,9 +12,10 @@ class Header extends Component {
     super();
     this.state={
       isModalOpen: false,
+      modalform: true,
           }
           this.closeModal = this.closeModal.bind(this);
-		this.openModal = this.openModal.bind(this);
+		      this.openModal = this.openModal.bind(this);
   }
   y
 
@@ -22,9 +24,16 @@ class Header extends Component {
       isModalOpen: false
     })
   }
+  handlebalacne(){
+    this.setState({
+      modalform:false,
+      isModalOpen: true
+    })
+  }
 
   openModal() {
     this.setState({
+      modalform:true,
       isModalOpen: true
     })
   }
@@ -52,7 +61,10 @@ render() {
               <a style={styles.dropDown} href="#">Report</a>
               </li>
               <li>
-                <button id='login' style={mainStyle.button} onClick={this.openModal} >Modal</button>
+                <a style={styles.dropDown}  onClick={this.openModal} >Modal</a>
+              </li>
+              <li>
+                <a style={styles.dropDown}  onClick={this.handlebalacne.bind(this)} >Balance</a>
               </li>
               <li>
                 { Session.get('shop')
@@ -72,13 +84,21 @@ render() {
         </nav>
         <label htmlFor="mobile-menu-toggle" className="mobile-menu-label hidden"></label>
       </div>
+
       <Modal
          isModalOpen={this.state.isModalOpen}
          closeModal={this.closeModal}
          style={modalStyle}>
          <span style={{fontSize:30,textAlign:'right',color:'red'}} className='glyphicon glyphicon-remove-sign' onClick={this.closeModal}/>
-         <ExpenseForm/>
+         {
+           this.state.modalform ?
+            <ExpenseForm/>
+              :
+            <BalanceForm/>
+         }
+
        </Modal>
+
       </header>
   );
 }
@@ -91,18 +111,5 @@ const styles={
 const modalStyle = {
 	overlay: {
 		backgroundColor: 'rgba(0, 0, 0,0.5)'
-	}
-};
-
-const mainStyle = {
-	button: {
-    fontWeight:600,
-		backgroundColor: '#408cec',
-		border: 0,
-		padding: '10px 15px',
-		color: '#fff',
-		width: 150,
-		display: 'block',
-		borderRadius: 3
 	}
 };

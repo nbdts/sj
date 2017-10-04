@@ -31,11 +31,9 @@ export default class ExpenseForm  extends Component {
 
 
     test(){
-      console.log(this.state.expenses);
       let today=new Date()
        date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-      console.log(date);
-    }
+      }
 
 
     handleChange(event) {

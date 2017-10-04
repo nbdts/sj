@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
 import {Route, Navkink,Redirect} from 'react-router-dom';
+import {Session} from 'meteor/session';
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import AdminPage from "./pages/AdminPage";
 import BillPage from "./pages/BillPage";
 import InvoicePage from "./pages/InvoicePage";
 import Report from "./pages/Report";
-import {Session} from 'meteor/session';
 import RegistrationPage from "./pages/RegistrationPage";
 import TestPage from "./pages/TestPage";
+import TodayExpense from "./pages/TodayExpense";
 import ExpenseForm from "./componants/ExpenseForm";
+import BalanceForm from "./componants/BalanceForm";
 
 export default class App extends Component {
   constructor() {
@@ -53,6 +55,8 @@ export default class App extends Component {
       <Route exact path = "/bill" component = {BillPage} />
       <Route exact path = "/invoice" component = {InvoicePage} />
       <Route exact path = "/exp" component = {ExpenseForm} />
+      <Route exact path = "/texp" component = {TodayExpense} />
+      <Route exact path = "/bal" component = {BalanceForm} />
       </div>
       );
   }
