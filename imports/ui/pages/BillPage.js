@@ -99,7 +99,14 @@ export default class BillPage extends Component {
       return (product.category == 7);
       })
 
+        let today=new Date()
+        date = today.getDate()+ '/' + (today.getMonth() + 1) + '/' +today.getFullYear()
+        console.log(this.state.billprod);
 
+        let price=0;
+        let mytotal= this.state.billprod.map((product)=>{
+              return(price=parseFloat(price)+parseFloat(product.tempprice));
+        })
     return (
             <div id="MenuOptions">
                 <div className="menubox">
@@ -178,8 +185,61 @@ export default class BillPage extends Component {
                 <div id="Bill">
                   <InvoicePage products={this.state.billprod} total={this.state.total} MyInvoice={this.createInvoice.bind(this)}/>
                 </div>
+                <div id='print' style={{display:'',positon:'absolute',top:70,left:0,zIndex:999,backgroundColor:'white'}}>
+                <div id='header' style={{padding:10}}>
+                <u>
+                <h1 style={{textAlign:'center'}}>Sandwich Junction</h1>
+                </u>
+                <span style={{textAlign:'left'}} >{date}</span><br/>
+                <span>Name:{}</span><br/>
+                <span>Phone No:{}</span>
+                </div>
+                <hr/>
+                 <div id='table' style={{padding:10}}>
+                        <table style={{display:'flex',flex:1,flexFlow:'column'}}>
+                        <thead >
+                          <tr style={{display:'flex',flex:1,flexFlow:'row'}}>
+                          <th style={{flex:1}}> item</th>
+                          <th style={{flex:1}}> price</th>
+                          <th style={{flex:1}}> qty</th>
+                          <th style={{flex:1}}> amount</th>
+                          </tr>
+                        </thead>
 
-              </div>
+                        <tbody >
+                        {this.state.billprod.map((product, i) => {
+                          return (
+                            <tr key={i} style={{display:'flex',flex:1,flexFlow:'row'}}>
+                            <td style={{flex:1}}>{product.name}</td>
+                            <td style={{flex:1}}>{product.price}</td>
+                            <td style={{flex:1}}>{product.quantity}</td>
+                            <td style={{flex:1}}>{product.price*product.quantity}</td>
+                            </tr>
+
+                          )
+                        })
+                      }
+                      </tbody>
+
+                        <br/>
+
+                        <tbody >
+                         <tr style={{display:'flex',flex:1,flexFlow:'row'}}>
+                         <td style={{flex:1}}></td>
+                         <td style={{flex:1}}></td>
+                         <td style={{flex:1,textAlign:'center'}}>Total:</td>
+                         <td style={{flex:1}}>₹{mytotal[mytotal.length-1]}</td>
+                         </tr>
+                        </tbody>
+
+                        </table>
+                 </div>
+                 <hr/>
+
+                </div>
+
+
+            </div>
     );
   }
 }

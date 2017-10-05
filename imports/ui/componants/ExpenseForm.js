@@ -61,7 +61,7 @@ export default class ExpenseForm  extends Component {
        <div style={styles.inputs}>
          <input style={{margin:5}} type="text" id='item' placeholder='ITEM' onChange={this.handleChange.bind(this)} />
          <input style={{margin:5}} type="number" id='price' placeholder='PRICE' onChange={this.handleChange.bind(this)} />
-         <button className='btn btn-success' style={{margin:5}} onClick={this.handleClick.bind(this)} >Submit</button>
+         <button className='btn btn-warning' style={{margin:5}} onClick={this.handleClick.bind(this)} >Submit</button>
        </div>
        </div>
     );

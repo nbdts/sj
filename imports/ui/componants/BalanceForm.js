@@ -62,7 +62,7 @@ export default class BalanceForm  extends Component {
       </select>
 
          <input required style={{margin:5}} type="number" id='balance' placeholder='BALANCE' onChange={this.handleChange.bind(this)} />
-         <button className='btn btn-danger' style={{margin:5}} onClick={this.handleSubmit.bind(this)} >Submit</button>
+         <button className='btn btn-warning' style={{margin:5}} onClick={this.handleSubmit.bind(this)} >Submit</button>
        </div>
        </div>
     );
