@@ -101,7 +101,6 @@ export default class BillPage extends Component {
 
         let today=new Date()
         date = today.getDate()+ '/' + (today.getMonth() + 1) + '/' +today.getFullYear()
-        console.log(this.state.billprod);
 
         let price=0;
         let mytotal= this.state.billprod.map((product)=>{
@@ -185,6 +184,7 @@ export default class BillPage extends Component {
                 <div id="Bill">
                   <InvoicePage products={this.state.billprod} total={this.state.total} MyInvoice={this.createInvoice.bind(this)}/>
                 </div>
+
                 <div id='print' style={{display:'',positon:'absolute',top:70,left:0,zIndex:999,backgroundColor:'white'}}>
                 <div id='header' style={{padding:10}}>
                 <u>

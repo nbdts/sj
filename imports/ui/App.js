@@ -12,7 +12,6 @@ import TestPage from "./pages/TestPage";
 import TodayExpense from "./pages/TodayExpense";
 import ExpenseForm from "./componants/ExpenseForm";
 import BalanceForm from "./componants/BalanceForm";
-import Print from "./pages/Print";
 
 export default class App extends Component {
   constructor() {
@@ -55,7 +54,6 @@ export default class App extends Component {
       <Route exact path = "/admin/bill" component = {AdminPage} />
       <Route exact path = "/bill" component = {BillPage} />
       <Route exact path = "/invoice" component = {InvoicePage} />
-      <Route exact path = "/print" component = {Print} />
       </div>
       );
   }
