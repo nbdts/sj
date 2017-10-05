@@ -58,13 +58,13 @@ render() {
               </label>
               <ul>
               <li>
-              <a style={styles.dropDown} href="/texp">Report</a>
+              <a style={styles.dropDown} href="/texp">view Report</a>
               </li>
               <li>
-                <a style={styles.dropDown}  onClick={this.openModal} >Modal</a>
+                <a style={styles.dropDown}  onClick={this.openModal} >add Expense</a>
               </li>
               <li>
-                <a style={styles.dropDown}  onClick={this.handlebalacne.bind(this)} >Balance</a>
+                <a style={styles.dropDown}  onClick={this.handlebalacne.bind(this)} >add Balance</a>
               </li>
               <li>
                 { Session.get('shop')
@@ -106,7 +106,7 @@ render() {
 export default withRouter(Header)
 
 const styles={
-  dropDown:{fontSize:'15'}
+  dropDown:{fontSize:'15px'}
 }
 const modalStyle = {
 	overlay: {

@@ -12,6 +12,7 @@ export default class InvoiceDetailPage  extends Component {
       invoice:{},
       products:[],
       total:'',
+      date:'',
     }
   }
 
@@ -22,27 +23,28 @@ export default class InvoiceDetailPage  extends Component {
          Meteor.call('invoice.invoiceById', this.props.match.params.id,(err,invoice)=>{
            this.setState({invoice});
            this.setState({products:invoice.products})
-           console.log(this.state.invoice);
-
-              });
+           this.setState({date:this.state.invoice.createdAt})
+           });
         });
         }
   componentWillUnmount(){
     this.linktracker.stop();
   }
-
-
-
 createInvoice(){}
 
   render(){
+    if (this.state.invoice.createdAt!=undefined) {
+      today=this.state.invoice.createdAt
+      date = today.getDate()+ '-' + (today.getMonth() + 1) + '-' +today.getFullYear() 
+    }
     return(
       <div>
       <div className="mycontainer" style={{width:'100%',top:0,right:'10%',left:'10%',height:'100%'}}>
         <div className="invoice" style={{position:'relative',width:'100%',top:0,height:'100%'}} >
           <header>
             <section>
-                <span>16/02/2016</span>
+
+          <span>{date}</span>
             </section>
 
           </header>
