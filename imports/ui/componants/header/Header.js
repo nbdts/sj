@@ -58,7 +58,7 @@ render() {
               </label>
               <ul>
               <li>
-              <a style={styles.dropDown} href="/texp">view Report</a>
+              <a style={styles.dropDown} href="/rep">view Report</a>
               </li>
               <li>
                 <a style={styles.dropDown}  onClick={this.openModal} >add Expense</a>
