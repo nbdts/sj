@@ -18,6 +18,7 @@ export default class RegistrationPage extends Component {
       shopaccname: "",
       shopacctype: "",
       shopaccno: "",
+      shopadd: "",
       shopifsc: ""
     };
 
@@ -49,6 +50,7 @@ componentWillUnmount(){
     const shopacctype = this.state.shopacctype;
     const shopaccno = this.state.shopaccno;
     const shopifsc = this.state.shopifsc;
+    const shopadd = this.state.shopadd;
 
     let shop = {
       shopname: shopname,
@@ -61,6 +63,7 @@ componentWillUnmount(){
       shopacctype: shopacctype,
       shopaccno: shopaccno,
       shopifsc: shopifsc,
+      shopadd: shopadd,
       shopstatus: 1,
       shopcreatedat: new Date()
     }
@@ -97,8 +100,9 @@ componentWillUnmount(){
               <form style={{marginTop:-50}} onSubmit={this.handleSubmit} method="POST" className="material-form">
                 <Inputs type="text" id="shopname" onChange={this.handleChange} label="NAME" />
                 <Inputs type="text" id="shopemail" onChange={this.handleChange} label="EMAIL"/>
+                <Inputs type="password" id="shoppassword" onChange={this.handleChange} label="SHOP PASSWORD"/>
                 <Inputs type="text" id="shopphno" onChange={this.handleChange} label="PHONE NUMBER"/>
-                <Inputs type="password" id="shoppassword" onChange={this.handleChange} label="PASSWORD"/>
+                <Inputs type="text" id="shopadd" onChange={this.handleChange} label="ADDRESS"/>
                 <Inputs type="text" id="shopgstin" onChange={this.handleChange} label="GSTIN"/>
                 <Inputs type="text" id="shopbankname" onChange={this.handleChange} label="BANK NAME"/>
                 <Inputs type="text" id="shopaccname" onChange={this.handleChange} label="ACCOUNT HOLDER'S NAME"/>

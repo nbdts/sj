@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from '../componants/header/Header';
 import './css/Report';
 import { Tracker } from 'meteor/tracker';
 import {ExpenseApi} from '../../api/expense';
@@ -38,7 +39,8 @@ export default class Report extends Component {
 
   render(){
     return(
-
+<div>
+<Header/>
       <div style={{display:'flex',flex:1}}>
       <div id="expense"  style={{textAlign:'center',flex:1}}>
       <h1>Report</h1>
@@ -47,8 +49,7 @@ export default class Report extends Component {
         tareekh = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' +today.getDate()
 
         return (
-          <div key={i} style={{padding:20,backgroundColor:'black',display:'flex',flex:1,flexFlow:'row'}} >
-
+          <div key={i} style={{padding:10,backgroundColor:'white',display:'flex',flex:1,flexFlow:'row'}} >
               <div style={{flex:1,backgroundColor:'white'}}>
               Type::{(exp.type)?<span>Opening</span>:<span> Closing</span>}
               </div>
@@ -72,7 +73,7 @@ export default class Report extends Component {
         tareekh = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' +today.getDate()
 
         return (
-          <div key={i} style={{padding:20,backgroundColor:'black',display:'flex',flex:1,flexFlow:'row'}} >
+          <div key={i} style={{padding:10,backgroundColor:'white',display:'flex',flex:1,flexFlow:'row'}} >
 
               <div style={{flex:1,backgroundColor:'white'}}>
               ITEM::{exp.item}
@@ -88,6 +89,7 @@ export default class Report extends Component {
         )
       })
     }
+      </div>
       </div>
       </div>
     );

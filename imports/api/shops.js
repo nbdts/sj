@@ -17,7 +17,8 @@ Meteor.methods({
     accNumber:shop.shopaccno,
     accIfsc:shop.shopifsc,
     createdAt:shop.shopcreatedat,
-    status:shop.shopstatus
+    status:shop.shopstatus,
+    add:shop.shopadd,
    });
 },
 'shops.remove'(shopid){

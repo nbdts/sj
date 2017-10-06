@@ -57,7 +57,7 @@ export default class Print  extends Component {
     </div>
     <div style={{flex:1}}>
     <span style={{textAlign:'center'}}>Address</span><br/>
-    <span >{Session.get('shop').add}</span>
+    <span >{Session.get('shop').add }</span>
     </div>
     </div>
     </div>
