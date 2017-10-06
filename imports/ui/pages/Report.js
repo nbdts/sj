@@ -50,7 +50,7 @@ export default class Report extends Component {
           <div key={i} style={{padding:20,backgroundColor:'black',display:'flex',flex:1,flexFlow:'row'}} >
 
               <div style={{flex:1,backgroundColor:'white'}}>
-              Type::{(exp.type)? <span>Opening</span>: <span> Closing</span>}
+              Type::{(exp.type)?<span>Opening</span>:<span> Closing</span>}
               </div>
               <div  style={{flex:1,backgroundColor:'white'}}>
               PRICE::{exp.balance}
