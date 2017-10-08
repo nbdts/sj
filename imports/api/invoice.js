@@ -5,7 +5,7 @@ export const InvoiceApi = new Mongo.Collection('invoice');
 Meteor.methods({
 'invoice.insert'(shopid,name,phno,products){
 
-  InvoiceApi.insert({
+  var insert = InvoiceApi.insert({
     shopid:shopid,
     name,
     phno,
@@ -13,6 +13,7 @@ Meteor.methods({
     createdAt:new Date(),
     status:1,
    });
+   return insert;
 },
 'invoice.remove'(shopid){
   InvoiceApi.remove(shopid);

@@ -8,9 +8,6 @@ export default class InvoicePage extends Component {
     this.state={
       products:props.products,
       prodqty:{},
-      uname:'',
-      unumber:''
-
       }
   }
   handleChange(event){
@@ -26,6 +23,12 @@ export default class InvoicePage extends Component {
       alert('Enter customer name ')
     }
   }
+  chnageUsername(e){
+    this.props.chnageUsername(e.target.value);
+  }
+  chnageUserphone(e){
+    this.props.chnageUserphone(e.target.value);
+  }
   render() {
     let price=0;
     let mytotal= this.props.products.map((product)=>{
@@ -37,8 +40,8 @@ export default class InvoicePage extends Component {
         <div  className="mycontainer">
           <div className="invoice">
                 <div style={{position:"relative",top:10}}>
-                 <input  id='uname' style={{border:'none'}} onChange={this.handleChange.bind(this)} type="text" placeholder="NAME"/>
-                 <input  id='unumber' style={{border:'none'}} onChange={this.handleChange.bind(this)} type="number" placeholder="PHONE"/>
+                 <input  id='uname' style={{border:'none'}} onChange={this.chnageUsername.bind(this)} type="text" placeholder="NAME"/>
+                 <input  id='unumber' style={{border:'none'}} onChange={this.chnageUserphone.bind(this)} type="number" placeholder="PHONE"/>
                  </div>
             <main style={{position:'relative',bottom:50,top:20,width:'100%',height:'80%'}} >
               <section>

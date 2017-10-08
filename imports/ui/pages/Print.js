@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {InvoiceApi} from '../../api/invoice';
 import {Tracker} from 'meteor/tracker';
-import {Session} from 'meteor/session';
+import './css/Print';
 
 
 export default class Print  extends Component {
@@ -16,93 +16,82 @@ export default class Print  extends Component {
         }
   }
 
-  componentWillMount() {
-    this.linktracker = Tracker.autorun(() => {
-      Meteor.subscribe("invoice");
-      let billprod = InvoiceApi.find({}).fetch();
-      billprod=billprod[billprod.length -1]
-      this.setState({billprod});
-            if (billprod!=null) {
-        this.setState({products:billprod.products});
-        this.setState({name:billprod.name});
-        this.setState({phno:billprod.phno});
-      }
-
-    });
-  }
-  componentWillUnmount() {
-    this.linktracker.stop();
-  }
 
 
   render(){
     let price=0
-    let mytotal= this.state.products.map((product)=>{
+    let mytotal= this.props.products.map((product)=>{
           return(price=parseFloat(price)+parseFloat(product.tempprice));
     })
-    console.log(Session.get('shop'));
-    return(<div id='print' style={{display:'',positon:'absolute',top:70,left:0,zIndex:999,backgroundColor:'white'}}>
-    <div id='header' style={{padding:10}}>
-    <u>
-    <h1 style={{textAlign:'center'}}>Sandwich Junction</h1>
-    <h3 style={{textAlign:'center'}}>Invoice</h3>
-    </u>
+    return(
+    <div>
+        <div style={{marginRight:40}} id='header'>
+            <u>
+              <h3 style={{textAlign:'center',fontSize:15}}>Invoice</h3>
+            </u>
+
+            <div style={{textAlign:'center',alignItems:'center',fontWeight:'bold'}}>
+              <span style={{fontSize:12}}>Sandwich Junction</span>
+              <br/>
+              <span style={{fontSize:10 }}>{this.props.shop.add} k aagey wali gali se thoda peeche </span>
+            </div>
+          <hr/>
 
 
-    <div style={{display:'flex',flex:1}}>
+    <div style={{display:'flex',flexFlow:'row',flex:1}}>
     <div style={{flex:1}}>
-    <span style={{textAlign:'left'}} >{date}</span><br/>
-    <span>Name: {this.state.name}</span><br/>
-    <span>PhNo: {this.state.phno}</span>
+    <span style={{textAlign:'left',fontSize:12}}>{this.props.username}</span><br/>
+    <span style={{textAlign:'left',fontSize:12}}>{this.props.userphone}</span>
     </div>
     <div style={{flex:1}}>
-    <span style={{textAlign:'center'}}>Address</span><br/>
-    <span >{Session.get('shop').add }</span>
+    <span style={{textAlign:'left',fontSize:10}}>invoice:001</span><br/>
+    <span style={{textAlign:'left',fontSize:12}} >Date:{date}</span><br/>
     </div>
     </div>
     </div>
     <hr/>
      <div id='table' style={{padding:10}}>
-            <table style={{display:'flex',flex:1,flexFlow:'column'}}>
+            <table style={{textAlign:'left',display:'flex',flex:1,flexFlow:'column'}}>
             <thead >
               <tr style={{display:'flex',flex:1,flexFlow:'row'}}>
-              <th style={{flex:1}}> item</th>
-              <th style={{flex:1}}> price</th>
-              <th style={{flex:1}}> qty</th>
-              <th style={{flex:1}}> amount</th>
+              <th style={{textAlign:'left',flex:1,fontSize:13}}> item</th>
+              <th style={{textAlign:'left',flex:1,fontSize:13}}> price</th>
+              <th style={{textAlign:'left',flex:1,fontSize:13}}> qty</th>
+              <th style={{textAlign:'left',flex:1,fontSize:13}}> amount</th>
               </tr>
             </thead>
 
             <tbody >
-            {this.state.products.map((product, i) => {
+            {this.props.products.map((product, i) => {
               return (
-                <tr key={i} style={{display:'flex',flex:1,flexFlow:'row'}}>
-                <td style={{flex:1}}>{product.name}</td>
-                <td style={{flex:1}}>{product.price}</td>
-                <td style={{flex:1}}>{product.quantity}</td>
-                <td style={{flex:1}}>{product.price*product.quantity}</td>
+                <tr key={i} style={{textAlign:'left',display:'flex',flex:1,flexFlow:'row'}}>
+                <td style={{flex:1,fontSize:12}}>{product.name}</td>
+                <td style={{flex:1,fontSize:12}}>{product.price}</td>
+                <td style={{flex:1,fontSize:12}}>{product.quantity}</td>
+                <td style={{flex:1,fontSize:12}}>{product.price*product.quantity}</td>
                 </tr>
 
               )
             })
           }
           </tbody>
-
-            <br/>
-
-            <tbody >
+          <br/>
+            <tfoot >
              <tr style={{display:'flex',flex:1,flexFlow:'row'}}>
              <td style={{flex:1}}></td>
              <td style={{flex:1}}></td>
-             <td style={{flex:1,textAlign:'center'}}>Total:</td>
-             <td style={{flex:1}}>₹{mytotal[mytotal.length-1]}</td>
+             <td style={{flex:1,textAlign:'center',fontSize:12}}>Total:</td>
+             <td style={{flex:1,fontSize:12}}>₹{mytotal[mytotal.length-1]}</td>
              </tr>
-            </tbody>
-
+            </tfoot>
             </table>
+
      </div>
      <hr/>
-
+     <div style={{fontSize:12,textAlign:'center'}}>
+     <span>Visit Again :)</span>
+     </div>
+     <br/>
     </div>
 
 

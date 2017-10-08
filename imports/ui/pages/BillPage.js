@@ -16,7 +16,10 @@ export default class BillPage extends Component {
     this.state = {
       products: [],
       billprod: [],
-      total: 0
+      total: 0,
+      username:'',
+      userphone:'',
+      id:'',
     }
   }
   componentWillMount() {
@@ -33,6 +36,13 @@ export default class BillPage extends Component {
 
   handleClick(category) {
     this.setState({category});
+  }
+  chnageUsername(username){
+    this.setState({username})
+  }
+  chnageUserphone(userphone){
+    this.setState({userphone})
+
   }
 
   addToBill(newprod) {
@@ -60,12 +70,28 @@ export default class BillPage extends Component {
   }
 
   createInvoice(uname,unumber) {
-    if (this.state.billprod.length !== 0) {
-      Meteor.call('invoice.insert', Session.get('shop')._id, uname,unumber, this.state.billprod)
+     if (this.state.billprod.length !== 0) {
+     Meteor.call('invoice.insert', Session.get('shop')._id, uname,unumber, this.state.billprod,(err,res)=>{
+       this.setState({id:res.toString()})
+    if (err) {
+      Bert.alert('ERROR', 'danger', 'growl-top-right');
+
+    }else {
       Bert.alert('Done', 'success', 'growl-top-right');
-    } else {
-      Bert.alert('please add products too invoice', 'danger', 'growl-top-right');
+      var content = document.getElementById('divContents');
+      var pri = document.getElementById('myiframe').contentWindow;
+      pri.document.open();
+      pri.document.write(content.innerHTML);
+      pri.document.close();
+      pri.focus();
+      pri.print();
     }
+  })
+     } else {
+       Bert.alert('please add products too invoice', 'danger', 'growl-top-right');
+   }
+
+
   }
 
 
@@ -107,6 +133,8 @@ export default class BillPage extends Component {
         let mytotal= this.state.billprod.map((product)=>{
               return(price=parseFloat(price)+parseFloat(product.tempprice));
         })
+
+
     return (
             <div id="MenuOptions">
                 <div className="menubox">
@@ -183,11 +211,14 @@ export default class BillPage extends Component {
 
 
                 <div id="Bill">
-                  <InvoicePage products={this.state.billprod} total={this.state.total} MyInvoice={this.createInvoice.bind(this)}/>
+                  <InvoicePage products={this.state.billprod}  MyInvoice={this.createInvoice.bind(this)} username={this.state.username} userphone={this.state.userphone} chnageUsername={this.chnageUsername.bind(this)} chnageUserphone={this.chnageUserphone.bind(this)}/>
                 </div>
 
-                <Print/>
+                <div id="divContents" style={{display:'none'}}>
+                <Print id={this.state.id} products={this.state.billprod} shop={Session.get('shop')} username={this.state.username} userphone={this.state.userphone} chnageUsername={this.chnageUsername.bind(this)} chnageUserphone={this.chnageUserphone.bind(this)}/>
+                </div>
 
+                <iframe id="myiframe" style={{position:"absolute",top:"-100vh"}}></iframe>
             </div>
     );
   }
