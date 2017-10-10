@@ -20,6 +20,7 @@ export default class BillPage extends Component {
       username:'',
       userphone:'',
       id:'',
+      counterno:0,
     }
   }
   componentWillMount() {
@@ -27,6 +28,7 @@ export default class BillPage extends Component {
       Meteor.subscribe("product");
       Meteor.subscribe("invoice");
       let products = ProductApi.find({}).fetch();
+      this.setState({counterno:InvoiceApi.find({}).count()})
       this.setState({products});
     });
   }
@@ -70,9 +72,22 @@ export default class BillPage extends Component {
   }
 
   createInvoice(uname,unumber) {
+    function getNextSequenceValue(sequenceName){
+
+       var sequenceDocument = CountersApi.findAndModify({
+          query:{'_id': sequenceName },
+          update: {$inc:{sequence_value:1}},
+          new:true
+       });
+
+       return sequenceDocument.sequence_value;
+    }
+
      if (this.state.billprod.length !== 0) {
-     Meteor.call('invoice.insert', Session.get('shop')._id, uname,unumber, this.state.billprod,(err,res)=>{
-       this.setState({id:res.toString()})
+ Meteor.call('invoice.insert',Session.get('shop')._id, uname,unumber, this.state.billprod,(err,res)=>{
+   const myInvoice=InvoiceApi.findOne({_id:res})
+   console.log(myInvoice);
+       this.setState({id:myInvoice.seq})
     if (err) {
       Bert.alert('ERROR', 'danger', 'growl-top-right');
 
@@ -90,7 +105,6 @@ export default class BillPage extends Component {
      } else {
        Bert.alert('please add products too invoice', 'danger', 'growl-top-right');
    }
-
 
   }
 
@@ -215,7 +229,7 @@ export default class BillPage extends Component {
                 </div>
 
                 <div id="divContents" style={{display:'none'}}>
-                <Print id={this.state.id} products={this.state.billprod} shop={Session.get('shop')} username={this.state.username} userphone={this.state.userphone} chnageUsername={this.chnageUsername.bind(this)} chnageUserphone={this.chnageUserphone.bind(this)}/>
+                <Print id={this.state.counterno} products={this.state.billprod} shop={Session.get('shop')} username={this.state.username} userphone={this.state.userphone} chnageUsername={this.chnageUsername.bind(this)} chnageUserphone={this.chnageUserphone.bind(this)}/>
                 </div>
 
                 <iframe id="myiframe" style={{position:"absolute",top:"-100vh"}}></iframe>
