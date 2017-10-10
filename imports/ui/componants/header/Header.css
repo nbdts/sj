@@ -43,10 +43,7 @@
 .header-banner-top .horizontal-nav .folder:hover ul {
   top: 100%;
 }
-.header-banner-top .mobile-menu-box,
-.header-banner-top .mobile-menu-label {
-  display: none;
-}
+
 
 .header-banner-top .banner .banner-image {
   position: absolute;
@@ -63,22 +60,7 @@
     overflow: hidden;
     height: 0;
   }
-  .header-banner-top .mobile-menu-box {
-    display: none;
-  }
-  .header-banner-top .mobile-menu-label {
-    display: block;
-    cursor: pointer;
-  }
-  .header-banner-top .mobile-menu-label:before {
-    content: 'Menu';
-  }
-  .header-banner-top .mobile-menu-box:checked ~ .horizontal-nav {
-    height: auto;
-  }
-  .header-banner-top .mobile-menu-box:checked ~ .mobile-menu-label:before {
-    content: 'Close';
-  }
+
   .header-banner-top .horizontal-nav li {
     display: block;
   }
@@ -115,8 +97,13 @@
   font-size: 19px;
   letter-spacing: 0;
 }
+.header-banner-top .horizontal-nav a:hover,
+.header-banner-top .horizontal-nav .active-link a {
+  color: #fff;
+  box-shadow:2px 2px 20px 4px white;
+}
 .header-banner-top .horizontal-nav .folder ul {
-  background-color:#ba922e;
+  background-color:black;
   font-size: 10px;
   transition: padding 0.14s ease-out;
   text-align: left;
@@ -130,6 +117,7 @@
 }
 .header-banner-top .banner {
   font-size: 10px;
+  background-color:#ba922e;
 }
 .header-banner-top .banner .banner-image {
   background: url(http://farm7.staticflickr.com/6169/6161511237_c1834b35bc_b.jpg) center center;
@@ -183,13 +171,17 @@
   .header-banner-top .horizontal-nav .folder-toggle-label a {
     cursor: pointer;
   }
-
-  .hovertest a:hover{
-    background-color: red;
-    color: red;
-  }
-
+#login{
+  background-color: #ba922e;
+  color: white;
+  position: relative;
+  top:0;
+  left: 0;
+}
 .banner{
   height: 10px;
   width: 100px;
+}
+.style{
+
 }
