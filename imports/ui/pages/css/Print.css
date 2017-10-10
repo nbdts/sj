@@ -7,3 +7,8 @@
 .binFont{
   font-size: 15;
 }
+.full{
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}

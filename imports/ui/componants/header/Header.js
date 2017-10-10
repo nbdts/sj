@@ -54,7 +54,7 @@ render() {
           <ul className='list' style={{marginRight:'20px'}}>
             <li className="folder">
               <label htmlFor="folder-toggle-1" className="folder-toggle-label">
-                <a className="glyphicon glyphicon-cog"> Settings</a>
+                <a className="glyphicon glyphicon-cog" style={{color:'black'}}> Settings</a>
               </label>
               <ul>
 

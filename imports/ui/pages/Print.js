@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {InvoiceApi} from '../../api/invoice';
 import {Tracker} from 'meteor/tracker';
+import {Session} from 'meteor/session';
+
 import './css/Print';
 
 
@@ -25,32 +27,32 @@ export default class Print  extends Component {
     })
     return(
     <div>
-        <div style={{marginRight:40}} id='header'>
-            <u>
+        <div id='header'>
+            <u style={{textAlign:'center'}}>
               <h3 style={{textAlign:'center',fontSize:15}}>Invoice</h3>
             </u>
 
-            <div style={{display:'block',textAlign:'center',alignItems:'center',fontWeight:'bold'}}>
-              <span style={{fontSize:12}}>Sandwich Junction</span>
+            <div>
+              <span style={{textAlign:'center',fontWeight:'bold',fontSize:12}}>Sandwich Junction</span>
               <br/>
-              <span style={{fontSize:10 }}>{this.props.shop.add} k aagey wali gali se thoda peeche </span>
+              <span style={{textAlign:'center',fontWeight:'bold',fontSize:10 }}>{this.props.shop.add}</span>
             </div>
           <hr/>
 
 
     <div style={{display:'flex',flexFlow:'row',flex:1}}>
-    <div style={{flex:1}}>
-    <span style={{textAlign:'left',fontSize:12}}>{this.props.username}</span><br/>
+    <div style={{flex:1,flexFlow:'column'}}>
+    <span style={{textAlign:'left',fontSize:12}}>{this.props.username}</span>
     <span style={{textAlign:'left',fontSize:12}}>{this.props.userphone}</span>
     </div>
-    <div style={{flex:1}}>
-    <span style={{textAlign:'left',fontSize:10}}>invoice: SJ00{this.props.id}</span><br/>
-    <span style={{textAlign:'left',fontSize:12}} >Date:{date}</span><br/>
+    <div style={{flex:1,flexFlow:'column'}}>
+    <span style={{textAlign:'left',fontSize:10}}>invoice: SJ00{this.props.id}</span>
+    <span style={{textAlign:'left',fontSize:12}} >Date:{date}</span>
     </div>
     </div>
     </div>
     <hr/>
-     <div id='table' style={{padding:10}}>
+     <div id='table' style={{padding:1}}>
             <table style={{textAlign:'left',display:'flex',flex:1,flexFlow:'column'}}>
             <thead >
               <tr style={{display:'flex',flex:1,flexFlow:'row'}}>
@@ -89,7 +91,10 @@ export default class Print  extends Component {
      </div>
      <hr/>
      <div style={{fontSize:12,textAlign:'center'}}>
-     <span>Visit Again :)</span>
+     <span>Visit Again :)</span><br/>
+     <span>{this.props.shop.add}</span><br/>
+     <span>mail:{this.props.shop.email}</span><br/>
+     <span>call on:{this.props.shop.phno}</span>
      </div>
      <br/>
     </div>
