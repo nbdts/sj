@@ -41,7 +41,7 @@ export default class Report extends Component {
     return(
 <div>
 <Header/>
-      <div style={{display:'flex',flex:1}}>
+      <div style={{display:'flex',flex:1,position:'relative',top:65}}>
       <div id="expense"  style={{textAlign:'center',flex:1}}>
       <h1>Report</h1>
       {this.state.balances.map((exp, i) =>{

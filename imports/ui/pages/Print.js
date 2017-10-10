@@ -27,26 +27,25 @@ export default class Print  extends Component {
     })
     return(
     <div>
-        <div id='header'>
+        <div style={{justifyContent:'center',textAlign:'center'}} id='header'>
             <u style={{textAlign:'center'}}>
               <h3 style={{textAlign:'center',fontSize:15}}>Invoice</h3>
             </u>
-
             <div>
-              <span style={{textAlign:'center',fontWeight:'bold',fontSize:12}}>Sandwich Junction</span>
+              <span style={{textAlign:'left',fontWeight:'bold',fontSize:12}}>Sandwich Junction</span>
               <br/>
-              <span style={{textAlign:'center',fontWeight:'bold',fontSize:10 }}>{this.props.shop.add}</span>
+              <span style={{textAlign:'left',fontWeight:'bold',fontSize:10 }}>{this.props.shop.add}</span>
             </div>
           <hr/>
 
 
     <div style={{display:'flex',flexFlow:'row',flex:1}}>
-    <div style={{flex:1,flexFlow:'column'}}>
-    <span style={{textAlign:'left',fontSize:12}}>{this.props.username}</span>
+    <div style={{textAlign:'left',flex:1,flexFlow:'column'}}>
+    <span style={{textAlign:'left',fontSize:12}}>{this.props.username}</span><br/>
     <span style={{textAlign:'left',fontSize:12}}>{this.props.userphone}</span>
     </div>
-    <div style={{flex:1,flexFlow:'column'}}>
-    <span style={{textAlign:'left',fontSize:10}}>invoice: SJ00{this.props.id}</span>
+    <div style={{textAlign:'left',flex:1,flexFlow:'column'}}>
+    <span style={{textAlign:'left',fontSize:12}}>invoice:SJ00{this.props.id}</span><br/>
     <span style={{textAlign:'left',fontSize:12}} >Date:{date}</span>
     </div>
     </div>
