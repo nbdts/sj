@@ -86,8 +86,7 @@ export default class BillPage extends Component {
      if (this.state.billprod.length !== 0) {
  Meteor.call('invoice.insert',Session.get('shop')._id, uname,unumber, this.state.billprod,(err,res)=>{
    const myInvoice=InvoiceApi.findOne({_id:res})
-   console.log(myInvoice);
-       this.setState({id:myInvoice.seq})
+        this.setState({id:myInvoice.seq})
     if (err) {
       Bert.alert('ERROR', 'danger', 'growl-top-right');
 

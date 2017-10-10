@@ -50,6 +50,5 @@ Counter = new Mongo.Collection("counter");
 getNextSequence = function (name) {
     Counter.update({type: name}, {$inc: {seq: 1}});
     var ret = Counter.findOne({type: name});
-    console.log(ret);
     return ret.seq;
 }
