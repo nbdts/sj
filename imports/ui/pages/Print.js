@@ -30,7 +30,7 @@ export default class Print  extends Component {
               <h3 style={{textAlign:'center',fontSize:15}}>Invoice</h3>
             </u>
 
-            <div style={{textAlign:'center',alignItems:'center',fontWeight:'bold'}}>
+            <div style={{display:'block',textAlign:'center',alignItems:'center',fontWeight:'bold'}}>
               <span style={{fontSize:12}}>Sandwich Junction</span>
               <br/>
               <span style={{fontSize:10 }}>{this.props.shop.add} k aagey wali gali se thoda peeche </span>
