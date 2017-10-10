@@ -4,6 +4,7 @@
   top: 65px;
   bottom:0px;
   display: flex;
+  flex-flow: row;
   flex-wrap: wrap;
 }
 .mainBill{
@@ -17,7 +18,6 @@
 	border-top: 1px solid rgb(235,235,235);
 	margin: 0;
 	padding: 0;
-  flex-wrap: wrap;
 }
 #Bill{
   display:flex;
@@ -41,7 +41,6 @@
   box-shadow: 2px 0px 10px #777777;
   margin-right: 3px;
   z-index: 1;
-    flex-wrap: wrap;
 }
 .menubox{
   position:absolute;
@@ -62,7 +61,6 @@
  border-radius:3px;
  width:200px;
  background-color:transparent;
- flex-wrap: wrap;
 }
 .menubox u{
   width: 20%;
@@ -70,11 +68,9 @@
   padding-bottom:18px;
   color:#fcb900;
   text-align: center;
-  flex-wrap: wrap;
   box-shadow: 0 0 1px #efefef;
  }
 #menuProduct{
   width: 20%;
   box-shadow: 0 0 1px #efefef;
-    flex-wrap: wrap;
     }
