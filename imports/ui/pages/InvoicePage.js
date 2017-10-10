@@ -17,7 +17,7 @@ export default class InvoicePage extends Component {
     }
   MyInvoiceHandel(){
     if (this.state.uname!='') {
-      this.props.MyInvoice(this.state.uname,this.state.unumber)
+      this.props.MyInvoice()
     }
     else {
       alert('Enter customer name ')

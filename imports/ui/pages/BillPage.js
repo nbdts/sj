@@ -71,25 +71,22 @@ export default class BillPage extends Component {
     }
   }
 
-  createInvoice(uname,unumber) {
-    function getNextSequenceValue(sequenceName){
+  createInvoice() {
 
-       var sequenceDocument = CountersApi.findAndModify({
-          query:{'_id': sequenceName },
-          update: {$inc:{sequence_value:1}},
-          new:true
-       });
-
-       return sequenceDocument.sequence_value;
-    }
-
-     if (this.state.billprod.length !== 0) {
- Meteor.call('invoice.insert',Session.get('shop')._id, uname,unumber, this.state.billprod,(err,res)=>{
-   const myInvoice=InvoiceApi.findOne({_id:res})
-        this.setState({id:myInvoice.seq})
+    if (this.state.billprod.length !== 0) {
+      if ( this.state.username === '' || this.state.username == undefined) {
+        Bert.alert('Enter Customer Name', 'danger', 'growl-top-right');
+        return false;
+      }
+      if ( this.state.userphone === '' || this.state.userphone == undefined) {
+        Bert.alert('Enter Customer Number', 'danger', 'growl-top-right');
+        return false;
+      }
+  Meteor.call('invoice.insert',Session.get('shop')._id, this.state.username,this.state.userphone, this.state.billprod,(err,res)=>{
+    const myInvoice=InvoiceApi.findOne({_id:res})
+    this.setState({id:myInvoice.seq})
     if (err) {
       Bert.alert('ERROR', 'danger', 'growl-top-right');
-
     }else {
       Bert.alert('Done', 'success', 'growl-top-right');
       var content = document.getElementById('divContents');
@@ -101,8 +98,9 @@ export default class BillPage extends Component {
       pri.print();
     }
   })
+
      } else {
-       Bert.alert('please add products too invoice', 'danger', 'growl-top-right');
+       Bert.alert('Please add products', 'danger', 'growl-top-right');
    }
 
   }
@@ -228,7 +226,7 @@ export default class BillPage extends Component {
                 </div>
 
                 <div id="divContents" style={{display:'none'}}>
-                <Print id={this.state.counterno} products={this.state.billprod} shop={Session.get('shop')} username={this.state.username} userphone={this.state.userphone} chnageUsername={this.chnageUsername.bind(this)} chnageUserphone={this.chnageUserphone.bind(this)}/>
+                <Print id={this.state.id} products={this.state.billprod} shop={Session.get('shop')} username={this.state.username} userphone={this.state.userphone} chnageUsername={this.chnageUsername.bind(this)} chnageUserphone={this.chnageUserphone.bind(this)}/>
                 </div>
 
                 <iframe id="myiframe" style={{position:"absolute",top:"-100vh"}}></iframe>

@@ -48,24 +48,36 @@ render() {
     <header style={{backgroundColor:'#ffc300'}} className="header-banner-top">
     <div style={{backgroundColor:'#ffc300'}} >
     </div>
-    <div style={{flex:5,backgroundColor:'#ffc300',height:'65px'}} className="main-navigation">
+    <div style={{flex:5,backgroundColor:'#ffc300',height:'64px'}} className="main-navigation">
         <img style={{position:'absolute',left:'40%',height:'100%',width:'200px'}} src='/sjflex.jpg' alt="flex"/>
         <nav className="horizontal-nav primary-wrapper" role='navigation'>
-          <ul style={{marginRight:'20px'}}>
+          <ul className='list' style={{marginRight:'20px'}}>
             <li className="folder">
               <label htmlFor="folder-toggle-1" className="folder-toggle-label">
                 <a className="glyphicon glyphicon-cog"> Settings</a>
               </label>
               <ul>
+
               <li>
               <a style={styles.dropDown} href="/rep">view Report</a>
               </li>
+
+              {
+              Session.get('shop')?
+              <div>
               <li>
                 <a style={styles.dropDown}  onClick={this.openModal} >add Expense</a>
               </li>
               <li>
-                <a style={styles.dropDown}  onClick={this.handlebalacne.bind(this)} >add Balance</a>
+              <a id="login" style={styles.dropDown}  onClick={this.handlebalacne.bind(this)} >add Balance</a>
               </li>
+              </div>
+              :
+              null
+              }
+
+
+
               <li>
                 { Session.get('shop')
                 ? <a style={styles.dropDown} id="login" onClick={this.handleLogout.bind(this)} href="/login">Logout</a>

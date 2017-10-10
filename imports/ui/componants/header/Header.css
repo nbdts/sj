@@ -115,10 +115,6 @@
   font-size: 19px;
   letter-spacing: 0;
 }
-.header-banner-top .horizontal-nav a:hover,
-.header-banner-top .horizontal-nav .active-link a {
-  color: #fff;
-}
 .header-banner-top .horizontal-nav .folder ul {
   background-color:#ba922e;
   font-size: 10px;
@@ -134,7 +130,6 @@
 }
 .header-banner-top .banner {
   font-size: 10px;
-  background-color:#ba922e;
 }
 .header-banner-top .banner .banner-image {
   background: url(http://farm7.staticflickr.com/6169/6161511237_c1834b35bc_b.jpg) center center;
@@ -188,17 +183,13 @@
   .header-banner-top .horizontal-nav .folder-toggle-label a {
     cursor: pointer;
   }
-#login{
-  background-color: #ba922e;
-  color: white;
-  position: relative;
-  top:0;
-  left: 0;
-}
+
+  .hovertest a:hover{
+    background-color: red;
+    color: red;
+  }
+
 .banner{
   height: 10px;
   width: 100px;
-}
-.style{
-
 }

@@ -36,11 +36,9 @@ if (Meteor.isServer) {
   Meteor.publish('invoice', function userPublication(){
     return  InvoiceApi.find();
   });
-
   Meteor.startup(function () {
       Counter._ensureIndex({"type": 1});
       if (Counter.find({type: "projectId"}).count() == 0) Counter.insert({type: "projectId", seq: 0});
-
   });
 }
 
