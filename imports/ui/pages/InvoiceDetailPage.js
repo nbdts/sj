@@ -11,7 +11,7 @@ export default class InvoiceDetailPage  extends Component {
     this.state={
       invoice:{},
       products:[],
-      total:'',
+      total:0,
       date:'',
     }
   }
@@ -35,8 +35,14 @@ createInvoice(){}
   render(){
     if (this.state.invoice.createdAt!=undefined) {
       today=this.state.invoice.createdAt
-      date = today.getDate()+ '-' + (today.getMonth() + 1) + '-' +today.getFullYear() 
+      date = today.getDate()+ '-' + (today.getMonth() + 1) + '-' +today.getFullYear()
     }
+
+    let price=0
+    let mytotal= this.state.products.map((product)=>{
+        return(price=parseFloat(price)+parseFloat(product.tempprice));
+    })
+    console.log(mytotal);
     return(
       <div>
       <div className="mycontainer" style={{width:'100%',top:0,right:'10%',left:'10%',height:'100%'}}>
@@ -64,18 +70,20 @@ createInvoice(){}
                       <span>
                         <strong>{product.name}</strong>
                       </span>
-                      <span>1</span>
-                      <span>{product.price}</span>
+                      <span>{product.quantity}</span>
+                      <span>{product.tempprice}</span>
                     </figure>
                   </div>
                 )
               })}
 
             </section>
-
+<hr/>
+<hr/>
+<hr/>
             <section>
               <span>Total</span>
-              <span>total</span>
+              <span>₹{mytotal[mytotal.length-1]}</span>
             </section>
           </main>
 
