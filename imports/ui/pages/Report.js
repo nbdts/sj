@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Header from '../componants/header/Header';
-import './css/Report';
 import { Tracker } from 'meteor/tracker';
 import {ExpenseApi} from '../../api/expense';
 import {BalanceApi} from '../../api/balance';
