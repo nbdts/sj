@@ -16,7 +16,7 @@ export default class InvoicePage extends Component {
     this.setState(object);
     }
   MyInvoiceHandel(){
-    if (this.state.uname!='') {
+    if(this.state.uname!='') {
       this.props.MyInvoice()
     }
     else {
