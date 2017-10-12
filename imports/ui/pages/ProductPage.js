@@ -13,7 +13,6 @@ export default class ProductPage  extends Component {
           name: "",
           price:"",
           category:"",
-          imageLink: '',
         };
 
   }
@@ -36,36 +35,21 @@ export default class ProductPage  extends Component {
     const name = this.state.name;
     const price = this.state.price;
     const category = this.state.category;
-    let image = this.state.imageLink;
-    let prod = {
+      let prod = {
       name:name,
       price:price,
       category:category,
-      image:image,
-    }
+          }
     Meteor.call('product.insert', prod);
     this.setState({
       products:[],
       name:'',
       price:'',
       category:'',
-      imageLink:'',
     });
     }
 
-    uploadWidget(event) {
-      event.preventDefault();
-      let setImagelinkState = (link)=> {
-        this.setState({imageLink:link},()=>{console.log(this.state.imageLink)});
-      }
-
-           cloudinary.openUploadWidget({ cloud_name: 'dcr2pfgxy', upload_preset: 'kzkxno3w', tags:['xmas']},
-               function(error, result) {
-                   setImagelinkState(result[0].secure_url);
-               });
-       }
-
-       setValue(field, event) {
+         setValue(field, event) {
         let object = {};
         object[field] = event.target.value;
         this.setState(object);

@@ -9,6 +9,7 @@ export default class RegistrationPage extends Component {
     super();
 
     this.state = {
+      shops:[],
       shopname: "",
       shopemail: "",
       shopphno: "",
@@ -26,11 +27,14 @@ export default class RegistrationPage extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+
+
 componentDidMount(){
     this.linkracker = Tracker.autorun(()=> {
       Meteor.subscribe("shop");
       let shops = ShopsApi.find({}).fetch();
-
+      console.log(shops);
+      this.setState({shops})
     });
 }
 componentWillUnmount(){
@@ -111,10 +115,26 @@ componentWillUnmount(){
                 <Inputs type="text" id="shopifsc" onChange={this.handleChange} label="IFSC CODE"/>
                 <input className="button blue" type="submit" value="submit"/>
               </form>
-              <h4><a style={{color:'white'}} href="/login">Login ?</a></h4>
+
             </div>
+
+
+            <div style={{display:'flex'}}>
+            {
+              this.state.shops.map((shop,i)=>{
+                return (<div key={i} >
+                  <Shops shop={shop}></Shops>
+                  </div>)
+                })
+              }
+
+
+              </div>
+
+
           </div>
         </section>
+
 
       </div>
     );
@@ -135,6 +155,31 @@ class Inputs extends Component {
             </div>
           </div>
         </section>
+      </div>
+    );
+  }
+}
+
+class Shops extends Component {
+  constructor() {
+    super();
+  }
+  deleteShop(id){
+  let result = confirm("Want to delete?");
+  if (result) {
+  Meteor.call('shop.remove',id);
+  }
+  }
+
+  render() {
+    return (
+      <div style={{display:'flex',flexFlow:'column',flex:1,padding:'5px',marginBottom:'5px',border:'groove'}}>
+      <span style={{color:'red',textAlign:'right'}} className="glyphicon glyphicon-trash" onClick={this.deleteShop.bind(this,this.props.shop._id) }></span>
+      <div style={{textAlign:'left'}}>
+      <span>NAME:{this.props.shop.name}</span><br/>
+      <span>PASSWORD:{this.props.shop.password}</span><br/>
+      <span>ADDRESS:{this.props.shop.add}</span><br/>
+      </div>
       </div>
     );
   }
