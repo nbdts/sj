@@ -40,11 +40,11 @@ export default class BalanceForm  extends Component {
         balance:balance
       }
         Meteor.call('balance.check',function(err,res){
-          console.log(err);
-          console.log(res);
+          console.log('submited');
           if (!err) {
             Meteor.call('balance.insert',balanceobj)
             Bert.alert('Balance Added', 'success', 'growl-top-right')
+            this.setState({balance:0})
           }
         })
     }

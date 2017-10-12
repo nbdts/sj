@@ -20,15 +20,13 @@ export default class BillPage extends Component {
       username:'',
       userphone:'',
       id:'',
-      counterno:0,
-    }
+      }
   }
   componentWillMount() {
     this.linktracker = Tracker.autorun(() => {
       Meteor.subscribe("product");
       Meteor.subscribe("invoice");
       let products = ProductApi.find({}).fetch();
-      this.setState({counterno:InvoiceApi.find({}).count()})
       this.setState({products});
     });
   }
@@ -96,6 +94,7 @@ export default class BillPage extends Component {
       pri.document.close();
       pri.focus();
       pri.print();
+      this.setState({  billprod: [],username:'',userphone:'',id:''})
     }
   })
 

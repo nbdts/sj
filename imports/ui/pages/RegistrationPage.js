@@ -68,6 +68,7 @@ componentWillUnmount(){
       shopcreatedat: new Date()
     }
     Meteor.call('shops.insert', shop);
+    Bert.alert('Shop Added', 'success', 'growl-top-right')
     this.setState({
       shopname: "",
       shopemail: "",
@@ -79,7 +80,6 @@ componentWillUnmount(){
       shopacctype: "",
       shopaccno: "",
       shopifsc: ""
-
     });
   }
 

@@ -40,8 +40,8 @@ export default class InvoicePage extends Component {
         <div  className="mycontainer">
           <div className="invoice">
                 <div style={{position:"relative",top:10}}>
-                 <input  id='uname' style={{border:'none'}} onChange={this.chnageUsername.bind(this)} type="text" placeholder="NAME"/>
-                 <input  id='unumber' style={{border:'none'}} onChange={this.chnageUserphone.bind(this)} type="number" placeholder="PHONE"/>
+                 <input  id='uname' value={this.props.username} style={{border:'none'}} onChange={this.chnageUsername.bind(this)} type="text" placeholder="NAME"/>
+                 <input  id='unumber' value={this.props.userphone} style={{border:'none'}} onChange={this.chnageUserphone.bind(this)} type="number" placeholder="PHONE"/>
                  </div>
             <main style={{position:'relative',bottom:50,top:20,width:'100%',height:'80%'}} >
               <section>
