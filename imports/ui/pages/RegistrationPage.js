@@ -33,7 +33,6 @@ componentDidMount(){
     this.linkracker = Tracker.autorun(()=> {
       Meteor.subscribe("shop");
       let shops = ShopsApi.find({}).fetch();
-      console.log(shops);
       this.setState({shops})
     });
 }
@@ -167,7 +166,8 @@ class Shops extends Component {
   deleteShop(id){
   let result = confirm("Want to delete?");
   if (result) {
-  Meteor.call('shop.remove',id);
+    Meteor.call('shops.remove',id);
+    Bert.alert('Shop Removed', 'Danger', 'growl-top-right')
   }
   }
 
@@ -176,9 +176,9 @@ class Shops extends Component {
       <div style={{display:'flex',flexFlow:'column',flex:1,padding:'5px',marginBottom:'5px',border:'groove'}}>
       <span style={{color:'red',textAlign:'right'}} className="glyphicon glyphicon-trash" onClick={this.deleteShop.bind(this,this.props.shop._id) }></span>
       <div style={{textAlign:'left'}}>
-      <span>NAME:{this.props.shop.name}</span><br/>
-      <span>PASSWORD:{this.props.shop.password}</span><br/>
-      <span>ADDRESS:{this.props.shop.add}</span><br/>
+      <span>Email:{this.props.shop.email}</span><br/>
+      <span>Password:{this.props.shop.password}</span><br/>
+      <span>Address:{this.props.shop.add}</span><br/>
       </div>
       </div>
     );
