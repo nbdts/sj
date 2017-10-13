@@ -1,7 +1,3 @@
-//this is entry poin
-//this is entry poin
-//this is entry poin
-
 import React from 'react';
 
 import {Meteor} from 'meteor/meteor';

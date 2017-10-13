@@ -5,6 +5,7 @@ export const BalanceApi = new Mongo.Collection('balance');
 Meteor.methods({
 'balance.insert'(balance){
   BalanceApi.insert({
+    shopid:balance.shopid,
     type:balance.type,
     balance:balance.balance,
     createdAt:new Date()
@@ -12,11 +13,12 @@ Meteor.methods({
 },
 'balance.check'(){
   var today=new Date()
-   var day= today.getDay();
+   var day= today.getDate();
    var month= today.getMonth();
    var year= today.getFullYear();
-   let mybalance = BalanceApi.find({createdAt:{$gte:new Date(`${year}/${++month}/${++day}`)}});
-   console.log({$gte:new Date(`${year}/${++month}/${++day}`)});
+   let mybalance = BalanceApi.find({createdAt:{$gt:new Date(`${year}/${++month}/${--day}`)}});
+   console.log(mybalance);
+   console.log(month);
    return mybalance;
 },
 'balance.remove'(balanceid){

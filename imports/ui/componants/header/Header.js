@@ -59,7 +59,7 @@ render() {
               <ul>
 
               <li>
-              <a style={styles.dropDown} href="/rep">view Report</a>
+              <a style={styles.dropDown} href={`/rep/${Session.get('shop')._id}`}>view Report</a>
               </li>
 
               {

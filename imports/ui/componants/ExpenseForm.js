@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Tracker } from 'meteor/tracker';
+import {Session} from 'meteor/session';
 import {ExpenseApi} from '../../api/expense';
 
 export default class ExpenseForm  extends Component {
@@ -46,6 +47,7 @@ export default class ExpenseForm  extends Component {
       let item=this.state.item
       let price=this.state.price
       let expense={
+        shopid:Session.get('shop')._id,
         item:item,
         price:price,
       }

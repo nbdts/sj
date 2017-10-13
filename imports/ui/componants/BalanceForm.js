@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Tracker } from 'meteor/tracker';
+import {Session} from 'meteor/session';
 import {BalanceApi} from '../../api/balance';
 
 export default class BalanceForm  extends Component {
@@ -36,11 +37,14 @@ export default class BalanceForm  extends Component {
       let type=this.state.type
       let balance=this.state.balance
       balanceobj={
+        shopid:Session.get('shop')._id,
         type:type,
         balance:balance
       }
+      console.log("subfkhb");
         Meteor.call('balance.check',function(err,res){
-          console.log('submited');
+          console.log(err);
+          console.log(res);
           if (!err) {
             Meteor.call('balance.insert',balanceobj)
             Bert.alert('Balance Added', 'success', 'growl-top-right')

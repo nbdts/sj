@@ -16,12 +16,14 @@ export default class Report extends Component {
 
   componentWillMount(){
     var today=new Date()
-     var day= today.getDay();
+     var day= today.getDate();
      var month= today.getMonth();
      var year= today.getFullYear();
-      this.linkracker = Tracker.autorun(()=> {
+     this.linkracker = Tracker.autorun(()=> {
         Meteor.subscribe("expense");
-        let expenses = ExpenseApi.find({createdAt:{$gte:new Date(`${year}/${month}/${day}`)}}).fetch();
+        Meteor.subscribe("balance");
+      //  let expenses = ExpenseApi.find({createdAt:{$gt:new Date(`${year}/${++month}/${day}`)}}).fetch();
+        let expenses = ExpenseApi.find({_id:this.props.match.params.id}).fetch();
           this.setState({expenses});
         Meteor.subscribe("balance");
         let balances = BalanceApi.find({createdAt:{$gte:new Date(`${year}/${month}/${day}`)}}).fetch();

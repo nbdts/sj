@@ -55,6 +55,7 @@ export default class App extends Component {
       <Route exact path = "/bill" component = {BillPage} />
       <Route exact path = "/invoice" component = {InvoicePage} />
       <Route exact path = "/rep" component = {Report} />
+      <Route exact path = "/rep/:id" component = {Report} />
       </div>
       );
   }
