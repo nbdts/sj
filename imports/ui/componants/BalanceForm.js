@@ -9,7 +9,7 @@ export default class BalanceForm  extends Component {
     this.state={
       balanceapi:[],
       balance:0,
-      type:0,
+      type:'0',
     }
   }
   componentWillMount(){
@@ -41,15 +41,20 @@ export default class BalanceForm  extends Component {
         type:type,
         balance:balance
       }
-      console.log("subfkhb");
         Meteor.call('balance.check',function(err,res){
-          console.log(err);
-          console.log(res);
-          if (!err) {
-            Meteor.call('balance.insert',balanceobj)
-            Bert.alert('Balance Added', 'success', 'growl-top-right')
-            this.setState({balance:0})
+          if (!err) {console.log(balanceobj.type);
+            if((res.length==1&&(res[0].type==balanceobj.type))||res.length==2){
+                Bert.alert('Already added', 'warning', 'growl-top-right')
+                this.setState({balance:0})
+            }
+            else{
+                Meteor.call('balance.insert',balanceobj)
+                Bert.alert('Balance Added', 'success', 'growl-top-right')
+                this.setState({balance:0})
+              }
           }
+
+
         })
     }
 
@@ -61,11 +66,11 @@ export default class BalanceForm  extends Component {
        <div style={styles.inputs}>
 
      <select onChange={this.handleClick.bind(this)} style={{margin:5}}>
-        <option value="1">OPENING</option>
-        <option value="0">CLOSING</option>
+        <option value='1'>OPENING</option>
+        <option value='0'>CLOSING</option>
       </select>
 
-         <input required style={{margin:5}} type="number" id='balance' placeholder='BALANCE' onChange={this.handleChange.bind(this)} />
+         <input required style={{margin:5}} value={this.state.balance} type="number" id='balance' placeholder='BALANCE' onChange={this.handleChange.bind(this)} />
          <button className='btn btn-warning' style={{margin:5}} onClick={this.handleSubmit.bind(this)} >Submit</button>
        </div>
        </div>

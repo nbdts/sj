@@ -57,11 +57,15 @@ render() {
                 <a className="glyphicon glyphicon-cog" style={{color:'black'}}> Settings</a>
               </label>
               <ul>
-
+              {Session.get('admin')?
+              <li>
+              <a style={styles.dropDown} href='/rep'>view Report</a>
+              </li>
+              :
               <li>
               <a style={styles.dropDown} href={`/rep/${Session.get('shop')._id}`}>view Report</a>
               </li>
-
+              }
               {
               Session.get('shop')?
               <div>

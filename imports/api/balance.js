@@ -16,9 +16,8 @@ Meteor.methods({
    var day= today.getDate();
    var month= today.getMonth();
    var year= today.getFullYear();
-   let mybalance = BalanceApi.find({createdAt:{$gt:new Date(`${year}/${++month}/${--day}`)}});
+   let mybalance = BalanceApi.find({createdAt:{$gt:new Date(`${year}/${++month}/${day}`)}}).fetch();
    console.log(mybalance);
-   console.log(month);
    return mybalance;
 },
 'balance.remove'(balanceid){

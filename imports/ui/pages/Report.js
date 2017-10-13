@@ -17,21 +17,17 @@ export default class Report extends Component {
   componentWillMount(){
     var today=new Date()
      var day= today.getDate();
-     var month= today.getMonth();
+     var month= today.getMonth()+1;
      var year= today.getFullYear();
      this.linkracker = Tracker.autorun(()=> {
         Meteor.subscribe("expense");
-        Meteor.subscribe("balance");
-      //  let expenses = ExpenseApi.find({createdAt:{$gt:new Date(`${year}/${++month}/${day}`)}}).fetch();
-        let expenses = ExpenseApi.find({_id:this.props.match.params.id}).fetch();
-          this.setState({expenses});
+        let expenses = ExpenseApi.find({shopid:this.props.match.params.id}).fetch();
+        this.setState({expenses});
         Meteor.subscribe("balance");
         let balances = BalanceApi.find({createdAt:{$gte:new Date(`${year}/${month}/${day}`)}}).fetch();
-          this.setState({balances});
+        this.setState({balances});
       });
-      --month;
-      --day;
-  }
+    }
   componentWillUnmount(){
     this.linkracker.stop();
   }
@@ -44,7 +40,7 @@ export default class Report extends Component {
 <Header/>
       <div style={{display:'flex',flex:1,position:'relative',top:65}}>
       <div id="expense"  style={{textAlign:'center',flex:1}}>
-      <h1>Report</h1>
+      <h1>Balance</h1>
       {this.state.balances.map((exp, i) =>{
         let today=exp.createdAt
         tareekh = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' +today.getDate()
