@@ -8,8 +8,8 @@ export default class BalanceForm  extends Component {
     super();
     this.state={
       balanceapi:[],
-      balance:0,
-      type:'0',
+      balance:'',
+      type:0,
     }
   }
   componentWillMount(){
@@ -31,7 +31,7 @@ export default class BalanceForm  extends Component {
       this.setState(object);
     }
     handleClick(event){
-      this.setState({type:event.target.value},()=>{console.log(this.state.type)})
+      this.setState({type:event.target.value})
     }
     handleSubmit(){
       let type=this.state.type
@@ -60,14 +60,16 @@ export default class BalanceForm  extends Component {
 
 
     render(){
-    return(
+      return(
        <div style={styles.mainBox}>
        <h1 style={{textAlign:'center'}} >Enter Balance</h1>
+       <h3 style={{textAlign:'center'}} >{date}</h3>
+
        <div style={styles.inputs}>
 
      <select onChange={this.handleClick.bind(this)} style={{margin:5}}>
-        <option value='1'>OPENING</option>
-        <option value='0'>CLOSING</option>
+        <option value={1}>OPENING</option>
+        <option value={0}>CLOSING</option>
       </select>
 
          <input required style={{margin:5}} value={this.state.balance} type="number" id='balance' placeholder='BALANCE' onChange={this.handleChange.bind(this)} />
