@@ -46,21 +46,17 @@ createInvoice(){}
     return(
       <div>
       <div className="mycontainer" style={{width:'100%',top:0,right:'10%',left:'10%',height:'100%'}}>
-        <div className="invoice" style={{position:'relative',width:'100%',top:0,height:'100%'}} >
-          <header>
-            <section>
-
-          <span>{date}</span>
-            </section>
-
-          </header>
-          <span>Name:{this.state.invoice.name}</span>
+        <div className="invoice" style={{position:'relative',width:'100%',top:0,height:'100%',overflow:'auto'}} >
+        <span>{date}</span><br/>
+        <h3><h4 className='glyphicon glyphicon-user'>:</h4>{this.state.invoice.name}</h3>
+        <h3><h4 className='glyphicon glyphicon-earphone'>:</h4>{this.state.invoice.phno}</h3>
           <main>
             <section>
               <span>Product</span>
               <span>Unit</span>
               <span>Price</span>
             </section>
+            <hr/>
 
             <section>
               {this.state.products.map((product, i) => {
@@ -76,14 +72,10 @@ createInvoice(){}
                   </div>
                 )
               })}
-
             </section>
-<hr/>
-<hr/>
-<hr/>
-            <section>
-              <span>Total</span>
-              <span>₹{mytotal[mytotal.length-1]}</span>
+            <section >
+              <span style={{fontWeight:'bold',color:'black'}}>Total</span>
+              <span style={{fontWeight:'bold',color:'black'}}>₹{mytotal[mytotal.length-1]}</span>
             </section>
           </main>
 

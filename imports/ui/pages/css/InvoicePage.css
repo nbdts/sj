@@ -59,13 +59,10 @@
   content: "#";
 }
 .invoice main {
-  border: 1px dashed #b7bcc3;
   border-left-width: 0px;
   border-right-width: 0px;
   padding-top: 30px;
   padding-bottom: 30px;
-}
-.invoice main section {
 }
 .invoice main section span {
   float: left;
@@ -141,22 +138,6 @@
   -webkit-transition: width 0.2s ease-in-out;
   -moz-transition: width 0.2s ease-in-out;
   transition: width 0.2s ease-in-out;
-}
-.invoice footer a:hover:after {
-  width: 100%;
-}
-.invoice footer a:nth-of-type(1) {
-  color: #D50000;
-  margin-right: 30px;
-}
-.invoice footer a:nth-of-type(1):after {
-  background-color: #EEFF41;
-}
-.invoice footer a:nth-of-type(2) {
-  color: #D50000;
-}
-.invoice footer a:nth-of-type(2):after {
-  background-color: #EEFF41;
 }
 .invoiceProductList{
   display: flex;
