@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import './css/AllInvoicePage';
 import {InvoiceApi} from '../../api/invoice';
+import {ShopsApi} from '../../api/shops';
 import { Tracker } from 'meteor/tracker';
 
  class AllInvoicePage extends Component {
@@ -9,6 +10,8 @@ import { Tracker } from 'meteor/tracker';
     super();
     this.state={
       invoice:[],
+      shops:[],
+      id:'',
     }
 
   }
@@ -16,16 +19,21 @@ import { Tracker } from 'meteor/tracker';
   componentDidMount(){
       this.linktracker = Tracker.autorun(()=> {
         Meteor.subscribe("invoice");
-        let invoice = InvoiceApi.find({}).fetch();
-          this.setState({invoice});
+        Meteor.subscribe("shop");
+        let shops = ShopsApi.find().fetch();
+        this.setState({shops});
+        console.log('changed');
+        let invoice = InvoiceApi.find({shopid:this.state.id}).fetch();
+        this.setState({invoice});
 
       });
   }
   componentWillUnmount(){
     this.linktracker.stop();
   }
-
-
+  handleClick(event){
+    this.setState({id:event.target.value})
+  }
 
   render() {
     return (
@@ -33,6 +41,15 @@ import { Tracker } from 'meteor/tracker';
       <h1>
       All Invoice
       </h1>
+      <select id='id' onChange={this.handleClick.bind(this)} style={{margin:5}}>
+      <option >Select Shop</option>
+      {this.state.shops.map((shop,i)=>{
+        return(
+          <option key={i} value={shop._id}>{shop.name}:{shop._id}</option>
+          )
+        })
+      }
+       </select>
       {this.state.invoice.map((invoices,i)=>{
         return(
         <div onClick={()=>{this.props.history.push(`/admin/allinvoice/${invoices._id}`)}} key={i} className="mainbox">
