@@ -11,7 +11,6 @@ import { Tracker } from 'meteor/tracker';
     this.state={
       invoice:[],
       shops:[],
-      id:'',
     }
 
   }
@@ -28,9 +27,7 @@ import { Tracker } from 'meteor/tracker';
     this.linktracker.stop();
   }
   handleClick(event){
-    this.setState({id:event.target.value})
-    console.log(this.state.id);
-    let invoice = InvoiceApi.find({shopid:this.state.id}).fetch();
+    let invoice = InvoiceApi.find({shopid:event.target.value}).fetch();
     this.setState({invoice});
   }
 
