@@ -53,6 +53,8 @@ export default class ExpenseForm  extends Component {
       }
     Meteor.call('expense.insert',expense);
     Bert.alert('Expense Added', 'success', 'growl-top-right');
+    this.setState({item:''})
+    this.setState({price:''})
     }
 
   render(){
@@ -61,8 +63,8 @@ export default class ExpenseForm  extends Component {
        <div style={styles.mainBox}>
        <h1 style={{textAlign:'center'}} >Enter Expense</h1>
        <div style={styles.inputs}>
-         <input style={{margin:5}} type="text" id='item' placeholder='ITEM' onChange={this.handleChange.bind(this)} />
-         <input style={{margin:5}} type="number" id='price' placeholder='PRICE' onChange={this.handleChange.bind(this)} />
+         <input style={{margin:5}} type="text" value={this.state.item} id='item' placeholder='ITEM' onChange={this.handleChange.bind(this)} />
+         <input style={{margin:5}} type="number" value={this.state.price} id='price' placeholder='PRICE' onChange={this.handleChange.bind(this)} />
          <button className='btn btn-warning' style={{margin:5}} onClick={this.handleClick.bind(this)} >Submit</button>
        </div>
        </div>

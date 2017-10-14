@@ -149,21 +149,18 @@ export default class BillPage extends Component {
             <div id="MenuOptions">
                 <div className="menubox">
 
-                <div id='col'>
-                <u>
-                <strong>Sandwich</strong>
-                </u>
+                <div>
+                <u><strong>Sandwich</strong></u>
+                </div>
                 {Sandwich.map((product, i) => {
                   return (
                     <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
                   )
                 })
               }
-              </div>
-              <div id='col'>
-              <u>
-               <strong>Chocolate Sandwich</strong>
-               </u>
+              <div>
+              <u><strong>Chocolate Sandwich</strong></u>
+               </div>
 
                {chocolateSandwich.map((product, i) => {
                  return (
@@ -171,39 +168,44 @@ export default class BillPage extends Component {
                  )
                })
              }
+             <div>
              <u>
              <strong>Italian</strong>
              </u>
+             </div>
              {italian.map((product, i) => {
                return (
                  <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
                )
              })
            }
+           <div>
              <u>
              <strong>Beverages</strong>
              </u>
+             </div>
              {beverages.map((product, i) => {
                return (
                  <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
                )
              })
            }
-           </div>
-
-           <div id='col'>
+           <div>
               <u>
               <strong>Chocolate Shake</strong>
               </u>
+              </div>
                 {chocolateShake.map((product, i) => {
                   return (
                     <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
                   )
                 })
               }
+              <div>
               <u >
               <strong>Juice</strong>
               </u>
+              </div>
 
               {juice.map((product, i) => {
                 return (
@@ -211,22 +213,17 @@ export default class BillPage extends Component {
                 )
               })
             }
+            <div>
             <u>
             <strong>Fruit Shake</strong>
             </u>
+            </div>
               {fruitShake.map((product, i) => {
                 return (
                   <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
                 )
               })
             }
-            </div>
-
-
-
-
-
-
               </div>
 
 
