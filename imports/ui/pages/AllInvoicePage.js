@@ -22,8 +22,8 @@ import { Tracker } from 'meteor/tracker';
         Meteor.subscribe("shop");
         let shops = ShopsApi.find().fetch();
         this.setState({shops});
-        console.log('changed');
         let invoice = InvoiceApi.find({shopid:this.state.id}).fetch();
+        console.log(invoice);
         this.setState({invoice});
 
       });
@@ -45,7 +45,7 @@ import { Tracker } from 'meteor/tracker';
       <option >Select Shop</option>
       {this.state.shops.map((shop,i)=>{
         return(
-          <option key={i} value={shop._id}>{shop.name}:{shop._id}</option>
+          <option key={i} value={shop._id}>{shop.name}</option>
           )
         })
       }
