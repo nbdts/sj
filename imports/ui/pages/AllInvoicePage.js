@@ -22,10 +22,6 @@ import { Tracker } from 'meteor/tracker';
         Meteor.subscribe("shop");
         let shops = ShopsApi.find().fetch();
         this.setState({shops});
-        let invoice = InvoiceApi.find({shopid:this.state.id}).fetch();
-        console.log(invoice);
-        this.setState({invoice});
-
       });
   }
   componentWillUnmount(){
@@ -33,6 +29,9 @@ import { Tracker } from 'meteor/tracker';
   }
   handleClick(event){
     this.setState({id:event.target.value})
+    console.log(this.state.id);
+    let invoice = InvoiceApi.find({shopid:this.state.id}).fetch();
+    this.setState({invoice});
   }
 
   render() {
