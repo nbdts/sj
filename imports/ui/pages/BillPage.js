@@ -148,25 +148,50 @@ export default class BillPage extends Component {
     return (
             <div id="MenuOptions">
                 <div className="menubox">
-                <u >
-                <strong>Juice</strong>
-                </u>
 
-                {juice.map((product, i) => {
+                <div id='col'>
+                <u>
+                <strong>Sandwich</strong>
+                </u>
+                {Sandwich.map((product, i) => {
                   return (
                     <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
                   )
                 })
               }
+              </div>
+              <div id='col'>
               <u>
-              <strong>Fruit Shake</strong>
-              </u>
-                {fruitShake.map((product, i) => {
-                  return (
-                    <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
-                  )
-                })
-              }
+               <strong>Chocolate Sandwich</strong>
+               </u>
+
+               {chocolateSandwich.map((product, i) => {
+                 return (
+                   <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
+                 )
+               })
+             }
+             <u>
+             <strong>Italian</strong>
+             </u>
+             {italian.map((product, i) => {
+               return (
+                 <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
+               )
+             })
+           }
+             <u>
+             <strong>Beverages</strong>
+             </u>
+             {beverages.map((product, i) => {
+               return (
+                 <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
+               )
+             })
+           }
+           </div>
+
+           <div id='col'>
               <u>
               <strong>Chocolate Shake</strong>
               </u>
@@ -176,44 +201,29 @@ export default class BillPage extends Component {
                   )
                 })
               }
-                <u>
-                <strong>Beverages</strong>
-                </u>
-                {beverages.map((product, i) => {
-                  return (
-                    <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
-                  )
-                })
-              }
-              <u>
-              <strong>Sandwich</strong>
-              </u>
-              {Sandwich.map((product, i) => {
-                return (
-                  <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
-                )
-              })
-            }
-
-             <u>
-              <strong>Chocolate Sandwich</strong>
+              <u >
+              <strong>Juice</strong>
               </u>
 
-              {chocolateSandwich.map((product, i) => {
+              {juice.map((product, i) => {
                 return (
                   <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
                 )
               })
             }
-              <u>
-              <strong>Italian</strong>
-              </u>
-              {italian.map((product, i) => {
+            <u>
+            <strong>Fruit Shake</strong>
+            </u>
+              {fruitShake.map((product, i) => {
                 return (
                   <div id='menuProduct' onClick={this.addToBill.bind(this, product)} key={i}><ProductSinlgeItem product={product} isAdmin={false}/></div>
                 )
               })
             }
+            </div>
+
+
+
 
 
 

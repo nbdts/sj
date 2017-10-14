@@ -54,7 +54,7 @@ createInvoice(){}
             </section>
 
           </header>
-          <h2 className="h2">Name:{this.state.invoice.name}</h2>
+          <span>Name:{this.state.invoice.name}</span>
           <main>
             <section>
               <span>Product</span>

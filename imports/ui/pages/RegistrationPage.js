@@ -118,7 +118,7 @@ componentWillUnmount(){
             </div>
 
 
-            <div style={{display:'flex'}}>
+            <div style={{display:'flex',flexWrap:'wrap'}}>
             {
               this.state.shops.map((shop,i)=>{
                 return (<div key={i} >
@@ -126,8 +126,6 @@ componentWillUnmount(){
                   </div>)
                 })
               }
-
-
               </div>
 
 
