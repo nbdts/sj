@@ -12,7 +12,7 @@ if (result) {
 
   render(){
     return(
-       <div id='product' style={{padding:10}}>
+       <div id='product' style={{padding:3}}>
           <div className="title-row">
            <div className="title-txt">
            {this.props.product.name}<br/>

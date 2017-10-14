@@ -64,9 +64,8 @@
  background-color:transparent;
 }
 .menubox u{
-  width: 20%;
-  padding-top:19px;
-  padding-bottom:18px;
+  width: 100%;
+  padding: 5px;
   color:#fcb900;
   text-align: center;
   box-shadow: 0 0 1px #efefef;
@@ -78,6 +77,6 @@
    height: 100vh;
  }
 #menuProduct{
-  width: 20%;
+  width: 100%;
   box-shadow: 0 0 1px #efefef;
     }
