@@ -27,7 +27,11 @@ export default class InvoicePage extends Component {
     this.props.chnageUsername(e.target.value);
   }
   chnageUserphone(e){
-    this.props.chnageUserphone(e.target.value);
+    if (e.target.value>'9999999999') {
+      Bert.alert('Invalid Phone Number', 'danger', 'growl-top-right');
+    } else {
+      this.props.chnageUserphone(e.target.value);
+    }
   }
   render() {
     let price=0;

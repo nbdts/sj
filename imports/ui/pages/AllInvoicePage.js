@@ -13,6 +13,7 @@ import { Tracker } from 'meteor/tracker';
       shops:[],
       from:new Date()-new Date(),
       to:new Date(),
+      invoiceNo:'',
       phno:'',
     }
 
@@ -33,15 +34,28 @@ import { Tracker } from 'meteor/tracker';
     let object = {};
     object[event.target.id] = event.target.value
     this.setState(object);
+    this.setState({invoiceNo:'',phno:''})
+    }
+    invoicenoInvoice(event){
+      let invoice = InvoiceApi.find({seq:event.target.value}).fetch();
+      this.setState({invoice});
+      this.setState({invoiceNo:event.target.value,phno:''});
+      this.setState({from:new Date()-new Date()})
+      this.setState({to:new Date()})
+
     }
     noInvoice(event){
       if(event.target.value>9999999999)
       {
         Bert.alert('Invalid Phone Number', 'danger', 'growl-top-right');
+      }else {
+        let invoice = InvoiceApi.find({phno:event.target.value}).fetch();
+        this.setState({invoice});
+        this.setState({phno:event.target.value,invoiceNo:''});
+        this.setState({from:new Date()-new Date()})
+        this.setState({to:new Date()})
+
       }
-      let invoice = InvoiceApi.find({phno:event.target.value}).fetch();
-      this.setState({invoice});
-      this.setState({phno:event.target.value})
 
     }
 
@@ -49,7 +63,8 @@ import { Tracker } from 'meteor/tracker';
     let from=this.state.from;
     let to=this.state.to;
     let invoice = InvoiceApi.find({shopid:event.target.value,createdAt:{$gte:new Date(`${from}`),$lt:new Date(`${to}`) } }).fetch();
-    this.setState({invoice,phno:''});
+    this.setState({invoice});
+    this.setState({invoiceNo:'',phno:''})
     }
 
   render() {
@@ -82,7 +97,7 @@ import { Tracker } from 'meteor/tracker';
        </div>
        <div style={{display:'flex',flex:1,flexFlow:'column',padding:5,alignItems:'center'}}>
        <label style={{padding:5}}>Invoice No</label><div>
-       SJ<input value={this.state.phno} onChange={this.noInvoice.bind(this)} type="number"/>
+       SJ<input value={this.state.invoiceNo} onChange={this.invoicenoInvoice.bind(this)} type="number"/>
        </div>
        </div>
        </div>
