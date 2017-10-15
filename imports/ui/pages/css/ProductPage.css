@@ -176,6 +176,7 @@ input:focus~.bar:before {
 .title-txt {
   text-align: left;
   position: relative;
+  text-transform: lowercase;
   padding: 5px;
   flex: 9;
   color: White;

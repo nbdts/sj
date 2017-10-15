@@ -68,8 +68,8 @@ export default class BalanceForm  extends Component {
        <div style={styles.inputs}>
 
      <select onChange={this.handleClick.bind(this)} style={{margin:5}}>
-        <option value={1}>OPENING</option>
         <option value={0}>CLOSING</option>
+        <option value={1}>ADD TO OPENING</option>
       </select>
 
          <input required style={{margin:5}} value={this.state.balance} type="number" id='balance' placeholder='BALANCE' onChange={this.handleChange.bind(this)} />

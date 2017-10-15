@@ -49,7 +49,9 @@ render() {
     <div style={{backgroundColor:'#ffc300'}} >
     </div>
     <div style={{flex:5,backgroundColor:'#ffc300',height:'64px'}} className="main-navigation">
-        <img style={{position:'absolute',left:'40%',height:'100%',width:'200px'}} src='/sjflex.jpg' alt="flex"/>
+      <a href="/">
+      <img style={{position:'absolute',left:'40%',height:'100%',width:'200px'}} src='/sjflex.jpg' alt="flex"/>
+      </a>
         <nav className="horizontal-nav primary-wrapper" role='navigation'>
           <ul className='list' style={{marginRight:'20px'}}>
             <li className="folder">
@@ -63,7 +65,7 @@ render() {
               </li>
               :
               <li>
-              <a style={styles.dropDown} href={`/rep/${Session.get('shop')._id}`}>view Report</a>
+              <a style={styles.dropDown} href={`/balsheet/${Session.get('shop')._id}`}>Balance Sheet</a>
               </li>
               }
               {
@@ -98,7 +100,6 @@ render() {
               </li>
           </ul>
         </nav>
-        <label htmlFor="mobile-menu-toggle" className="mobile-menu-label hidden"></label>
       </div>
 
       <Modal

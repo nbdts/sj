@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import {InvoiceApi} from '../../api/invoice';
 import {Tracker} from 'meteor/tracker';
 import {Session} from 'meteor/session';
-
 import './css/Print';
-
 
 export default class Print  extends Component {
   constructor() {
@@ -27,14 +25,14 @@ export default class Print  extends Component {
     })
     return(
     <div>
-        <div style={{justifyContent:'center',textAlign:'center'}} id='header'>
+        <div style={{justifyContent:'center',alignItems:'center'}} id='header'>
             <u style={{textAlign:'center'}}>
               <h3 style={{textAlign:'center',fontSize:15}}>Invoice</h3>
             </u>
             <div>
-              <span style={{textAlign:'left',fontWeight:'bold',fontSize:12}}>Sandwich Junction</span>
+              <span style={{fontWeight:'bold',fontSize:12}}>Sandwich Junction</span>
               <br/>
-              <span style={{textAlign:'left',fontWeight:'bold',fontSize:10 }}>{this.props.shop.add}</span>
+              <span style={{fontWeight:'bold',fontSize:10 }}>{this.props.shop.add}</span>
             </div>
           <hr/>
 

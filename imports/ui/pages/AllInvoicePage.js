@@ -52,7 +52,7 @@ import { Tracker } from 'meteor/tracker';
         <div className="name">{invoices.name}</div>
         <div className="name">{`${invoices.createdAt.getDay()}/${invoices.createdAt.getMonth()}/${invoices.createdAt.getFullYear()}`}</div>
         <div className="status">{invoices.status}</div>
-        <div className="x"><span className="glyphicon glyphicon-remove "></span></div>
+        <div className="x" style={{color:'red'}}><span className="glyphicon glyphicon-remove "></span></div>
         </div>
         )
         })

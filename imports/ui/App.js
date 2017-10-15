@@ -10,6 +10,7 @@ import Report from "./pages/Report";
 import RegistrationPage from "./pages/RegistrationPage";
 import TestPage from "./pages/TestPage";
 import TodayExpense from "./pages/TodayExpense";
+import BalanceSheet from "./pages/BalanceSheet";
 import ExpenseForm from "./componants/ExpenseForm";
 import BalanceForm from "./componants/BalanceForm";
 
@@ -55,6 +56,7 @@ export default class App extends Component {
       <Route exact path = "/bill" component = {BillPage} />
       <Route exact path = "/invoice" component = {InvoicePage} />
       <Route exact path = "/rep" component = {Report} />
+      <Route exact path = "/balsheet/:id" component = {BalanceSheet} />
       <Route exact path = "/rep/:id" component = {Report} />
       </div>
       );
