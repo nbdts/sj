@@ -30,13 +30,14 @@ export default class BalanceSheet extends Component {
         let expenses = ExpenseApi.find({createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.match.params.id}).fetch();
         let invoices = InvoiceApi.find({createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.match.params.id}).fetch();
         let closeBal = BalanceApi.find({type:"0",createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.match.params.id}).fetch();
-        let openBal = BalanceApi.find({type:"0",createdAt:{$gte:new Date(`${year}/${month}/${date-1}`)},shopid:this.props.match.params.id}).fetch();
         let addOpenBal = BalanceApi.find({type:"1",createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.match.params.id}).fetch();
+        let openBal = BalanceApi.find({type:"0",createdAt:{$gte:new Date(`${year}/${month}/${--date}`),$lt:new Date(`${year}/${month}/${++date}`)},shopid:this.props.match.params.id}).fetch();
         this.setState({expenses});
         this.setState({invoices});
         this.setState({openBal});
         this.setState({closeBal});
         this.setState({addOpenBal});
+        console.log(openBal);
     });
     }
   componentWillUnmount(){
@@ -79,7 +80,7 @@ export default class BalanceSheet extends Component {
                           <h4>Day sales:</h4>
                           <h4>Opening bal:</h4>
                           <h4>Added bal:</h4>
-                          <h4>Total:</h4>
+                          <h4>Total Amount:</h4>
                         </div>
                        <div id="values" style={{flex:1,textAlign:'left'}}>
                           <h4>{price}</h4>
@@ -92,12 +93,19 @@ export default class BalanceSheet extends Component {
 
             <div id="expense" style={{textAlign:'center',flex:1,borderRight:'groove'}}>
             <h1>RIGHT</h1>
-              <div id="attributes" style={{flex:1,textAlign:'left',paddingLeft:20}}>
-                <h4>Closing Bal:{closeBal}</h4>
-                <h4>Expenses:{expense}</h4>
+            <div style={{display:'flex',flexFlow:'row'}}>
+              <div id="attributes" style={{flex:1,textAlign:'right',paddingLeft:20}}>
+                <h4>Closing Bal:</h4>
+                <h4>Expenses:</h4>
                 <h4></h4>
-                <h4>Total:{parseFloat(closeBal)+parseFloat(expense)}</h4>
+                <h4>Total Amount:</h4>
               </div>
+              <div id="values" style={{flex:1,textAlign:'left'}}>
+                 <h4>{closeBal}</h4>
+                 <h4>{expense}</h4>
+                 <h4>{parseFloat(closeBal)+parseFloat(expense)}</h4>
+               </div>
+             </div>
             </div>
 
             <div id="expense"  style={{textAlign:'center',flex:1,borderRight:'groove'}}>
