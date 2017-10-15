@@ -9,7 +9,6 @@ Meteor.methods({
     name:product.name,
     price:product.price,
     category:product.category,
-    image:product.image,
     status:1,
     createdAt:new Date()
     });

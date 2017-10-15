@@ -69,7 +69,7 @@ export default class BillPage extends Component {
     }
   }
 
-  createInvoice() {
+  createInvoice(amount) {
 
     if (this.state.billprod.length !== 0) {
       if ( this.state.username === '' || this.state.username == undefined) {
@@ -80,7 +80,8 @@ export default class BillPage extends Component {
         Bert.alert('Enter Customer Number', 'danger', 'growl-top-right');
         return false;
       }
-  Meteor.call('invoice.insert',Session.get('shop')._id, this.state.username,this.state.userphone, this.state.billprod,(err,res)=>{
+      console.log(amount);
+  Meteor.call('invoice.insert',Session.get('shop')._id, this.state.username,this.state.userphone, this.state.billprod,amount,(err,res)=>{
     const myInvoice=InvoiceApi.findOne({_id:res})
     this.setState({id:myInvoice.seq})
     if (err) {

@@ -48,6 +48,7 @@ render() {
     <header style={{backgroundColor:'#ffc300'}} className="header-banner-top">
     <div style={{backgroundColor:'#ffc300'}} >
     </div>
+    <div style={{paddingLeft:'20px',fontSize:20}}><strong>{Session.get('shop').name}</strong></div>
     <div style={{flex:5,backgroundColor:'#ffc300',height:'64px'}} className="main-navigation">
       <a href="/">
       <img style={{position:'absolute',left:'40%',height:'100%',width:'200px'}} src='/sjflex.jpg' alt="flex"/>

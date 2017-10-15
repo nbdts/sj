@@ -15,9 +15,9 @@ export default class InvoicePage extends Component {
     object[event.target.id] = event.target.value
     this.setState(object);
     }
-  MyInvoiceHandel(){
+  MyInvoiceHandel(amount){
     if(this.state.uname!='') {
-      this.props.MyInvoice()
+      this.props.MyInvoice(amount)
     }
     else {
       alert('Enter customer name ')
@@ -76,7 +76,7 @@ export default class InvoicePage extends Component {
 
             <footer style={{position:'absolute',bottom:10,right:40}}>
               <span ><a style={{color:'#999'}}  href="">Later</a></span>
-              <span><a onClick={this.MyInvoiceHandel.bind(this)} href="#0">Pay Now</a></span>
+              <span><a onClick={this.MyInvoiceHandel.bind(this,mytotal[mytotal.length-1])} href="#0">Pay Now</a></span>
             </footer>
           </div>
         </div>

@@ -6,7 +6,7 @@ Counter = new Mongo.Collection("counter");
 
 Meteor.methods({
 
-'invoice.insert'(shopid,name,phno,products){
+'invoice.insert'(shopid,name,phno,products,amount){
   var insert = InvoiceApi.insert({
 
     seq:getNextSequence("projectId"),
@@ -15,7 +15,7 @@ Meteor.methods({
     phno,
     products,
     createdAt:new Date(),
-    status:1,
+    amount,
    });
    return insert;
 },
@@ -40,7 +40,7 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
       Counter._ensureIndex({"type": 1});
       if (Counter.find({type: "projectId"}).count() == 0) Counter.insert({type: "projectId", seq: 0});
-  }); 
+  });
 }
 
 
@@ -48,6 +48,5 @@ if (Meteor.isServer) {
 getNextSequence = function (name) {
     Counter.update({type: name}, {$inc: {seq: 1}});
     var ret = Counter.findOne({type: name});
-    console.log(ret);
     return ret.seq;
 }
