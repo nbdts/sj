@@ -9,7 +9,7 @@ export default class BalanceForm  extends Component {
     this.state={
       balanceapi:[],
       balance:'',
-      type:0,
+      type:'0',
     }
   }
   componentWillMount(){
@@ -42,7 +42,7 @@ export default class BalanceForm  extends Component {
         balance:balance
       }
         Meteor.call('balance.check',function(err,res){
-          if (!err) {console.log(balanceobj.type);
+          if (!err) {
             if((res.length==1&&(res[0].type==balanceobj.type))||res.length==2){
                 Bert.alert('Already added', 'warning', 'growl-top-right')
                 this.setState({balance:0})
@@ -68,8 +68,8 @@ export default class BalanceForm  extends Component {
        <div style={styles.inputs}>
 
      <select onChange={this.handleClick.bind(this)} style={{margin:5}}>
-        <option value={0}>CLOSING</option>
-        <option value={1}>ADD TO OPENING</option>
+        <option value={'0'}>CLOSING</option>
+        <option value={'1'}>ADD TO OPENING</option>
       </select>
 
          <input required style={{margin:5}} value={this.state.balance} type="number" id='balance' placeholder='BALANCE' onChange={this.handleChange.bind(this)} />

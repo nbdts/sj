@@ -29,14 +29,12 @@ export default class BalanceSheet extends Component {
         Meteor.subscribe("balance");
         Meteor.subscribe("invoice");
         let expenses = ExpenseApi.find({createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.match.params.id}).fetch();
-        let balances = BalanceApi.find({createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.match.params.id}).fetch();
         let invoices = InvoiceApi.find({createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.match.params.id}).fetch();
-        let closeBal = BalanceApi.find({type:'0',createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.match.params.id}).fetch();
-        let openBal = BalanceApi.find({type:'0',createdAt:{$gte:new Date(`${year}/${month}/${date-1}`)},shopid:this.props.match.params.id}).fetch();
-        let addOpenBal = BalanceApi.find({type:'1',createdAt:{$gte:new Date(`${year}/${month}/${date-1}`)},shopid:this.props.match.params.id}).fetch();
+        let closeBal = BalanceApi.find({type:"0",createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.match.params.id}).fetch();
+        let openBal = BalanceApi.find({type:"0",createdAt:{$gte:new Date(`${year}/${month}/${date-1}`)},shopid:this.props.match.params.id}).fetch();
+        let addOpenBal = BalanceApi.find({type:"1",createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.match.params.id}).fetch();
         this.setState({expenses});
         this.setState({invoices});
-        this.setState({balances});
         this.setState({openBal});
         this.setState({closeBal});
         this.setState({addOpenBal});
@@ -53,6 +51,22 @@ export default class BalanceSheet extends Component {
     let mytotal= this.state.invoices.map((invoice)=>{
           return(price=parseFloat(price)+parseFloat(invoice.amount));
     })
+    let expense=0;
+    let myexptotal= this.state.expenses.map((exp)=>{
+          return(expense=parseFloat(expense)+parseFloat(exp.price));
+    })
+    let openBal=0;
+    myexptotal= this.state.openBal.map((exp)=>{
+          return(openBal=parseFloat(openBal)+parseFloat(exp.price));
+    })
+    let closeBal=0;
+    myexptotal= this.state.closeBal.map((exp)=>{
+          return(closeBal=parseFloat(closeBal)+parseFloat(exp.price));
+    })
+    let addOpenBal=0;
+    myexptotal= this.state.addOpenBal.map((exp)=>{
+          return(addOpenBal=parseFloat(addOpenBal)+parseFloat(exp.price));
+    })
     return(
       <div>
       <Header/>
@@ -67,24 +81,19 @@ export default class BalanceSheet extends Component {
                           </div>
                        <div id="values" style={{flex:1,textAlign:'left'}}>
                           <h3>{price}</h3>
-                          <h3>{this.state.openBal}</h3>
-                          <h3>{this.state.addOpenBal}</h3>
+                          <h3>{openBal}</h3>
+                          <h3>{addOpenBal}</h3>
                         </div>
                 </div>
             </div>
             <div id="expense" style={{textAlign:'center',flex:1}}>
             <h1>RIGHT</h1>
             <div style={{display:'flex',flexFlow:'row'}}>
-            <div id="attributes" style={{flex:1,textAlign:'right'}}>
-            <h3>Closing Bal:</h3>
-            <h3>Opening bal:</h3>
+            <div id="attributes" style={{flex:1,textAlign:'left',paddingLeft:20}}>
+            <h3>Closing Bal:{closeBal}</h3>
+            <h3>Expenses:{expense}</h3>
             <h3></h3>
             <h3>Total:</h3>
-            </div>
-            <div id="values" style={{flex:1,textAlign:'left'}}>
-            <h3>{this.state.closeBal}</h3>
-            <h3>{this.state.expenses}</h3>
-            <h3></h3>
             </div>
             </div>
 
