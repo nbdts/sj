@@ -76,8 +76,8 @@ export default class BillPage extends Component {
         Bert.alert('Enter Customer Name', 'danger', 'growl-top-right');
         return false;
       }
-      if ( this.state.userphone === '' || this.state.userphone == undefined) {
-        Bert.alert('Enter Customer Number', 'danger', 'growl-top-right');
+      if ( this.state.userphone>9999999999) {
+        Bert.alert('Mobile no invalid', 'danger', 'growl-top-right');
         return false;
       }
       console.log(amount);
