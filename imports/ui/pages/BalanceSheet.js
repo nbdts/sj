@@ -9,12 +9,11 @@ export default class BalanceSheet extends Component {
     super();
     this.state={
       expenses:[],
-      balances:[],
       invoices:[],
+      closebal:[],
+      openbal:[],
+      addOpenBal:[],
       date:'',
-      closebal:0,
-      openbal:0,
-      addOpenBal:0,
 
     }
   }
@@ -38,7 +37,7 @@ export default class BalanceSheet extends Component {
         this.setState({openBal});
         this.setState({closeBal});
         this.setState({addOpenBal});
-      });
+    });
     }
   componentWillUnmount(){
     this.linkracker.stop();
@@ -52,52 +51,72 @@ export default class BalanceSheet extends Component {
           return(price=parseFloat(price)+parseFloat(invoice.amount));
     })
     let expense=0;
-    let myexptotal= this.state.expenses.map((exp)=>{
+    let myexpense= this.state.expenses.map((exp)=>{
           return(expense=parseFloat(expense)+parseFloat(exp.price));
     })
     let openBal=0;
-    myexptotal= this.state.openBal.map((exp)=>{
-          return(openBal=parseFloat(openBal)+parseFloat(exp.price));
+    myopenbal= this.state.openBal.map((exp)=>{
+          return(openBal=parseFloat(openBal)+parseFloat(exp.balance));
     })
     let closeBal=0;
-    myexptotal= this.state.closeBal.map((exp)=>{
-          return(closeBal=parseFloat(closeBal)+parseFloat(exp.price));
+    myclosebal= this.state.closeBal.map((exp)=>{
+          return(closeBal=parseFloat(closeBal)+parseFloat(exp.balance));
     })
     let addOpenBal=0;
-    myexptotal= this.state.addOpenBal.map((exp)=>{
-          return(addOpenBal=parseFloat(addOpenBal)+parseFloat(exp.price));
+    myaddedbal= this.state.addOpenBal.map((exp)=>{
+          return(addOpenBal=parseFloat(addOpenBal)+parseFloat(exp.balance));
     })
     return(
       <div>
       <Header/>
             <div style={{display:'flex',flex:1,position:'relative',top:65,height:'70vh'}}>
+
+
               <div id="expense"  style={{textAlign:'center',flex:1,borderRight:'groove'}}>
                 <h1>LEFT</h1>
                 <div style={{display:'flex',flexFlow:'row'}}>
-                        <div id="attributes" style={{flex:3,textAlign:'right'}}>
-                          <h3>Day sales:</h3>
-                          <h3>Opening bal:</h3>
-                          <h3>Added bal:</h3>
-                          </div>
+                        <div id="attributes" style={{flex:2,textAlign:'right'}}>
+                          <h4>Day sales:</h4>
+                          <h4>Opening bal:</h4>
+                          <h4>Added bal:</h4>
+                          <h4>Total:</h4>
+                        </div>
                        <div id="values" style={{flex:1,textAlign:'left'}}>
-                          <h3>{price}</h3>
-                          <h3>{openBal}</h3>
-                          <h3>{addOpenBal}</h3>
+                          <h4>{price}</h4>
+                          <h4>{openBal}</h4>
+                          <h4>{addOpenBal}</h4>
+                          <h4>{parseFloat(addOpenBal)+parseFloat(price)+parseFloat(openBal)}</h4>
                         </div>
                 </div>
             </div>
-            <div id="expense" style={{textAlign:'center',flex:1}}>
+
+            <div id="expense" style={{textAlign:'center',flex:1,borderRight:'groove'}}>
             <h1>RIGHT</h1>
-            <div style={{display:'flex',flexFlow:'row'}}>
-            <div id="attributes" style={{flex:1,textAlign:'left',paddingLeft:20}}>
-            <h3>Closing Bal:{closeBal}</h3>
-            <h3>Expenses:{expense}</h3>
-            <h3></h3>
-            <h3>Total:</h3>
-            </div>
+              <div id="attributes" style={{flex:1,textAlign:'left',paddingLeft:20}}>
+                <h4>Closing Bal:{closeBal}</h4>
+                <h4>Expenses:{expense}</h4>
+                <h4></h4>
+                <h4>Total:{parseFloat(closeBal)+parseFloat(expense)}</h4>
+              </div>
             </div>
 
-            </div>
+            <div id="expense"  style={{textAlign:'center',flex:1,borderRight:'groove'}}>
+              <h1>EXPENSES</h1>
+              {
+
+              this.state.expenses.map((exp,i)=>{
+                    return(
+                      <div key={i} style={{display:'flex',flexFlow:'row',flex:1}}>
+                      <h4 style={{flex:1}} >{i+1})</h4>
+                       <h4 style={{flex:1}} > {exp.item}</h4>
+                        <h4 style={{flex:1}} >{exp.price}</h4>
+                      </div>
+                    );
+              })
+            }
+
+          </div>
+
             </div>
             </div>
 
