@@ -43,7 +43,7 @@ export default class Print  extends Component {
     <span style={{textAlign:'left',fontSize:12}}>{this.props.userphone}</span>
     </div>
     <div style={{textAlign:'left',flex:1,flexFlow:'column'}}>
-    <span style={{textAlign:'left',fontSize:12}}>invoice:SJ00{this.props.id}</span><br/>
+    <span style={{textAlign:'left',fontSize:12}}>invoice:SJ{this.props.id}</span><br/>
     <span style={{textAlign:'left',fontSize:12}} >Date:{date}</span>
     </div>
     </div>
