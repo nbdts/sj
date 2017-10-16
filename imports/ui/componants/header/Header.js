@@ -39,11 +39,11 @@ class Header extends Component {
   }
 
   handleShopLogout() {
-    Session.clear("shop");
+    Session.clear();
     <Redirect to = "/login" />
 }
 handleAdminLogout() {
-  Session.clear("admin");
+  Session.clear();
   <Redirect to = "/login" />
 }
 

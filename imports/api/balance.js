@@ -21,6 +21,9 @@ Meteor.methods({
 },
 'balance.remove'(balanceid){
   BalanceApi.remove(balanceid);
+},
+'balance.update'(balanceid,balance){
+  return  BalanceApi.update({_id:balanceid},{$set:{balance}});
 }
 });
 if (Meteor.isServer) {

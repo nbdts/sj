@@ -11,12 +11,11 @@ export default class BalanceSheet extends Component {
       expenses:[],
       invoices:[],
       openBal:0,
+      openBalId:0,
       closeBal:0,
+      closeBalID:0,
       addOpenBal:[],
-      fetchedbalance:[],
       date:'',
-
-
     }
   }
 
@@ -25,10 +24,11 @@ export default class BalanceSheet extends Component {
       if (res) {
         res.map((fb)=>{
           if (fb.type === "1") {
-            this.setState({openBal:fb.balance})
+            this.setState({openBal:fb.balance,openBalId:fb._id})
+            this.setState({openBal:fb.balance,openBalId:fb._id})
           }
           if (fb.type === "0") {
-            this.setState({closeBal:fb.balance})
+            this.setState({closeBal:fb.balance,closeBalID:fb._id},()=>{console.log(this.state.closeBal)})
           }
         })
       }
@@ -54,7 +54,39 @@ export default class BalanceSheet extends Component {
   }
 
 
-
+  setValue(field, event) {
+   let object = {};
+   object[field] = event.target.value;
+   this.setState(object);
+ }
+ handleResettingopenBal(event) {
+   event.preventDefault();
+   if (!this.state.openBal || !this.state.openBalId) {
+     Bert.alert('set Opening Balance First', 'danger', 'growl-top-right');
+     return false;
+   }
+   let openBal=this.state.openBal.trim();
+   let openBalId=this.state.openBalId.trim();
+   Meteor.call('balance.update',openBalId,openBal,(err,res)=>{
+     if (res) {
+       Bert.alert('successfully update', 'success', 'growl-top-right');
+     }
+   })
+ }
+ handleResettingcloseBal(event) {
+   event.preventDefault();
+   if (!this.state.closeBal || !this.state.closeBalID) {
+     Bert.alert('set Closing Balance First', 'danger', 'growl-top-right');
+     return false;
+   }
+   let closeBal=this.state.closeBal.trim();
+   let closeBalID=this.state.closeBalID.trim();
+   Meteor.call('balance.update',closeBalID,closeBal,(err,res)=>{
+     if (res) {
+       Bert.alert('successfully update', 'success', 'growl-top-right');
+     }
+   })
+ }
   render(){
     let price=0;
     let mytotal= this.state.invoices.map((invoice)=>{
@@ -73,8 +105,20 @@ export default class BalanceSheet extends Component {
       <Header/>
             <div style={{marginTop:60}}>
             <div style={{display:'flex',height:60,}}>
-            <div style={{flex:1,display:'flex',justifyContent:'center',alignItems:'center',fontSize:20}}>Opening Balance : {this.state.openBal}</div>
-            <div style={{flex:1,display:'flex',justifyContent:'center',alignItems:'center',fontSize:20}}>ClosingBalance : {this.state.closeBal}</div>
+            <div style={{flex:1,display:'flex',justifyContent:'center',alignItems:'center',fontSize:20}}>
+                  <form onSubmit={this.handleResettingopenBal.bind(this)} >
+                  <label style={{marginRight:3}}>Opening Balance</label>
+                  <input type="text" value={this.state.openBal} onChange={this.setValue.bind(this, 'openBal')} required />
+                    <input type="submit" value="reset" />
+                  </form>
+            </div>
+            <div style={{flex:1,display:'flex',justifyContent:'center',alignItems:'center',fontSize:20}} >
+                  <form onSubmit={this.handleResettingcloseBal.bind(this)}>
+                  <label style={{marginRight:3}}>Closing Balnce</label>
+                  <input type="text" value={this.state.closeBal} onChange={this.setValue.bind(this, 'closeBal')} required />
+                    <input type="submit" value="reset" />
+                  </form>
+            </div>
             </div>
 
             <div style={{display:'flex',flex:1}}>
