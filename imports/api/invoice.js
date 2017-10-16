@@ -8,7 +8,6 @@ Meteor.methods({
 
 'invoice.insert'(shopid,name,phno,products,amount){
   var insert = InvoiceApi.insert({
-
     seq:getNextSequence("projectId"),
     shopid:shopid,
     name,

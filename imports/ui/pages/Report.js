@@ -1,94 +1,51 @@
 import React, { Component } from 'react';
-import Header from '../componants/header/Header';
+import BalanceSheetForAdmin from './BalanceSheetForAdmin';
 import { Tracker } from 'meteor/tracker';
-import {ExpenseApi} from '../../api/expense';
-import {BalanceApi} from '../../api/balance';
-export default class Report extends Component {
+import {ShopsApi} from '../../api/shops';
+
+export default class Report  extends Component {
+
   constructor() {
     super();
     this.state={
-      expenses:[],
-      balances:[],
-      date:'',
-
+      shops:[],
+      shopid:'',
     }
   }
-
   componentWillMount(){
-    var today=new Date()
-     var day= today.getDate();
-     var month= today.getMonth()+1;
-     var year= today.getFullYear();
      this.linkracker = Tracker.autorun(()=> {
-        Meteor.subscribe("expense");
-        let expenses = ExpenseApi.find({shopid:this.props.match.params.id}).fetch();
-        this.setState({expenses});
-        Meteor.subscribe("balance");
-        let balances = BalanceApi.find({createdAt:{$gte:new Date(`${year}/${month}/${day}`)}}).fetch();
-        this.setState({balances});
-      });
+        Meteor.subscribe("shop");
+        let shops = ShopsApi.find().fetch();
+        this.setState({shops});
+    });
     }
-  componentWillUnmount(){
-    this.linkracker.stop();
-  }
 
-
+    componentWillUnmount(){
+      this.linkracker.stop();
+    }
+    setValue(event){
+      this.setState({shopid:event.target.value})
+    }
 
   render(){
     return(
-<div>
-<Header/>
-      <div style={{display:'flex',flex:1,position:'relative',top:65}}>
-      <div id="expense"  style={{textAlign:'center',flex:1}}>
-      <h1>Balance</h1>
-      {this.state.balances.map((exp, i) =>{
-        let today=exp.createdAt
-        tareekh = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' +today.getDate()
+       <div>
+       <div style={{display:'flex',flex:1,justifyContent:'center',marginTop:70}}>
+           <select onChange={this.setValue.bind(this)}>
+           <option >Select Shop</option>
+           {this.state.shops.map((shop,i)=>{
+             return(
+               <option key={i} value={shop._id}>{shop.name}</option>
+               )
+             })
+           }
+            </select>
+       </div>
+       {
 
-        return (
-          <div key={i} style={{padding:10,backgroundColor:'white',display:'flex',flex:1,flexFlow:'row'}} >
-              <div style={{flex:1,backgroundColor:'white'}}>
-              Type::{(exp.type)?<span>Opening</span>:<span> Closing</span>}
-              </div>
-              <div  style={{flex:1,backgroundColor:'white'}}>
-              PRICE::{exp.balance}
-              </div>
-              <div style={{flex:1,backgroundColor:'white'}}>
-              DATE::{tareekh}
-              </div>
-
-          </div>
-        )
-      })
-    }
-
-      </div>
-      <div id="expense" style={{textAlign:'center',flex:1}}>
-      <h1>Expense</h1>
-      {this.state.expenses.map((exp, i) =>{
-        let today=exp.createdAt
-        tareekh = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' +today.getDate()
-
-        return (
-          <div key={i} style={{padding:10,backgroundColor:'white',display:'flex',flex:1,flexFlow:'row'}} >
-
-              <div style={{flex:1,backgroundColor:'white'}}>
-              ITEM::{exp.item}
-              </div>
-              <div  style={{flex:1,backgroundColor:'white'}}>
-              PRICE::{exp.price}
-              </div>
-              <div style={{flex:1,backgroundColor:'white'}}>
-              DATE::{tareekh}
-              </div>
-
-          </div>
-        )
-      })
-    }
-      </div>
-      </div>
-      </div>
+        this.state.shopid === '' ? null :  <BalanceSheetForAdmin shopid={this.state.shopid} />
+       }
+       </div>
     );
   }
 }
