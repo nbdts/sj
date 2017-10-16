@@ -53,10 +53,14 @@ render() {
     <div style={{backgroundColor:'#ffc300'}} >
     </div>
 
-    <div style={{paddingLeft:'20px',fontSize:20}}><strong>
-
+    <div style={{paddingLeft:'20px',fontSize:20}}>
+    <strong>
     {Session.get('shop')?
-      Session.get('shop').name
+      <div style={{display:'flex',justifyContent:'space-between'}}>
+      <div>{Session.get('shop').email}</div>
+      <div> / {Session.get('shop').add}</div>
+      </div>
+
       :
       null
     }

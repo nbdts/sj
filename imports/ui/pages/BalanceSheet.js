@@ -107,14 +107,14 @@ export default class BalanceSheet extends Component {
             <div style={{display:'flex',height:60,}}>
             <div style={{flex:1,display:'flex',justifyContent:'center',alignItems:'center',fontSize:20}}>
                   <form onSubmit={this.handleResettingopenBal.bind(this)} >
-                  <label style={{marginRight:3}}>Opening Balance</label>
+                  <label style={{marginRight:3}}>Todays Opening Balance</label>
                   <input type="text" value={this.state.openBal} onChange={this.setValue.bind(this, 'openBal')} required />
                     <input type="submit" value="reset" />
                   </form>
             </div>
             <div style={{flex:1,display:'flex',justifyContent:'center',alignItems:'center',fontSize:20}} >
                   <form onSubmit={this.handleResettingcloseBal.bind(this)}>
-                  <label style={{marginRight:3}}>Closing Balnce</label>
+                  <label style={{marginRight:3}}>Todays Closing Balnce</label>
                   <input type="text" value={this.state.closeBal} onChange={this.setValue.bind(this, 'closeBal')} required />
                     <input type="submit" value="reset" />
                   </form>

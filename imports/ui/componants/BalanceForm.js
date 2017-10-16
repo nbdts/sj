@@ -23,8 +23,6 @@ export default class BalanceForm  extends Component {
     this.linkracker.stop();
   }
 
-
-
     handleChange(event) {
       let object = {};
       object[event.target.id] = event.target.value
@@ -41,7 +39,7 @@ export default class BalanceForm  extends Component {
         type:type,
         balance:balance
       }
-        Meteor.call('balance.check',function(err,res){
+        Meteor.call('balance.check',(err,res)=>{
           if (!err) {
             if((res.length==1&&(res[0].type==balanceobj.type))||res.length==2){
                 Bert.alert('Already added', 'warning', 'growl-top-right')
