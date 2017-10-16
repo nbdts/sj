@@ -28,7 +28,7 @@ export default class BalanceSheet extends Component {
             this.setState({openBal:fb.balance,openBalId:fb._id})
           }
           if (fb.type === "0") {
-            this.setState({closeBal:fb.balance,closeBalID:fb._id},()=>{console.log(this.state.closeBal)})
+            this.setState({closeBal:fb.balance,closeBalID:fb._id})
           }
         })
       }
@@ -87,6 +87,18 @@ export default class BalanceSheet extends Component {
      }
    })
  }
+ deleteExpence(id){
+   let result = confirm("Want to delete?");
+ if (result) {
+   Meteor.call('expense.remove',id);
+   }
+ }
+ deleteInvoice(id){
+   let result = confirm("Want to delete?");
+  if (result) {
+    Meteor.call('invoice.remove',id);
+    }
+ }
   render(){
     let price=0;
     let mytotal= this.state.invoices.map((invoice)=>{
@@ -104,7 +116,7 @@ export default class BalanceSheet extends Component {
       <div>
       <Header/>
             <div style={{marginTop:60}}>
-            <div style={{display:'flex',height:60,}}>
+            <div style={{display:'flex',height:70,}}>
             <div style={{flex:1,display:'flex',justifyContent:'center',alignItems:'center',fontSize:20}}>
                   <form onSubmit={this.handleResettingopenBal.bind(this)} >
                   <label style={{marginRight:3}}>Todays Opening Balance</label>
@@ -121,62 +133,54 @@ export default class BalanceSheet extends Component {
             </div>
             </div>
 
-            <div style={{display:'flex',flex:1}}>
-              <div id="expense"  style={{textAlign:'center',flex:1,borderRight:'groove'}}>
-                <h1>LEFT</h1>
-                <div style={{display:'flex',flexFlow:'row'}}>
-                        <div id="attributes" style={{flex:2,textAlign:'right'}}>
-                          <h4>Day sales:</h4>
-                          <h4>Opening bal:</h4>
-                          <h4>Added bal:</h4>
-                          <h4>Total Amount:</h4>
-                        </div>
-                       <div id="values" style={{flex:1,textAlign:'left'}}>
-                          <h4>{price}</h4>
-                          <h4>{this.state.openBal}</h4>
-                          <h4>{addOpenBal}</h4>
-                          <h4>{parseFloat(addOpenBal)+parseFloat(price)+parseFloat(this.state.openBal)}</h4>
-                        </div>
-                </div>
-            </div>
+            <div style={{display:'flex',flex:1,marginTop:10,height:'100vh'}}>
 
-            <div id="expense" style={{textAlign:'center',flex:1,borderRight:'groove'}}>
-            <h1>RIGHT</h1>
-            <div style={{display:'flex',flexFlow:'row'}}>
-              <div id="attributes" style={{flex:1,textAlign:'right',paddingLeft:20}}>
-                <h4>Closing Bal:</h4>
-                <h4>Expenses:</h4>
-                <h4></h4>
-                <h4>Total Amount:</h4>
-              </div>
-              <div id="values" style={{flex:1,textAlign:'left'}}>
-                 <h4>{this.state.closeBal}</h4>
-                 <h4>{expense}</h4>
-                 <h4>{parseFloat(this.state.closeBal)+parseFloat(expense)}</h4>
-               </div>
-             </div>
-            </div>
-
-            <div id="expense"  style={{textAlign:'center',flex:1,borderRight:'groove'}}>
-              <h1>EXPENSES</h1>
-              {
-
-              this.state.expenses.map((exp,i)=>{
-                    return(
-                      <div key={i} style={{display:'flex',flexFlow:'row',flex:1}}>
-                      <h4 style={{flex:1}} >{i+1})</h4>
-                       <h4 style={{flex:1}} > {exp.item}</h4>
-                        <h4 style={{flex:1}} >{exp.price}</h4>
+                <div style={{flex:1,borderRight:'groove',flexFlow:'column'}}>
+                    <div style={{display:'flex',flex:1,height:50,justifyContent:'center',alignItems:'center',fontSize:20,}}>Invoices List : Total : {mytotal[mytotal.length-1]}</div>
+                      <div  style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center',borderTop:'groove',borderBottom:'groove'}}>
+                          <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Sequence</div>
+                          <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Name</div>
+                          <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Amount</div>
+                          <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>Action</div>
                       </div>
-                    );
-              })
-            }
+                    {
+                      this.state.invoices.map((exp,i)=>{
+                        return(
+                          <div key={i} style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center'}}>
+                              <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>{exp.seq}</div>
+                              <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>{exp.name}</div>
+                              <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>{exp.amount}</div>
+                              <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,color:'red',cursor:'pointer'}} onClick={this.deleteInvoice.bind(this,exp._id)}>Remove</div>
+                          </div>
+                        )
+                      })
+                    }
+                    </div>
 
+                <div style={{flex:1,flexFlow:'column'}}>
+                <div style={{display:'flex',flex:1,height:50,justifyContent:'center',alignItems:'center',fontSize:20}}>Expenses List : Total : {myexpense[myexpense.length-1]}</div>
+                  <div  style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center',borderTop:'groove',borderBottom:'groove'}}>
+                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Sr. No.</div>
+                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Item</div>
+                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Amount</div>
+                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>Action</div>
+                  </div>
+                    {
+                      this.state.expenses.map((exp,i)=>{
+                        return(
+                          <div key={i} style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center'}}>
+                              <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>{++i}</div>
+                              <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>{exp.item}</div>
+                              <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>{exp.price}</div>
+                              <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,color:'red',cursor:'pointer'}}onClick={this.deleteExpence.bind(this,exp._id)}>Remove</div>
+                          </div>
+                        )
+                      })
+                    }
+              </div>
+            </div>
           </div>
-
-            </div>
-            </div>
-            </div>
+        </div>
 
     );
   }
