@@ -38,9 +38,13 @@ class Header extends Component {
     })
   }
 
-  handleLogout() {
-    Session.clear();
+  handleShopLogout() {
+    Session.clear("shop");
     <Redirect to = "/login" />
+}
+handleAdminLogout() {
+  Session.clear("admin");
+  <Redirect to = "/login" />
 }
 
 render() {
@@ -96,9 +100,9 @@ render() {
 
               <li>
                 { Session.get('shop')
-                ? <a style={styles.dropDown} id="login" onClick={this.handleLogout.bind(this)} href="/login">Logout</a>
+                ? <a style={styles.dropDown} id="login" onClick={this.handleShopLogout.bind(this)} href="/login">Logout</a>
                 : Session.get('admin')
-                  ? <a style={styles.dropDown} id="login" onClick={this.handleLogout.bind(this)} href="/login">Logout</a>
+                  ? <a style={styles.dropDown} id="login" onClick={this.handleAdminLogout.bind(this)} href="/login">Logout</a>
                   : <a style={styles.dropDown} id="login" href="/login"></a>
 
               }

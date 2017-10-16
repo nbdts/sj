@@ -10,15 +10,29 @@ export default class BalanceSheet extends Component {
     this.state={
       expenses:[],
       invoices:[],
-      closebal:[],
-      openbal:[],
+      openBal:0,
+      closeBal:0,
       addOpenBal:[],
+      fetchedbalance:[],
       date:'',
+
 
     }
   }
 
   componentWillMount(){
+    Meteor.call('balance.check',(err,res)=>{
+      if (res) {
+        res.map((fb)=>{
+          if (fb.type === "1") {
+            this.setState({openBal:fb.balance})
+          }
+          if (fb.type === "0") {
+            this.setState({closeBal:fb.balance})
+          }
+        })
+      }
+      })
     var today=new Date()
      var date= today.getDate();
      var month= today.getMonth()+1;
@@ -29,15 +43,10 @@ export default class BalanceSheet extends Component {
         Meteor.subscribe("invoice");
         let expenses = ExpenseApi.find({createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.match.params.id}).fetch();
         let invoices = InvoiceApi.find({createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.match.params.id}).fetch();
-        let closeBal = BalanceApi.find({type:"0",createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.match.params.id}).fetch();
         let addOpenBal = BalanceApi.find({type:"1",createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.match.params.id}).fetch();
-        let openBal = BalanceApi.find({type:"0",createdAt:{$gte:new Date(`${year}/${month}/${--date}`),$lt:new Date(`${year}/${month}/${++date}`)},shopid:this.props.match.params.id}).fetch();
         this.setState({expenses});
         this.setState({invoices});
-        this.setState({openBal});
-        this.setState({closeBal});
         this.setState({addOpenBal});
-        console.log(openBal);
     });
     }
   componentWillUnmount(){
@@ -55,14 +64,6 @@ export default class BalanceSheet extends Component {
     let myexpense= this.state.expenses.map((exp)=>{
           return(expense=parseFloat(expense)+parseFloat(exp.price));
     })
-    let openBal=0;
-    myopenbal= this.state.openBal.map((exp)=>{
-          return(openBal=parseFloat(openBal)+parseFloat(exp.balance));
-    })
-    let closeBal=0;
-    myclosebal= this.state.closeBal.map((exp)=>{
-          return(closeBal=parseFloat(closeBal)+parseFloat(exp.balance));
-    })
     let addOpenBal=0;
     myaddedbal= this.state.addOpenBal.map((exp)=>{
           return(addOpenBal=parseFloat(addOpenBal)+parseFloat(exp.balance));
@@ -70,9 +71,13 @@ export default class BalanceSheet extends Component {
     return(
       <div>
       <Header/>
-            <div style={{display:'flex',flex:1,position:'relative',top:65,height:'70vh'}}>
+            <div style={{marginTop:60}}>
+            <div style={{display:'flex',height:60,}}>
+            <div style={{flex:1,display:'flex',justifyContent:'center',alignItems:'center',fontSize:20}}>Opening Balance : {this.state.openBal}</div>
+            <div style={{flex:1,display:'flex',justifyContent:'center',alignItems:'center',fontSize:20}}>ClosingBalance : {this.state.closeBal}</div>
+            </div>
 
-
+            <div style={{display:'flex',flex:1}}>
               <div id="expense"  style={{textAlign:'center',flex:1,borderRight:'groove'}}>
                 <h1>LEFT</h1>
                 <div style={{display:'flex',flexFlow:'row'}}>
@@ -84,9 +89,9 @@ export default class BalanceSheet extends Component {
                         </div>
                        <div id="values" style={{flex:1,textAlign:'left'}}>
                           <h4>{price}</h4>
-                          <h4>{openBal}</h4>
+                          <h4>{this.state.openBal}</h4>
                           <h4>{addOpenBal}</h4>
-                          <h4>{parseFloat(addOpenBal)+parseFloat(price)+parseFloat(openBal)}</h4>
+                          <h4>{parseFloat(addOpenBal)+parseFloat(price)+parseFloat(this.state.openBal)}</h4>
                         </div>
                 </div>
             </div>
@@ -101,9 +106,9 @@ export default class BalanceSheet extends Component {
                 <h4>Total Amount:</h4>
               </div>
               <div id="values" style={{flex:1,textAlign:'left'}}>
-                 <h4>{closeBal}</h4>
+                 <h4>{this.state.closeBal}</h4>
                  <h4>{expense}</h4>
-                 <h4>{parseFloat(closeBal)+parseFloat(expense)}</h4>
+                 <h4>{parseFloat(this.state.closeBal)+parseFloat(expense)}</h4>
                </div>
              </div>
             </div>
@@ -125,6 +130,7 @@ export default class BalanceSheet extends Component {
 
           </div>
 
+            </div>
             </div>
             </div>
 
