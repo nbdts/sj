@@ -73,7 +73,7 @@ import { Tracker } from 'meteor/tracker';
       <h1>
       All Invoice
       </h1>
-      <div style={{display:'flex',flexFlow:'row',border:'groove',justifyContent:'center',alignItems:'center',width:'100%'}}>
+      <div style={{display:'flex',flexFlow:'row',justifyContent:'center',alignItems:'center',width:'100%'}}>
 
       <div style={{display:'flex',flex:1,flexFlow:'column',padding:5,alignItems:'center'}}>
       <label style={{padding:5}}>Phno</label>
