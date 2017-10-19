@@ -31,7 +31,7 @@ export default class Report  extends Component {
     return(
        <div>
        <div style={{display:'flex',flex:1,justifyContent:'center',marginTop:70}}>
-           <select onChange={this.setValue.bind(this)}>
+           <select onChange={this.setValue.bind(this)} className="form-control" style={{display:'flex',flexBasis:300}}>
            <option >Select Shop</option>
            {this.state.shops.map((shop,i)=>{
              return(

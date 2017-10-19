@@ -4,7 +4,7 @@ import { Tracker } from 'meteor/tracker';
 import {ExpenseApi} from '../../api/expense';
 import {BalanceApi} from '../../api/balance';
 import {InvoiceApi} from '../../api/invoice';
-export default class BalanceSheetForAdmin extends Component {
+export default class BalanceSheet extends Component {
   constructor() {
     super();
     this.state={
@@ -14,27 +14,31 @@ export default class BalanceSheetForAdmin extends Component {
       openBalId:0,
       closeBal:0,
       closeBalID:0,
-      addOpenBal:[],
+      addOpenBal:0,
+      addOpenBalId:0,
       date:'',
-      shops:[],
-
     }
   }
 
   componentWillMount(){
-    Meteor.call('balance.check',(err,res)=>{
-      if (res) {
-        res.map((fb)=>{
-          if (fb.type === "1") {
-            this.setState({openBal:fb.balance,openBalId:fb._id})
-            this.setState({openBal:fb.balance,openBalId:fb._id})
-          }
-          if (fb.type === "0") {
-            this.setState({closeBal:fb.balance,closeBalID:fb._id})
-          }
-        })
+    Meteor.call('balance.getlastnightclosingbalance',this.props.shopid,(err,res)=>{
+      if (res[0]) {
+        this.setState({openBal:res[0].balance,openBalId:res[0]._id})
       }
       })
+      Meteor.call('balance.check',this.props.shopid,(err,res)=>{
+        if (res) {
+          res.map((fb)=>{
+            if (fb.type === "1") {
+              this.setState({addOpenBal:fb.balance,addOpenBalId:fb._id})
+            }
+            if (fb.type === "0") {
+              this.setState({closeBal:fb.balance,closeBalID:fb._id})
+            }
+          })
+        }
+        })
+
     var today=new Date()
      var date= today.getDate();
      var month= today.getMonth()+1;
@@ -45,10 +49,8 @@ export default class BalanceSheetForAdmin extends Component {
         Meteor.subscribe("invoice");
         let expenses = ExpenseApi.find({createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.shopid}).fetch();
         let invoices = InvoiceApi.find({createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.shopid}).fetch();
-        let addOpenBal = BalanceApi.find({type:"1",createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.shopid}).fetch();
         this.setState({expenses});
         this.setState({invoices});
-        this.setState({addOpenBal});
     });
     }
   componentWillUnmount(){
@@ -61,15 +63,20 @@ export default class BalanceSheetForAdmin extends Component {
    object[field] = event.target.value;
    this.setState(object);
  }
+ handleResettinglastnighclosingbaalnce(event){
+   event.preventDefault();
+   Bert.alert('Nt allowed to change yet', 'danger', 'growl-top-right');
+
+ }
  handleResettingopenBal(event) {
    event.preventDefault();
-   if (!this.state.openBal || !this.state.openBalId) {
+   if (!this.state.addOpenBal || !this.state.addOpenBalId) {
      Bert.alert('set Opening Balance First', 'danger', 'growl-top-right');
      return false;
    }
-   let openBal=this.state.openBal.trim();
-   let openBalId=this.state.openBalId.trim();
-   Meteor.call('balance.update',openBalId,openBal,(err,res)=>{
+   let addOpenBal=this.state.addOpenBal.trim();
+   let addOpenBalId=this.state.addOpenBalId.trim();
+   Meteor.call('balance.update',addOpenBalId,addOpenBal,(err,res)=>{
      if (res) {
        Bert.alert('successfully update', 'success', 'growl-top-right');
      }
@@ -110,28 +117,30 @@ export default class BalanceSheetForAdmin extends Component {
     let myexpense= this.state.expenses.map((exp)=>{
           return(expense=parseFloat(expense)+parseFloat(exp.price));
     })
-    let addOpenBal=0;
-    myaddedbal= this.state.addOpenBal.map((exp)=>{
-          return(addOpenBal=parseFloat(addOpenBal)+parseFloat(exp.balance));
-    })
     return(
       <div>
       <Header/>
-
-            <div>
-            <div style={{display:'flex',height:70,}}>
+            <div style={{marginTop:60}}>
+            <div style={{display:'flex'}}>
             <div style={{flex:1,display:'flex',justifyContent:'center',alignItems:'center',fontSize:20}}>
-                  <form onSubmit={this.handleResettingopenBal.bind(this)} >
-                  <label style={{marginRight:3}}>Todays Opening Balance</label>
-                  <input type="text" value={this.state.openBal} onChange={this.setValue.bind(this, 'openBal')} required />
-                    <input type="submit" value="reset" />
+                  <form onSubmit={this.handleResettinglastnighclosingbaalnce.bind(this)} style={{display:'flex',flexFlow:'column',justifyContent:'center',alignItems:'center'}}>
+                  <label className="text-primary" style={{marginRight:3}}>Todays Opening Balance</label>
+                  <input type="text" value={this.state.openBal} className="form-control" onChange={this.setValue.bind(this, 'openBal')} required />
+                    <input type="submit" value="reset" className="btn btn-primary"  style={{margin:5}} />
+                  </form>
+            </div>
+            <div style={{flex:1,display:'flex',justifyContent:'center',alignItems:'center',fontSize:20}}>
+                  <form onSubmit={this.handleResettingopenBal.bind(this)} style={{display:'flex',flexFlow:'column',justifyContent:'center',alignItems:'center'}}>
+                  <label className="text-primary" style={{marginRight:3}}>Todays Added Balance</label>
+                  <input type="text" value={this.state.addOpenBal} className="form-control" onChange={this.setValue.bind(this, 'addOpenBal')} required />
+                    <input type="submit" value="reset" className="btn btn-primary"  style={{margin:5}}/>
                   </form>
             </div>
             <div style={{flex:1,display:'flex',justifyContent:'center',alignItems:'center',fontSize:20}} >
-                  <form onSubmit={this.handleResettingcloseBal.bind(this)}>
-                  <label style={{marginRight:3}}>Todays Closing Balnce</label>
-                  <input type="text" value={this.state.closeBal} onChange={this.setValue.bind(this, 'closeBal')} required />
-                    <input type="submit" value="reset" />
+                  <form onSubmit={this.handleResettingcloseBal.bind(this)} style={{display:'flex',flexFlow:'column',justifyContent:'center',alignItems:'center'}}>
+                  <label className="text-primary" style={{marginRight:3}}>Todays Closing Balnce</label>
+                  <input type="text" value={this.state.closeBal} className="form-control" onChange={this.setValue.bind(this, 'closeBal')} required />
+                    <input type="submit" value="reset" className="btn btn-primary"  style={{margin:5}}/>
                   </form>
             </div>
             </div>
@@ -139,7 +148,7 @@ export default class BalanceSheetForAdmin extends Component {
             <div style={{display:'flex',flex:1,marginTop:10,height:'100vh'}}>
 
                 <div style={{flex:1,borderRight:'groove',flexFlow:'column'}}>
-                    <div style={{display:'flex',flex:1,height:50,justifyContent:'center',alignItems:'center',fontSize:20,}}>Invoices List : Total : {mytotal[mytotal.length-1]}</div>
+                    <div style={{display:'flex',flex:1,height:50,justifyContent:'space-between',alignItems:'center',fontSize:20,padding:8}}><div className="text-info text-uppercase">Invoices List</div> <div className="text-primary">Total : {mytotal[mytotal.length-1]}</div></div>
                       <div  style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center',borderTop:'groove',borderBottom:'groove'}}>
                           <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Sequence</div>
                           <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Name</div>
@@ -161,7 +170,7 @@ export default class BalanceSheetForAdmin extends Component {
                     </div>
 
                 <div style={{flex:1,flexFlow:'column'}}>
-                <div style={{display:'flex',flex:1,height:50,justifyContent:'center',alignItems:'center',fontSize:20}}>Expenses List : Total : {myexpense[myexpense.length-1]}</div>
+                <div style={{display:'flex',flex:1,height:50,justifyContent:'space-between',alignItems:'center',fontSize:20,padding:8}}><div className="text-info text-uppercase">Expenses List</div> <div className="text-primary">Total : {myexpense[myexpense.length-1]}</div></div>
                   <div  style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center',borderTop:'groove',borderBottom:'groove'}}>
                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Sr. No.</div>
                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Item</div>
