@@ -30,6 +30,7 @@ export default class Report  extends Component {
   render(){
     return(
        <div>
+       <h4> To see the other shop report first Press Ctrl + R  or You can REFRESH the page  and then select other shop from list <strong>We Are extreamly Sorry for this difficulty we will try to resolve this problem very soon</strong></h4>
        <div style={{display:'flex',flex:1,justifyContent:'center',marginTop:70}}>
            <select onChange={this.setValue.bind(this)} className="form-control" style={{display:'flex',flexBasis:300}}>
            <option >Select Shop</option>

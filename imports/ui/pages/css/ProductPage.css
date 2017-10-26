@@ -6,9 +6,15 @@
   align-items: center;
   padding: 10px 50px 50px;
 }
-.title-row:hover{
+  #product:{
+
+  }
+  #product:hover{
   box-shadow: 0 0 20px #FFCC3E;
-  border-radius:2em;
+  cursor: pointer;
+  background-color: #efefef;
+  color: balck;
+  border-radius: 5px;
 }
 
 .myheader {
@@ -176,13 +182,13 @@ input:focus~.bar:before {
 .title-txt {
   text-align: left;
   position: relative;
-  text-transform: lowercase;
   padding: 5px;
   flex: 9;
   color: White;
   font-size: 15px;
   text-shadow: 2px 2px 5px #777777;
   filter: blur(2);
+  text-transform: uppercase;
 }
 
 .price-txt {

@@ -152,7 +152,7 @@ export default class BillPage extends Component {
 
                 <div id='col'>
                 <u>
-                <strong>Sandwich</strong>
+                <strong style={{textDecoration:'none',fontSize:'1.2em'}}>Sandwich</strong>
                 </u>
                 {Sandwich.map((product, i) => {
                   return (
@@ -163,7 +163,7 @@ export default class BillPage extends Component {
               </div>
               <div id='col'>
               <u>
-               <strong>Chocolate Sandwich</strong>
+               <strong style={{textDecoration:'none',fontSize:'1.2em'}}>Chocolate Sandwich</strong>
                </u>
 
                {chocolateSandwich.map((product, i) => {
@@ -174,7 +174,7 @@ export default class BillPage extends Component {
              }
 
            <u>
-           <strong>Fruit Shake</strong>
+           <strong style={{textDecoration:'none',fontSize:'1.2em'}}>Fruit Shake</strong>
            </u>
              {fruitShake.map((product, i) => {
                return (
@@ -183,7 +183,7 @@ export default class BillPage extends Component {
              })
            }
              <u>
-             <strong>Beverages</strong>
+             <strong style={{textDecoration:'none',fontSize:'1.2em'}}>Beverages</strong>
              </u>
              {beverages.map((product, i) => {
                return (
@@ -195,7 +195,7 @@ export default class BillPage extends Component {
 
            <div id='col'>
               <u>
-              <strong>Chocolate Shake</strong>
+              <strong style={{textDecoration:'none',fontSize:'1.2em'}}>Chocolate Shake</strong>
               </u>
                 {chocolateShake.map((product, i) => {
                   return (
@@ -204,7 +204,7 @@ export default class BillPage extends Component {
                 })
               }
               <u >
-              <strong>Juice</strong>
+              <strong style={{textDecoration:'none',fontSize:'1.2em'}}>Juice</strong>
               </u>
 
               {juice.map((product, i) => {
@@ -214,7 +214,7 @@ export default class BillPage extends Component {
               })
             }
             <u>
-            <strong>Italian</strong>
+            <strong style={{textDecoration:'none',fontSize:'1.2em'}}>Italian</strong>
             </u>
             {italian.map((product, i) => {
               return (
