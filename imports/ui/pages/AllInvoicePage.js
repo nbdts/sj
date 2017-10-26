@@ -81,7 +81,7 @@ import { Tracker } from 'meteor/tracker';
       </div>
 
 
-      <div style={{display:'flex',flex:1,flexFlow:'column',alignItems:'center',borderRight:'groove',borderLeft:'groove',padding:5}}>
+      <div style={{display:'flex',flex:1,flexFlow:'column',alignItems:'outset',borderRight:'outset',borderLeft:'groove',padding:5}}>
 
       <label htmlFor="from" style={{paddingRight:5}}>From</label><input onChange={this.handleChange.bind(this)} id='from' type="date"/>
       <label htmlFor="to" style={{padding:5}}>To</label><input onChange={this.handleChange.bind(this)} id='to' type="date"/>

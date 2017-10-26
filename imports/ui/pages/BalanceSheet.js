@@ -153,7 +153,6 @@ export default class BalanceSheet extends Component {
                           <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Sequence</div>
                           <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Name</div>
                           <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Amount</div>
-                          <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>Action</div>
                       </div>
                     {
                       this.state.invoices.map((exp,i)=>{
@@ -162,7 +161,6 @@ export default class BalanceSheet extends Component {
                               <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>{exp.seq}</div>
                               <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>{exp.name}</div>
                               <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>{exp.amount}</div>
-                              <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,color:'red',cursor:'pointer'}} onClick={this.deleteInvoice.bind(this,exp._id)}>Remove</div>
                           </div>
                         )
                       })
@@ -175,7 +173,6 @@ export default class BalanceSheet extends Component {
                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Sr. No.</div>
                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Item</div>
                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Amount</div>
-                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>Action</div>
                   </div>
                     {
                       this.state.expenses.map((exp,i)=>{
@@ -184,7 +181,6 @@ export default class BalanceSheet extends Component {
                               <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>{++i}</div>
                               <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>{exp.item}</div>
                               <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>{exp.price}</div>
-                              <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,color:'red',cursor:'pointer'}}onClick={this.deleteExpence.bind(this,exp._id)}>Remove</div>
                           </div>
                         )
                       })
