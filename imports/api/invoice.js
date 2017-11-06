@@ -6,7 +6,7 @@ Counter = new Mongo.Collection("counter");
 
 Meteor.methods({
 
-'invoice.insert'(shopid,name,phno,products,amount){
+'invoice.insert'(shopid,name,phno,products,amount,paymenttype){
   var insert = InvoiceApi.insert({
     seq:getNextSequence("projectId"),
     shopid:shopid,
@@ -15,6 +15,7 @@ Meteor.methods({
     products,
     createdAt:new Date(),
     amount,
+    paymenttype,
    });
    return insert;
 },
@@ -35,6 +36,9 @@ return myInvoice
 if (Meteor.isServer) {
   Meteor.publish('invoice', function userPublication(){
     return  InvoiceApi.find();
+  });
+  Meteor.publish('invoicebyshopid', function userPublication(shopid){
+    return  InvoiceApi.find({shopid});
   });
   Meteor.startup(function () {
       Counter._ensureIndex({"type": 1});

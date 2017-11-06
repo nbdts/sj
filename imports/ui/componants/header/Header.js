@@ -46,87 +46,53 @@ handleAdminLogout() {
   Session.clear();
   <Redirect to = "/login" />
 }
+home(){
+  location.reload();
+}
 
 render() {
   return (
-    <header style={{backgroundColor:'#ffc300'}} className="header-banner-top">
-    <div style={{backgroundColor:'#ffc300'}} >
-    </div>
+      <div>
+      <div className="header">
 
-    <div style={{paddingLeft:'20px',fontSize:20}}>
-    <strong>
-    {Session.get('shop')?
-      <div style={{display:'flex',justifyContent:'space-between'}}>
-      <div>{Session.get('shop').email}</div>
-      <div> / {Session.get('shop').add}</div>
+          <div className="headeritem one" onClick={this.home.bind(this)}>Sandwich Junction</div>
+          <div className="headeritem three">
+          {Session.get('admin')?
+          <div style={{display:'flex'}}>
+            <a className="mynavitmes" style={styles.dropDown} href="/admin/today" >Today</a>
+            <a className="mynavitmes" style={styles.dropDown} href="/admin/allinvoice" >All</a>
+            <a className="mynavitmes" style={styles.dropDown} href="/admin/registeration" >Shop</a>
+          </div>
+          :null
+          }
+          {
+          Session.get('shop')?
+          <div style={{display:'flex'}}>
+          <a className="mynavitmes" style={styles.dropDown} href={`/balsheet/${Session.get('shop')._id}`} >BalanceSheet</a>
+            <a className="mynavitmes" style={styles.dropDown}  onClick={this.openModal} >Expense</a>
+            <a className="mynavitmes" id="login" style={styles.dropDown}  onClick={this.handlebalacne.bind(this)} >Balance</a>
+            <a className="mynavitmes" style={styles.dropDown} href={`/products`}>Products</a>
+
+          </div>
+          :
+          null
+          }
+          { Session.get('shop')
+          ? <a className="mynavitmes" style={styles.dropDown} id="login" onClick={this.handleShopLogout.bind(this)} href="/login">Logout</a>
+          : Session.get('admin')
+            ? <a className="mynavitmes" style={styles.dropDown} id="login" onClick={this.handleAdminLogout.bind(this)} href="/login">Logout</a>
+            : <a className="mynavitmes" style={styles.dropDown} id="login" href="/login"></a>
+
+          }
+          </div>
       </div>
-
-      :
-      null
-    }
-    </strong></div>
-
-    <div style={{flex:5,backgroundColor:'#ffc300',height:'64px'}} className="main-navigation">
-      <a href="/">
-      <img style={{position:'absolute',left:'40%',height:'100%',width:'200px'}} src='/sjflex.jpg' alt="flex"/>
-      </a>
-        <nav className="horizontal-nav primary-wrapper" role='navigation'>
-          <ul className='list' style={{marginRight:'20px'}}>
-            <li className="folder">
-              <label htmlFor="folder-toggle-1" className="folder-toggle-label">
-                <a className="glyphicon glyphicon-cog" style={{color:'black'}}> Settings</a>
-              </label>
-              <ul>
-              {Session.get('admin')?
-              <li>
-              <a style={styles.dropDown} href='/rep'>view Report</a>
-              </li>
-              :
-              <li>
-              <a style={styles.dropDown} href={`/balsheet/${Session.get('shop')._id}`}>Balance Sheet</a>
-              </li>
-              }
-              {
-              Session.get('shop')?
-              <div>
-              <li>
-                <a style={styles.dropDown}  onClick={this.openModal} >add Expense</a>
-              </li>
-              <li>
-              <a id="login" style={styles.dropDown}  onClick={this.handlebalacne.bind(this)} >add Balance</a>
-              </li>
-              </div>
-              :
-              null
-              }
-
-
-
-              <li>
-                { Session.get('shop')
-                ? <a style={styles.dropDown} id="login" onClick={this.handleShopLogout.bind(this)} href="/login">Logout</a>
-                : Session.get('admin')
-                  ? <a style={styles.dropDown} id="login" onClick={this.handleAdminLogout.bind(this)} href="/login">Logout</a>
-                  : <a style={styles.dropDown} id="login" href="/login"></a>
-
-              }
-              </li>
-
-              </ul>
-            </li>
-            <li>
-              </li>
-          </ul>
-        </nav>
-      </div>
-
       <Modal
          isModalOpen={this.state.isModalOpen}
          closeModal={this.closeModal}
          style={modalStyle}>
          <span style={{fontSize:30,textAlign:'right',color:'red'}} className='glyphicon glyphicon-remove-sign' onClick={this.closeModal}/>
          {
-           this.state.modalform ?
+           this.state.modalform  ?
             <ExpenseForm/>
               :
             <BalanceForm/>
@@ -134,8 +100,8 @@ render() {
 
        </Modal>
 
-      </header>
-  );
+      </div>
+    );
 }
 }
 export default withRouter(Header)

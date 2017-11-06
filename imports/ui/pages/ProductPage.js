@@ -4,7 +4,7 @@ import ProductSinlgeItem from '../componants/ProductSinlgeItem';
 import {ProductApi} from '../../api/product';
 import { Tracker } from 'meteor/tracker';
 import './css/ProductPage';
-
+import {Session} from 'meteor/session';
 export default class ProductPage  extends Component {
   constructor() {
     super();
@@ -13,13 +13,16 @@ export default class ProductPage  extends Component {
           name: "",
           price:"",
           category:"",
+          type:1,
         };
 
   }
   componentWillMount(){
       this.linkracker = Tracker.autorun(()=> {
         Meteor.subscribe("product");
-        let products = ProductApi.find({}).fetch();
+        let productsbyshop = ProductApi.find({shopid:Session.get('shop')._id}).fetch();
+        let productsbytype = ProductApi.find({shopid:1}).fetch();
+        const products = [...productsbyshop, ...productsbytype];
           this.setState({products});
       });
   }
@@ -35,8 +38,20 @@ export default class ProductPage  extends Component {
     const name = this.state.name;
     const price = this.state.price;
     const category = this.state.category;
+    const type = this.state.type;
+    let id = null;
+    if (type == 1) {
+      id = type;
+    }else {
+      id =   Session.get('shop')._id;
+    }
+    if (!id) {
+      return false ;
+      Bert.alert('product type is no defined', 'danger', 'growl-top-right');
+    }
       let prod = {
       name:name,
+      shopid:id,
       price:price,
       category:category,
           }
@@ -54,7 +69,13 @@ export default class ProductPage  extends Component {
         object[field] = event.target.value;
         this.setState(object);
       }
-
+      setCheckbox(){
+        if (this.state.type == 0) {
+          this.setState({type:1});
+        }else {
+          this.setState({type:0});
+        }
+      }
 
 
   render(){
@@ -62,7 +83,7 @@ export default class ProductPage  extends Component {
       <div style={{padding:10,display:"flex",flexWrap:"wrap" }}>
 
 
-      <div className="container">
+      <div className="mypcontainer">
         <h1 className="myheader">Product Entry</h1>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <div className="group">
@@ -77,16 +98,21 @@ export default class ProductPage  extends Component {
             <span className="bar"></span>
             <label>Price</label>
           </div>
+
+            <input type="checkbox"  value={this.state.type}  onChange={this.setCheckbox.bind(this)} />
+            <label>{this.state.type == 0 ? "perticular" : "overall"}</label>
+
           <div className="group">
-              <select  name="MySelect" placeholder="Favourite" value={this.state.category}  onChange={this.setValue.bind(this, 'category')} required>
+              <select  name="MySelect"  value={this.state.category}  onChange={this.setValue.bind(this, 'category')} required>
                 <option value="">Select Category</option>
-                <option value="1">Juice</option>
-                <option value="2">Fruit Shakes</option>
-                <option value="3">Chocolate Shakes</option>
-                <option value="4">Beverages</option>
-                <option value="5">Sandwich</option>
-                <option value="6">Chocolate Sandwich</option>
-                <option value="7">Italian</option>
+                <option value="1">Sandwich</option>
+                <option value="2">Chocolate Sandwich</option>
+                <option value="3">Beverages</option>
+                <option value="4">Pasta</option>
+                <option value="5">Chocolate Shakes</option>
+                <option value="6">Juice Shakes</option>
+                <option value="7">Fruit Shakes</option>
+                <option value="8">Italian</option>
                </select>
           </div>
           <div className="group">

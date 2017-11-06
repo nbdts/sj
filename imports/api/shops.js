@@ -5,7 +5,7 @@ export const ShopsApi = new Mongo.Collection('shops');
 Meteor.methods({
 'shops.insert'(shop){
 
-  ShopsApi.insert({
+  return ShopsApi.insert({
     name:shop.shopname,
     email: shop.shopemail,
     phno:shop.shopphno,

@@ -10,7 +10,8 @@ export default class ExpenseForm  extends Component {
       date:'',
       item:'',
       price:'',
-      expenses:{}
+      expenses:{},
+      expensetype:0,
     }
   }
    setValue(event) {
@@ -38,7 +39,6 @@ export default class ExpenseForm  extends Component {
 
 
     handleChange(event) {
-
       let object = {};
       object[event.target.id] = event.target.value
       this.setState(object);
@@ -46,10 +46,12 @@ export default class ExpenseForm  extends Component {
     handleClick(event){
       let item=this.state.item
       let price=this.state.price
+      let expensetype = this.state.expensetype
       let expense={
         shopid:Session.get('shop')._id,
         item:item,
         price:price,
+        expensetype,
       }
     Meteor.call('expense.insert',expense);
     Bert.alert('Expense Added', 'success', 'growl-top-right');
@@ -64,6 +66,12 @@ export default class ExpenseForm  extends Component {
        <h1 style={{textAlign:'center'}} >Enter Expense</h1>
        <div style={styles.inputs}>
          <input style={{margin:5}} type="text" value={this.state.item} id='item' placeholder='ITEM' onChange={this.handleChange.bind(this)} />
+
+         <select onChange={this.handleChange.bind(this)} style={{margin:5}} id="expensetype">
+            <option value="0">Material</option>
+            <option value="1">misc</option>
+          </select>
+
          <input style={{margin:5}} type="number" value={this.state.price} id='price' placeholder='PRICE' onChange={this.handleChange.bind(this)} />
          <button className='btn btn-warning' style={{margin:5}} onClick={this.handleClick.bind(this)} >Submit</button>
        </div>

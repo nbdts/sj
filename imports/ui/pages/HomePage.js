@@ -7,7 +7,7 @@ export default class HomePage extends Component {
   }
   render(){
     return(
-      <div>
+      <div className="container-fluid" style={{marginTop:64,minheight:'100vh',height:'100%',backgroundColor:'black'}}>
       <Header/>
       <BillPage/>
       </div>

@@ -101,11 +101,11 @@ componentWillUnmount(){
             <div className="page-section-content">
             <h1 className="myheader" style={{marginTop:30}}>Shop Entry</h1>
               <form style={{marginTop:-50}} onSubmit={this.handleSubmit} method="POST" className="material-form">
-                <Inputs type="text" id="shopname" onChange={this.handleChange} label="NAME" />
-                <Inputs type="text" id="shopemail" onChange={this.handleChange} label="EMAIL"/>
-                <Inputs type="password" id="shoppassword" onChange={this.handleChange} label="SHOP PASSWORD"/>
-                <Inputs type="text" id="shopphno" onChange={this.handleChange} label="PHONE NUMBER"/>
-                <Inputs type="text" id="shopadd" onChange={this.handleChange} label="ADDRESS"/>
+                <Inputs type="text" id="shopname" onChange={this.handleChange} label="NAME" required/>
+                <Inputs type="text" id="shopemail" onChange={this.handleChange} label="EMAIL" required/>
+                <Inputs type="password" id="shoppassword" onChange={this.handleChange} label="SHOP PASSWORD" required/>
+                <Inputs type="text" id="shopphno" onChange={this.handleChange} label="PHONE NUMBER" required/>
+                <Inputs type="text" id="shopadd" onChange={this.handleChange} label="ADDRESS" required/>
                 <Inputs type="text" id="shopgstin" onChange={this.handleChange} label="GSTIN"/>
                 <Inputs type="text" id="shopbankname" onChange={this.handleChange} label="BANK NAME"/>
                 <Inputs type="text" id="shopaccname" onChange={this.handleChange} label="ACCOUNT HOLDER'S NAME"/>

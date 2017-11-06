@@ -7,6 +7,7 @@ Meteor.methods({
 
   ProductApi.insert({
     name:product.name,
+    shopid:product.shopid,
     price:product.price,
     category:product.category,
     status:1,
@@ -23,5 +24,11 @@ Meteor.methods({
 if (Meteor.isServer) {
   Meteor.publish('product', function userPublication(){
     return  ProductApi.find();
+  });
+  Meteor.publish('productbyshopid', function userPublication(shopid){
+    return  ProductApi.find({shopid});
+  });
+  Meteor.publish('productbytype', function userPublication(type){
+    return  ProductApi.find({type:1});
   });
 }

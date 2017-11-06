@@ -1,84 +1,66 @@
-.box{
-  position:absolute;
-  right: 2px;
-  top: 65px;
-  bottom:0px;
+.mycolumn{
+}
+.selectprocuct{
   display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
+  flex:1;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
 }
-.mainBill{
-  width: 82% !important;
-  float: left;
-	height: 100vh;
-  background-color: white;
-	position: relative;
-	font-family: helvetica,verdana,sans-serif;
-	border-bottom: 1px solid rgb(235,235,235);
-	border-top: 1px solid rgb(235,235,235);
-	margin: 0;
-	padding: 0;
-}
-#Bill{
-  display:flex;
-  flex: 1;
-  flex-wrap:wrap;
-  justify-content: space-around;
-  flex-flow: column;
-}
-#MenuOptions{
-  position:relative !important;
-  right: 2px;
-  width: 74.6%;
-  top: 65px !important ;
-  bottom:0px !important ;
+.totalofproduct{
   display: flex;
-  flex-flow: row;
-  flex-wrap:wrap;
-  background-color: red;
-  }
-#slidebar{
-  box-shadow: 2px 0px 10px #777777;
-  margin-right: 3px;
-  z-index: 1;
+  flex:1;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
 }
-.menubox{
-  overflow: auto;
-  position:absolute;
-  left:2px;
-  top: 0px;
-  height: 90vh;
-  width: 100%;
-  background-color:#2d1e1b;
+.mycategories{
   display: flex;
-  flex-flow: row;
-  flex: 1;
-  flex-wrap: wrap;
-
+  height: 40px;
+  font-size: 1em;
+  color: #000;
+  background-color: #ffc300;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
 }
-.menubox strong{
- color:#fcb900;
- font-size: 15px;
- text-transform: uppercase;
- border-radius:3px;
- width:200px;
- background-color:transparent;
+.myproducts{
+  display: flex;
+  height: 35px;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: uppercase;
+  color: balck!important;
+  margin: 1px!important;
+  background-color: #fff;
 }
-.menubox u{
-  width: 100%;
-  padding: 16px;
-  color:#fcb900;
-  text-align: center;
-  box-shadow: 0 0 1px #efefef;
- }
- #col{
-   display: flex;
-   flex: 1;
-   flex-flow:column;
-   height: 100vh;
- }
-#menuProduct{
-  padding: 5px;
-  width: 100%;
-  box-shadow: 0 0 1px #efefef;
-    }
+.myproductname{
+  color: #000;
+  font-weight: normal;
+  overflow: hidden;
+text-overflow: "…";
+}
+.myproductprice{
+color: #000;
+padding-left: 3px;
+padding-right: 3px;
+}
+.myproductquantity{
+  color: blue;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+.myproducticon{
+  color: red;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+.calculateheader{
+  position: fixed;
+  top:65px;
+  z-index: 2;
+}

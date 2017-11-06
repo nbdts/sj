@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BalanceSheetForAdmin from './BalanceSheetForAdmin';
+import BalanceSheetForAdmin1 from './BalanceSheetForAdmin1';
 import { Tracker } from 'meteor/tracker';
 import {ShopsApi} from '../../api/shops';
 
@@ -44,7 +44,7 @@ export default class Report  extends Component {
        </div>
        {
 
-        this.state.shopid === '' ? null :  <BalanceSheetForAdmin shopid={this.state.shopid} />
+        this.state.shopid === '' ? null :  <BalanceSheetForAdmin1 shopid={this.state.shopid} />
        }
        </div>
     );

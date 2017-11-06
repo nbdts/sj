@@ -145,46 +145,87 @@ export default class BalanceSheet extends Component {
             </div>
             </div>
 
-            <div style={{display:'flex',flex:1,marginTop:10,height:'100vh'}}>
+            <div style={{display:'flex',flex:1,marginTop:10,flexWrap:'wrap'}}>
 
-                <div style={{flex:1,borderRight:'groove',flexFlow:'column'}}>
-                    <div style={{display:'flex',flex:1,height:50,justifyContent:'space-between',alignItems:'center',fontSize:20,padding:8}}><div className="text-info text-uppercase">Invoices List</div> <div className="text-primary">Total : {mytotal[mytotal.length-1]}</div></div>
-                      <div  style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center',borderTop:'groove',borderBottom:'groove'}}>
-                          <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Sequence</div>
-                          <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Name</div>
-                          <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Amount</div>
-                          <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>Action</div>
+                <div style={{flex:1,borderRight:'groove',flexFlow:'column',minWidth:400}}>
+                    <div  style={{display:'flex',flex:1,height:50,justifyContent:'space-between',alignItems:'center',fontSize:20,padding:8}}><div className="text-info text-uppercase">Invoices List</div> <div className="text-primary">Total : {mytotal[mytotal.length-1]}</div></div>
+                      <div className="panel panel-default" style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center',borderTop:'groove',borderBottom:'groove'}}>
+                          <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Sequence</div>
+                          <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Products</div>
+                          <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Amount</div>
+                          <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Action</div>
                       </div>
                     {
                       this.state.invoices.map((exp,i)=>{
                         return(
-                          <div key={i} style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center'}}>
-                              <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>{exp.seq}</div>
-                              <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>{exp.name}</div>
-                              <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>{exp.amount}</div>
-                              <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,color:'red',cursor:'pointer'}} onClick={this.deleteInvoice.bind(this,exp._id)}>Remove</div>
-                          </div>
-                        )
+                          <div key={i} className="panel-group" style={{padding:0,margin:0}}>
+                            <div className="panel panel-default">
+                              <div className="panel-heading">
+                                <h4 className="panel-title">
+                                  <a data-toggle="collapse" href={`#collapse${i}`}>
+                                  <div key={i} style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center'}}>
+                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{exp.seq}</div>
+                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{exp.products.length}</div>
+                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{exp.amount}</div>
+                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',color:'red',cursor:'pointer'}} onClick={this.deleteInvoice.bind(this,exp._id)}>Remove</div>
+                                  </div>
+                                  </a>
+                                </h4>
+                              </div>
+                              <div id={`collapse${i}`} className="panel-collapse collapse">
+                                <ul className="list-group">
+                                  {
+                                    exp.products.map((prod,i)=>
+                                      <li key={i} className="list-group-item">
+                                        <div  style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center'}}>
+                                            <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',}}>{prod.name}</div>
+                                            <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',}}>{prod.price}</div>
+                                            <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',}}>{prod.quantity}</div>
+                                        </div>
+                                      </li>
+                                    )
+                                  }
+                                </ul>
+                              </div>
+                            </div>
+                          </div>                        )
                       })
                     }
                     </div>
 
-                <div style={{flex:1,flexFlow:'column'}}>
+                <div style={{flex:1,flexFlow:'column',minWidth:400}}>
                 <div style={{display:'flex',flex:1,height:50,justifyContent:'space-between',alignItems:'center',fontSize:20,padding:8}}><div className="text-info text-uppercase">Expenses List</div> <div className="text-primary">Total : {myexpense[myexpense.length-1]}</div></div>
-                  <div  style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center',borderTop:'groove',borderBottom:'groove'}}>
-                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Sr. No.</div>
-                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Item</div>
-                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,borderRight:'groove'}}>Amount</div>
-                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>Action</div>
+                  <div className="panel panel-default" style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center',borderTop:'groove',borderBottom:'groove'}}>
+                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Sr. No.</div>
+                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Item</div>
+                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Amount</div>
+                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Action</div>
                   </div>
                     {
                       this.state.expenses.map((exp,i)=>{
                         return(
-                          <div key={i} style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center'}}>
-                              <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>{++i}</div>
-                              <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>{exp.item}</div>
-                              <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18}}>{exp.price}</div>
-                              <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',fontSize:18,color:'red',cursor:'pointer'}}onClick={this.deleteExpence.bind(this,exp._id)}>Remove</div>
+                          <div key={i} className="panel-group">
+                            <div className="panel panel-default">
+                              <div className="panel-heading">
+                                <h4 className="panel-title">
+                                  <a data-toggle="collapse" href={`#collapsee${i}`}>
+                                  <div key={i} style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center'}}>
+                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{++i}</div>
+                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{exp.item}</div>
+                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{exp.price}</div>
+                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',color:'red',cursor:'pointer'}}onClick={this.deleteExpence.bind(this,exp._id)}>Remove</div>                                  </div>
+                                  </a>
+                                </h4>
+                              </div>
+                              <div id={`collapsee${i}`} className="panel-collapse collapse">
+                                <ul className="list-group">
+                                  <li className="list-group-item">One</li>
+                                  <li className="list-group-item">Two</li>
+                                  <li className="list-group-item">Three</li>
+                                </ul>
+                                <div className="panel-footer">Footer</div>
+                              </div>
+                            </div>
                           </div>
                         )
                       })

@@ -18,28 +18,14 @@ export default class AdminPage extends Component {
   render() {
     return (
       <Router>
-        <div>
-        <Header/>
-          <div  className="admin-panel clearfix">
-            <div className="slidebar" >
-              <ul>
-                <li><TestPage link="/admin/registeration" text="Add Shop" image="/shop.png"/></li>
-                <li><TestPage link="/admin/product" text="Add Product" image="/addProduct.png"/></li>
-                <li><TestPage link="/admin/report" text="Report" image="/bar-chart.png"/></li>
-                <li><TestPage link="/admin/allinvoice" text="All Invoice" image="/addall.png"/></li>
-              </ul>
-            </div>
-
-            <div className="main">
-              <Route exact path="/admin" component={Report}/>
-              <Route exact path="/admin/registeration" component={RegistrationPage}/>
-              <Route exact path="/admin/product" component={ProductPage}/>
-              <Route exact path="/admin/report" component={Report}/>
-              <Route exact path="/admin/allinvoice" component={AllInvoicePage}/>
-              <Route exact path="/admin/allinvoice/:id" component={InvoiceDetailPage}/>
-              </div>
-          </div>
-        </div>
+      <div className="container-fluid" style={{marginTop:64}}>
+      <Header />
+      <Route exact path="/admin" component={Report}/>
+      <Route exact path="/admin/today" component={Report}/>
+       <Route exact path="/admin/allinvoice" component={AllInvoicePage}/>
+      <Route exact path="/admin/allinvoice/:id" component={InvoiceDetailPage}/>
+      <Route exact path="/admin/registeration" component={RegistrationPage}/>
+      </div>
       </Router>
     );
   }

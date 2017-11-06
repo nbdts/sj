@@ -8,6 +8,7 @@ import BillPage from "./pages/BillPage";
 import InvoicePage from "./pages/InvoicePage";
 import Report from "./pages/Report";
 import RegistrationPage from "./pages/RegistrationPage";
+import ProductPage from "./pages/ProductPage";
 import TestPage from "./pages/TestPage";
 import TodayExpense from "./pages/TodayExpense";
 import BalanceSheet from "./pages/BalanceSheet";
@@ -46,18 +47,23 @@ export default class App extends Component {
       <Route exact path = "/" render={this.authenticationShop.bind(this)} />
       <Route exact path = "/home" render={this.authenticationShop.bind(this)} />
       <Route exact path = "/login" component = {LoginPage} />
-      <Route exact path = "/admin" render={this.authenticationAdmin.bind(this)} />
-      <Route exact path = "/admin/product" component = {AdminPage} />
-      <Route exact path = "/admin/report" component = {AdminPage} />
-      <Route exact path = "/admin/registeration" component = {AdminPage} />
-      <Route exact path = "/admin/allinvoice" component = {AdminPage} />
-      <Route exact path = "/admin/allinvoice/:id" component={AdminPage}/>
-      <Route exact path = "/admin/bill" component = {AdminPage} />
       <Route exact path = "/bill" component = {BillPage} />
       <Route exact path = "/invoice" component = {InvoicePage} />
       <Route exact path = "/rep" component = {Report} />
       <Route exact path = "/balsheet/:id" component = {BalanceSheet} />
       <Route exact path = "/rep/:id" component = {Report} />
+      <Route exact path="/products" component={ProductPage}/>
+      <Route exact path = "/admin" render={this.authenticationAdmin.bind(this)} />
+      <Route exact path = "/admin/bill" component = {AdminPage} />
+      <Route exact path = "/admin/report" component = {AdminPage} />
+      <Route exact path = "/admin/product" component = {AdminPage} />
+      <Route exact path = "/admin/registeration" component = {AdminPage} />
+      <Route exact path = "/admin/allinvoice" component = {AdminPage} />
+      <Route exact path = "/admin/allinvoice/:id" component={AdminPage}/>
+      <Route exact path="/admin/today" component={AdminPage}/>
+      <Route exact path="/admin/all" component={AdminPage}/>
+
+
       </div>
       );
   }

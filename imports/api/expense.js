@@ -9,6 +9,7 @@ Meteor.methods({
     shopid:expense.shopid,
     item:expense.item,
     price: expense.price,
+    expensetype: expense.expensetype,
     createdAt:new Date()
    });
 },
