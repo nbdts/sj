@@ -53,10 +53,12 @@ export default class ExpenseForm  extends Component {
         price:price,
         expensetype,
       }
-    Meteor.call('expense.insert',expense);
-    Bert.alert('Expense Added', 'success', 'growl-top-right');
-    this.setState({item:''})
-    this.setState({price:''})
+    Meteor.call('expense.insert',expense,(err,res)=>{
+      Bert.alert('Expense Added', 'success', 'growl-top-right');
+      this.setState({item:''})
+      this.setState({price:''})
+      location.reload();
+    });
     }
 
   render(){

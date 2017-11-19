@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import BalanceSheetForAdmin1 from './BalanceSheetForAdmin1';
+import BalanceSheetForAdmin from './BalanceSheetForAdmin';
 import { Tracker } from 'meteor/tracker';
 import {ShopsApi} from '../../api/shops';
+import ReactDOM from 'react-dom';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export default class Report  extends Component {
 
@@ -9,7 +13,13 @@ export default class Report  extends Component {
     super();
     this.state={
       shops:[],
-      shopid:'',
+      shopid:null,
+      startDate: moment(),
+      from: moment()._d,
+      endDate:moment(),
+      to:moment()._d,
+      go:false,
+      date: new Date(),
     }
   }
   componentWillMount(){
@@ -23,16 +33,52 @@ export default class Report  extends Component {
     componentWillUnmount(){
       this.linkracker.stop();
     }
-    setValue(event){
+    setSelectValue(event){
       this.setState({shopid:event.target.value})
     }
+    handleReset(){
+      this.setState({go:false})
+    }
+    handleSubmit(){
+      const shopid = this.state.shopid;
+      if (shopid == null) {
+        Bert.alert('Please Select Shop', 'danger', 'growl-top-right');
+        return false;
+      }
+      if (this.state.from == null) {
+        Bert.alert('Please Select Start Date', 'danger', 'growl-top-right');
+        return false;
+      }
+      if (this.state.to == null) {
+        Bert.alert('Please Select End Date', 'danger', 'growl-top-right');
+        return false;
+      }
+      this.setState({go:true})
+    }
+    setValue(field, date) {
+   let object = {};
+   object[field] = date;
+   if (field === 'startDate') {
+     object["from"] = date._d;
+   }
+   if (field === 'endDate') {
+     object["to"] = date._d;
+   }
+   this.setState(object);
+ }
 
   render(){
     return(
        <div>
-       <h4> To see the other shop report first Press Ctrl + R  or You can REFRESH the page  and then select other shop from list <strong>We Are extreamly Sorry for this difficulty we will try to resolve this problem very soon</strong></h4>
-       <div style={{display:'flex',flex:1,justifyContent:'center',marginTop:70}}>
-           <select onChange={this.setValue.bind(this)} className="form-control" style={{display:'flex',flexBasis:300}}>
+       <center><h1>Report</h1></center>
+       <div style={{display:'flex',flexFlow:'column',flexWrap:'wrap',flex:1,marginTop:70}}>
+       <center>
+          <h4>From</h4>
+          <DatePicker style={{width:3000}} selected={this.state.startDate} onChange={this.setValue.bind(this,'startDate')} className="form-control"  placeholderText="From" dateFormat="L" style={{flexBasis:300,margin:10}}/>
+          <h4>To</h4>
+          <DatePicker selected={this.state.endDate} onChange={this.setValue.bind(this,'endDate')} className="form-control"  placeholderText="From" dateFormat="L"  style={{flexBasis:300,margin:10}}/>
+          <h4>Shop</h4>
+          <select onChange={this.setSelectValue.bind(this)} className="form-control"  style={{maxWidth:300,margin:10}}>
            <option >Select Shop</option>
            {this.state.shops.map((shop,i)=>{
              return(
@@ -41,11 +87,11 @@ export default class Report  extends Component {
              })
            }
             </select>
-       </div>
-       {
+            <button className="btn btn-primary" onClick={this.state.go ? this.handleReset.bind(this) : this.handleSubmit.bind(this)}  style={{flexBasis:300,margin:10}}>{this.state.go ? "Reset" :"Submit"}</button>
+            {this.state.go ? <BalanceSheetForAdmin shopid={this.state.shopid} from={this.state.from} to={this.state.to}/> :  null}
 
-        this.state.shopid === '' ? null :  <BalanceSheetForAdmin1 shopid={this.state.shopid} />
-       }
+        </center>
+       </div>
        </div>
     );
   }

@@ -5,6 +5,7 @@ import ProductPage from './ProductPage';
 import Header from '../componants/header/Header';
 import BillPage from './BillPage';
 import Report from "./Report";
+import BalanceSheetReport from "./BalanceSheetReport";
 import AllInvoicePage from "./AllInvoicePage";
 import InvoiceDetailPage from "./InvoiceDetailPage";
 import './css/AdminPage';
@@ -20,8 +21,9 @@ export default class AdminPage extends Component {
       <Router>
       <div className="container-fluid" style={{marginTop:64}}>
       <Header />
-      <Route exact path="/admin" component={Report}/>
-      <Route exact path="/admin/today" component={Report}/>
+      <Route exact path="/admin" component={BalanceSheetReport}/>
+      <Route exact path="/admin/today" component={BalanceSheetReport}/>
+      <Route exact path="/admin/report" component={Report}/>
        <Route exact path="/admin/allinvoice" component={AllInvoicePage}/>
       <Route exact path="/admin/allinvoice/:id" component={InvoiceDetailPage}/>
       <Route exact path="/admin/registeration" component={RegistrationPage}/>

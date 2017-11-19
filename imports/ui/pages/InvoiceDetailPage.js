@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+  import React, { Component } from 'react';
 import './css/InvoicePage';
 import {InvoiceApi} from '../../api/invoice';
 import { Tracker } from 'meteor/tracker';
@@ -42,7 +42,6 @@ createInvoice(){}
     let mytotal= this.state.products.map((product)=>{
         return(price=parseFloat(price)+parseFloat(product.tempprice));
     })
-    console.log(mytotal);
     return(
       <div>
       <div className="mycontainer" style={{width:'100%',top:0,right:'10%',left:'10%',height:'100%'}}>

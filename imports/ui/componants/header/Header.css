@@ -27,10 +27,8 @@
   flex: 1;
   color:black;
   align-items: center;
-  cursor: pointer;
   font-size: 1.2em;
   font-weight: 600;
-  padding-left: 20px;
 }
 .two {
   flex: 1;

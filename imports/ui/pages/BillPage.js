@@ -20,7 +20,7 @@ export default class BillPage extends Component {
       username:'',
       userphone:'',
       id:'',
-      paymenttype:'',
+      paymenttype:'cash',
       }
   }
   componentWillMount() {
@@ -114,12 +114,8 @@ export default class BillPage extends Component {
   createInvoice(amount) {
 
     if (this.state.billprod.length !== 0) {
-      if ( this.state.userphone <= 999999999) {
-        Bert.alert('Mobile no invalid', 'danger', 'growl-top-right');
-        return false;
-      }
-      if ( this.state.userphone === '') {
-        Bert.alert('Mobile no invalid', 'danger', 'growl-top-right');
+      if ( this.state.username === '') {
+        Bert.alert('Enter user name', 'danger', 'growl-top-right');
         return false;
       }
       if ( this.state.paymenttype === '') {
@@ -215,14 +211,13 @@ export default class BillPage extends Component {
       <div  >
           <div className="row" style={{margin:20}} >
               <div  className="col-sm-3"><input type="text" className="form-control" placeholder="User Name" onChange={this.setValue.bind(this,'username')} value={this.state.username} /></div>
-              <div  className="col-sm-3"><input type="text" className="form-control" placeholder="User Number" onChange={this.setValue.bind(this,'userphone')} value={this.state.userphone} /></div>
+              <div  className="col-sm-3"><input type="number" className="form-control" placeholder="User Number" onChange={this.setValue.bind(this,'userphone')} value={this.state.userphone} /></div>
               <div  className="col-sm-3" style={{display:'flex'}}>
                  <div  className="selectprocuct">{this.state.billprod.length}</div>
                  <div  className="totalofproduct">Total : {mytotal[mytotal.length-1]}</div>
               </div>
               <div  className="col-sm-3" style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
                 <select className="group" style={{flexBasis:100}}  onChange={this.setValue.bind(this,'paymenttype')}>
-                <option value="">Payment Type</option>
                 <option value="cash">Cash</option>
                 <option value="paytm">Paytm</option>
                 <option value="borrow">Out Standing</option>
@@ -255,7 +250,7 @@ export default class BillPage extends Component {
           }
           </div>
           <div id="divContents" style={{display:'none'}}>
-          <Print id={this.state.id} products={this.state.billprod} shop={Session.get('shop')} username={this.state.username} userphone={this.state.userphone} chnageUsername={this.chnageUsername.bind(this)} chnageUserphone={this.chnageUserphone.bind(this)}/>
+          <Print id={this.state.id} today={today} products={this.state.billprod} shop={Session.get('shop')} username={this.state.username} userphone={this.state.userphone} chnageUsername={this.chnageUsername.bind(this)} chnageUserphone={this.chnageUserphone.bind(this)}/>
           </div>
 
           <iframe id="myiframe" style={{position:"absolute",top:"-100vh"}}></iframe>

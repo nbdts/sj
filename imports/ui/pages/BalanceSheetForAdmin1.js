@@ -26,16 +26,14 @@ export default class BalanceSheet extends Component {
         this.setState({openBal:res[0].balance,openBalId:res[0]._id})
       }
       })
-      Meteor.call('balance.check',this.props.shopid,(err,res)=>{
-        if (res) {
-          res.map((fb)=>{
-            if (fb.type === "1") {
-              this.setState({addOpenBal:fb.balance,addOpenBalId:fb._id})
-            }
-            if (fb.type === "0") {
-              this.setState({closeBal:fb.balance,closeBalID:fb._id})
-            }
-          })
+      Meteor.call('balance.check',this.props.shopid,"0",(err,res)=>{
+        if (res.length > 0) {
+          this.setState({closeBal:res[0].balance,closeBalID:res[0]._id})
+        }
+        })
+      Meteor.call('balance.check',this.props.shopid,"1",(err,res)=>{
+        if (res.length > 0) {
+          this.setState({addOpenBal:res[0].balance,addOpenBalId:res[0]._id})
         }
         })
 
@@ -65,49 +63,46 @@ export default class BalanceSheet extends Component {
  }
   render(){
     let price=0;
-    let mytotal= this.state.invoices.map((invoice)=>{
-          return(price=parseFloat(price)+parseFloat(invoice.amount));
-    })
-
     let paytmsales=0;
-    let paytmsales1= this.state.invoices.map((invoice)=>{
-          if (invoice.paymenttype === "paytm") {
-            return(paytmsales=parseFloat(paytmsales)+parseFloat(invoice.amount));
+    let cashsales=0;
+    let udharisales=0;
+
+    let mytotal= this.state.invoices.filter((invoice)=>{
+          if (invoice.amount) {
+            price = price + parseFloat(invoice.amount)
           }
+          if (invoice.paymenttype === "paytm") {
+            paytmsales = paytmsales + parseFloat(invoice.amount)
+          }
+          if (invoice.paymenttype === "cash") {
+            cashsales = cashsales + parseFloat(invoice.amount)
+          }
+          if (invoice.paymenttype === "borrow") {
+            udharisales = parseFloat(udharisales) + parseFloat(invoice.amount)
+          }
+
     })
 
-    let cashsales=0;
-    let cashsales1= this.state.invoices.map((invoice)=>{
-          if (invoice.paymenttype === "cash") {
-            return(cashsales=parseFloat(cashsales)+parseFloat(invoice.amount));
-          }
-    })
-    let udharisales=0;
-    let udharisales1= this.state.invoices.map((invoice)=>{
-          if (invoice.paymenttype === "borrow") {
-            return(udharisales=parseFloat(udharisales)+parseFloat(invoice.amount));
-          }
-    })
+
     let mtexpense=0;
-    let mtrexpense= this.state.expenses.map((exp)=>{
-      if (parseFloat(exp.expensetype) == 0) {
-        return(mtexpense=parseFloat(mtexpense)+parseFloat(exp.price));
-      }
-    })
     let miexpense=0;
-    let miscexpense= this.state.expenses.map((exp)=>{
+
+    let mtrexpense= this.state.expenses.filter((exp)=>{
+      if (parseFloat(exp.expensetype) == 0) {
+        mtexpense = parseFloat(mtexpense) + parseFloat(exp.price)
+      }
       if (parseFloat(exp.expensetype) == 1) {
-        return(miexpense=parseFloat(miexpense)+parseFloat(exp.price));
+        miexpense = parseFloat(miexpense) + parseFloat(exp.price)
       }
     })
-    let totalearning = parseFloat(this.state.openBal) + parseFloat(this.state.addOpenBal) + parseFloat(mytotal[mytotal.length-1])
-    let totalexpense = parseFloat(mtrexpense[mtrexpense.length-2]) + parseFloat(miscexpense[miscexpense.length-1])
+    let totalearning = parseFloat(this.state.openBal) + parseFloat(this.state.addOpenBal) + parseFloat(price)
+    let totalexpense = parseFloat(mtexpense) + parseFloat(miexpense)
     let availablebalance = totalearning - totalexpense;
     return(
       <div>
       <Header/>
-            <div style={{marginTop:60}}>
-            <div style={{display:'flex',flex:1,marginTop:10}}>
+            <div style={{marginTop:70,fontSize:15}}>
+            <div style={{display:'flex',flex:1,marginTop:10,borderBottom:'groove',}}>
 
                 <div style={{flex:1,borderRight:'groove',flexFlow:'column',justifyContent:'center'}}>
 
@@ -125,13 +120,13 @@ export default class BalanceSheet extends Component {
 
                     <div style={{display:'flex',margin:10,justifyContent:'center',alignItems:'center'}}>
                         <div style={{display:'flex',flex:1}}> Sales </div>
-                        <div style={{display:'flex',flex:1}}>{mytotal[mytotal.length-1]}</div>
+                        <div style={{display:'flex',flex:1}}>{price}</div>
                     </div>
                     <hr />
 
                     <div style={{display:'flex',margin:10,justifyContent:'center',alignItems:'center'}}>
                         <div style={{display:'flex',flex:1}}> Total </div>
-                        <div style={{display:'flex',flex:1}}>{parseFloat(this.state.openBal) + parseFloat(this.state.addOpenBal) + parseFloat(mytotal[mytotal.length-1])}</div>
+                        <div style={{display:'flex',flex:1}}>{totalearning}</div>
                     </div>
 
                 </div>
@@ -140,28 +135,28 @@ export default class BalanceSheet extends Component {
 
                     <div style={{display:'flex',margin:10,justifyContent:'center',alignItems:'center'}}>
                         <div style={{display:'flex',flex:1}}>Material expense</div>
-                        <div style={{display:'flex',flex:1}}>{mtrexpense[mtrexpense.length-2]}</div>
+                        <div style={{display:'flex',flex:1}}>{mtexpense}</div>
                     </div>
 
 
                     <div style={{display:'flex',margin:10,justifyContent:'center',alignItems:'center'}}>
                         <div style={{display:'flex',flex:1}}>Misc Expense</div>
-                        <div style={{display:'flex',flex:1}}>{miscexpense[miscexpense.length-1]}</div>
+                        <div style={{display:'flex',flex:1}}>{miexpense}</div>
                     </div>
                     <hr />
 
                     <div style={{display:'flex',margin:10,justifyContent:'center',alignItems:'center'}}>
                         <div style={{display:'flex',flex:1}}>Total</div>
-                        <div style={{display:'flex',flex:1}}>{parseFloat(mtrexpense[mtrexpense.length-2]) + parseFloat(miscexpense[miscexpense.length-1])}</div>
+                        <div style={{display:'flex',flex:1}}>{parseFloat(mtexpense) + parseFloat(miexpense)}</div>
                     </div>
 
                 </div>
 
             </div>
             <p>available balance at counter is {availablebalance}</p>
-            <p>paytm sales is {paytmsales1[paytmsales1.length -1]}</p>
-            <p>cash sales is {cashsales1[cashsales1.length - 2]}</p>
-            <p>Udhari sales is {udharisales1[udharisales1.length - 3]}</p>
+            <p>paytm sales is {paytmsales}</p>
+            <p>cash sales is {cashsales}</p>
+            <p>Udhari sales is {udharisales}</p>
           </div>
         </div>
 

@@ -55,11 +55,12 @@ render() {
       <div>
       <div className="header">
 
-          <div className="headeritem one" onClick={this.home.bind(this)}>Sandwich Junction</div>
+          <div className="headeritem one"><img  onClick={this.home.bind(this)} src='/sjflex.jpg' width="250px" height="64px" style={{cursor:'pointer'}}/>{Session.get('shop')? Session.get('shop').add: null}</div>
           <div className="headeritem three">
           {Session.get('admin')?
           <div style={{display:'flex'}}>
             <a className="mynavitmes" style={styles.dropDown} href="/admin/today" >Today</a>
+            <a className="mynavitmes" style={styles.dropDown} href="/admin/report" >Report</a>
             <a className="mynavitmes" style={styles.dropDown} href="/admin/allinvoice" >All</a>
             <a className="mynavitmes" style={styles.dropDown} href="/admin/registeration" >Shop</a>
           </div>

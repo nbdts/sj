@@ -24,8 +24,20 @@ Meteor.methods({
 'shops.remove'(shopid){
   ShopsApi.remove(shopid);
 },
-'shops.update'(){
-
+'shops.update'(shop){
+  return ShopsApi.update({_id:shop.shopid},{$set:{
+    name:shop.shopname,
+    email: shop.shopemail,
+    phno:shop.shopphno,
+    password:shop.shoppassword,
+    gstin:shop.shopgstin,
+    bankname:shop.shopbankname,
+    accName:shop.shopaccname,
+    accType:shop.shopacctype,
+    accNumber:shop.shopaccno,
+    accIfsc:shop.shopifsc,
+    add:shop.shopadd,
+  }})
 },
 'checklogin'(shopname,password){
   const shop= ShopsApi.find({email:shopname,password}).fetch();

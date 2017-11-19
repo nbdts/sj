@@ -9,7 +9,7 @@ export default class BalanceForm  extends Component {
     this.state={
       balanceapi:[],
       balance:'',
-      type:'0',
+      type:'',
     }
   }
   componentWillMount(){
@@ -32,6 +32,11 @@ export default class BalanceForm  extends Component {
       this.setState({type:event.target.value})
     }
     handleSubmit(){
+
+      if (this.state.type === '') {
+        Bert.alert('Select Balance Type', 'warning', 'growl-top-right')
+        return false;
+      }
       let type=this.state.type
       let balance=this.state.balance
       balanceobj={
@@ -39,16 +44,18 @@ export default class BalanceForm  extends Component {
         type:type,
         balance:balance
       }
-        Meteor.call('balance.check',(err,res)=>{
+        Meteor.call('balance.check',Session.get('shop')._id,type,(err,res)=>{
           if (!err) {
-            if((res.length==1&&(res[0].type==balanceobj.type))||res.length==2){
+            if(res.length > 0){
                 Bert.alert('Already added', 'warning', 'growl-top-right')
                 this.setState({balance:0})
             }
             else{
-                Meteor.call('balance.insert',balanceobj)
-                Bert.alert('Balance Added', 'success', 'growl-top-right')
-                this.setState({balance:0})
+                Meteor.call('balance.insert',balanceobj,(err,res)=>{
+                  Bert.alert('Balance Added', 'success', 'growl-top-right')
+                  this.setState({balance:0})
+                  location.reload();
+                })
               }
           }
 
@@ -66,6 +73,7 @@ export default class BalanceForm  extends Component {
        <div style={styles.inputs}>
 
      <select onChange={this.handleClick.bind(this)} style={{margin:5}}>
+        <option value="">Select Balance Type</option>
         <option value={'0'}>CLOSING</option>
         <option value={'1'}>ADD TO OPENING</option>
       </select>

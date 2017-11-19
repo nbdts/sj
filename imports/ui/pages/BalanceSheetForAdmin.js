@@ -4,6 +4,7 @@ import { Tracker } from 'meteor/tracker';
 import {ExpenseApi} from '../../api/expense';
 import {BalanceApi} from '../../api/balance';
 import {InvoiceApi} from '../../api/invoice';
+import moment from 'moment';
 export default class BalanceSheet extends Component {
   constructor() {
     super();
@@ -26,29 +27,33 @@ export default class BalanceSheet extends Component {
         this.setState({openBal:res[0].balance,openBalId:res[0]._id})
       }
       })
-      Meteor.call('balance.check',this.props.shopid,(err,res)=>{
-        if (res) {
-          res.map((fb)=>{
-            if (fb.type === "1") {
-              this.setState({addOpenBal:fb.balance,addOpenBalId:fb._id})
-            }
-            if (fb.type === "0") {
-              this.setState({closeBal:fb.balance,closeBalID:fb._id})
-            }
-          })
+      Meteor.call('balance.check',this.props.shopid,"0",(err,res)=>{
+        if (res.length > 0) {
+          this.setState({closeBal:res[0].balance,closeBalID:res[0]._id})
+        }
+        })
+      Meteor.call('balance.check',this.props.shopid,"1",(err,res)=>{
+        if (res.length > 0) {
+          this.setState({addOpenBal:res[0].balance,addOpenBalId:res[0]._id})
         }
         })
 
-    var today=new Date()
-     var date= today.getDate();
-     var month= today.getMonth()+1;
-     var year= today.getFullYear();
+     var from= this.props.from
+     var fromdate= from.getDate();
+     var frommonth= from.getMonth()+1;
+     var fromyear= from.getFullYear();
+     
+     var to= this.props.to
+     var todate= to.getDate();
+     var tomonth= to.getMonth()+1;
+     var toyear= to.getFullYear();
+
      this.linkracker = Tracker.autorun(()=> {
         Meteor.subscribe("expense");
         Meteor.subscribe("balance");
         Meteor.subscribe("invoice");
-        let expenses = ExpenseApi.find({createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.shopid}).fetch();
-        let invoices = InvoiceApi.find({createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.shopid}).fetch();
+        let expenses = ExpenseApi.find({createdAt:{$gte:new Date(`${fromyear}/${frommonth}/${fromdate}`),$lte:new Date(`${toyear}/${tomonth}/${todate}`)},shopid:this.props.shopid}).fetch();
+        let invoices = InvoiceApi.find({createdAt:{$gte:new Date(`${fromyear}/${frommonth}/${fromdate}`),$lte:new Date(`${toyear}/${tomonth}/${todate}`)},shopid:this.props.shopid}).fetch();
         this.setState({expenses});
         this.setState({invoices});
     });
@@ -79,6 +84,7 @@ export default class BalanceSheet extends Component {
    Meteor.call('balance.update',addOpenBalId,addOpenBal,(err,res)=>{
      if (res) {
        Bert.alert('successfully update', 'success', 'growl-top-right');
+       location.reload();
      }
    })
  }
@@ -93,6 +99,7 @@ export default class BalanceSheet extends Component {
    Meteor.call('balance.update',closeBalID,closeBal,(err,res)=>{
      if (res) {
        Bert.alert('successfully update', 'success', 'growl-top-right');
+       location.reload();
      }
    })
  }
@@ -120,7 +127,7 @@ export default class BalanceSheet extends Component {
     return(
       <div>
       <Header/>
-            <div style={{marginTop:60}}>
+            <div style={{marginTop:70}}>
             <div style={{display:'flex'}}>
             <div style={{flex:1,display:'flex',justifyContent:'center',alignItems:'center',fontSize:20}}>
                   <form onSubmit={this.handleResettinglastnighclosingbaalnce.bind(this)} style={{display:'flex',flexFlow:'column',justifyContent:'center',alignItems:'center'}}>
@@ -150,8 +157,9 @@ export default class BalanceSheet extends Component {
                 <div style={{flex:1,borderRight:'groove',flexFlow:'column',minWidth:400}}>
                     <div  style={{display:'flex',flex:1,height:50,justifyContent:'space-between',alignItems:'center',fontSize:20,padding:8}}><div className="text-info text-uppercase">Invoices List</div> <div className="text-primary">Total : {mytotal[mytotal.length-1]}</div></div>
                       <div className="panel panel-default" style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center',borderTop:'groove',borderBottom:'groove'}}>
-                          <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Sequence</div>
-                          <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Products</div>
+                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Sr. No.</div>
+                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Name</div>
+                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Time</div>
                           <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Amount</div>
                           <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Action</div>
                       </div>
@@ -164,8 +172,9 @@ export default class BalanceSheet extends Component {
                                 <h4 className="panel-title">
                                   <a data-toggle="collapse" href={`#collapse${i}`}>
                                   <div key={i} style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center'}}>
-                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{exp.seq}</div>
-                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{exp.products.length}</div>
+                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{i+1}</div>
+                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{exp.name}</div>
+                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{moment(exp.createdAt).fromNow()}</div>
                                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{exp.amount}</div>
                                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',color:'red',cursor:'pointer'}} onClick={this.deleteInvoice.bind(this,exp._id)}>Remove</div>
                                   </div>
@@ -198,6 +207,7 @@ export default class BalanceSheet extends Component {
                   <div className="panel panel-default" style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center',borderTop:'groove',borderBottom:'groove'}}>
                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Sr. No.</div>
                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Item</div>
+                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Time</div>
                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Amount</div>
                        <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Action</div>
                   </div>
@@ -210,8 +220,9 @@ export default class BalanceSheet extends Component {
                                 <h4 className="panel-title">
                                   <a data-toggle="collapse" href={`#collapsee${i}`}>
                                   <div key={i} style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center'}}>
-                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{++i}</div>
+                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{i+1}</div>
                                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{exp.item}</div>
+                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{moment(exp.createdAt).fromNow()}</div>
                                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{exp.price}</div>
                                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',color:'red',cursor:'pointer'}}onClick={this.deleteExpence.bind(this,exp._id)}>Remove</div>                                  </div>
                                   </a>

@@ -3,7 +3,7 @@ import {InvoiceApi} from '../../api/invoice';
 import {Tracker} from 'meteor/tracker';
 import {Session} from 'meteor/session';
 import './css/Print';
-
+import moment from 'moment';
 export default class Print  extends Component {
   constructor() {
     super();
@@ -44,7 +44,7 @@ export default class Print  extends Component {
     </div>
     <div style={{textAlign:'left',flex:1,flexFlow:'column'}}>
     <span style={{textAlign:'left',fontSize:12}}>invoice:SJ{this.props.id}</span><br/>
-    <span style={{textAlign:'left',fontSize:12}} >Date:{date}</span>
+    <span style={{textAlign:'left',fontSize:12}} >Date:{date + '    ' + moment(this.props.today).format("hh:mm:ss a")}</span>
     </div>
     </div>
     </div>

@@ -5,7 +5,7 @@ export const ProductApi = new Mongo.Collection('product');
 Meteor.methods({
 'product.insert'(product){
 
-  ProductApi.insert({
+return  ProductApi.insert({
     name:product.name,
     shopid:product.shopid,
     price:product.price,
@@ -17,8 +17,12 @@ Meteor.methods({
 'product.remove'(product){
   ProductApi.remove(product);
 },
-'product.update'(){
-
+'product.update'(product){
+  return ProductApi.update({_id:product.productid},{ $set:{
+    name:product.name,
+    price:product.price,
+    category:product.category,
+  }});
 }
 });
 if (Meteor.isServer) {

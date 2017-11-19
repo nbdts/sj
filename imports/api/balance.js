@@ -11,12 +11,12 @@ Meteor.methods({
     createdAt:new Date()
    });
 },
-'balance.check'(shopid){
+'balance.check'(shopid,type){
   var today=new Date()
    var day= today.getDate();
    var month= today.getMonth();
    var year= today.getFullYear();
-   let mybalance = BalanceApi.find({createdAt:{$gt:new Date(`${year}/${++month}/${day}`)},shopid}).fetch();
+   let mybalance = BalanceApi.find({createdAt:{$gt:new Date(`${year}/${++month}/${day}`)},shopid,type}).fetch();
    return mybalance;
 },
 'balance.getlastnightclosingbalance'(shopid){
