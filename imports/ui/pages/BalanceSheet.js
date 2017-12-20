@@ -176,8 +176,8 @@ export default class BalanceSheet extends Component {
                                   <div key={i} style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center'}}>
                                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{i+1}</div>
                                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{exp.name}</div>
-                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{moment(exp.createdAt).fromNow()}</div>
-                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{exp.amount}</div>
+                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{ moment(exp.createdAt).format("hh:mm:ss a")}</div>
+                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{exp.amount}<div style={{padding:10,color:'blue'}}>{exp.paymenttype[0]}</div></div>
                                   </div>
                                   </a>
                                 </h4>
@@ -224,7 +224,7 @@ export default class BalanceSheet extends Component {
                                     <div key={i} style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center'}}>
                                         <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{i+1}</div>
                                         <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{exp.item}</div>
-                                        <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{moment(exp.createdAt).fromNow()}</div>
+                                        <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{ moment(exp.createdAt).format("hh:mm:ss a")}</div>
                                         <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{exp.price}</div>
                                     </div>
                                     </a>

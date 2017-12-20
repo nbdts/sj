@@ -42,7 +42,7 @@ export default class BalanceSheet extends Component {
      var fromdate= from.getDate();
      var frommonth= from.getMonth()+1;
      var fromyear= from.getFullYear();
-     
+
      var to= this.props.to
      var todate= to.getDate();
      var tomonth= to.getMonth()+1;
@@ -174,7 +174,7 @@ export default class BalanceSheet extends Component {
                                   <div key={i} style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center'}}>
                                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{i+1}</div>
                                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{exp.name}</div>
-                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{moment(exp.createdAt).fromNow()}</div>
+                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{ moment(exp.createdAt).format("hh:mm:ss a")}</div>
                                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{exp.amount}</div>
                                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',color:'red',cursor:'pointer'}} onClick={this.deleteInvoice.bind(this,exp._id)}>Remove</div>
                                   </div>
@@ -222,7 +222,7 @@ export default class BalanceSheet extends Component {
                                   <div key={i} style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center'}}>
                                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{i+1}</div>
                                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{exp.item}</div>
-                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{moment(exp.createdAt).fromNow()}</div>
+                                      <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{ moment(exp.createdAt).format("hh:mm:ss a")}</div>
                                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>{exp.price}</div>
                                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center',color:'red',cursor:'pointer'}}onClick={this.deleteExpence.bind(this,exp._id)}>Remove</div>                                  </div>
                                   </a>
