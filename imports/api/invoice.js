@@ -38,7 +38,7 @@ if (Meteor.isServer) {
     return  InvoiceApi.find();
   });
   Meteor.publish('invoicebyshopid', function userPublication(shopid){
-    return  InvoiceApi.find({shopid});
+    return  InvoiceApi.find({shopid})
   });
   Meteor.startup(function () {
       Counter._ensureIndex({"type": 1});
