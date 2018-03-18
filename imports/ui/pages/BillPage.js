@@ -9,6 +9,7 @@ import './css/BillPage';
 import Print from './Print';
 import Avatar from '../componants/Avatar';
 import ProductSinlgeItem from '../componants/ProductSinlgeItem';
+import { withTracker } from 'meteor/react-meteor-data';
 
 export default class BillPage extends Component {
   constructor() {
@@ -26,10 +27,7 @@ export default class BillPage extends Component {
   componentWillMount() {
     this.linktracker = Tracker.autorun(() => {
       Meteor.subscribe("product");
-      Meteor.subscribe("invoicebyshopid",Session.get('shop')._id);
-      let productsbyshop = ProductApi.find({shopid:Session.get('shop')._id}).fetch();
-      let productsbytype = ProductApi.find({shopid:1}).fetch();
-      const products = [...productsbyshop, ...productsbytype];
+      let products = ProductApi.find({}).fetch();
       this.setState({products});
     });
   }
@@ -123,8 +121,7 @@ export default class BillPage extends Component {
         return false;
       }
   Meteor.call('invoice.insert',Session.get('shop')._id, this.state.username,this.state.userphone, this.state.billprod,amount,this.state.paymenttype,(err,res)=>{
-    const myInvoice=InvoiceApi.findOne({_id:res})
-    this.setState({id:myInvoice.seq})
+      this.setState({id:res.seq})
     if (err) {
       Bert.alert('ERROR', 'danger', 'growl-top-right');
     }else {
@@ -231,16 +228,18 @@ export default class BillPage extends Component {
                 <div key={i} className="col-sm-3 mycolumn">
                 <div className="mycategories btn" >{cat.name}</div>
                 {
-                  this.state.products.map((product,i)=>{
-                    if (parseFloat(product.category) == cat.id) {
-                      return(
-                        <div key={i} className="myproducts btn">
-                        <div className='myproductname' onClick={this.addToBill.bind(this,product)}>{product.name}</div>
-                        <div className='myproductquantity'>{product.quantity ? product.quantity : null}</div>
-                        {  product.quantity == null  ? null :<span className="glyphicon glyphicon-minus-sign myproducticon"  onClick={this.minusproduct.bind(this,product)}></span>}
-                        <div className='myproductprice' onClick={this.addToBill.bind(this,product)}> ₹{product.price}</div>
-                        </div>
-                      )
+                  this.state.products.map((product,i)=>{parseFloat
+                    if (parseInt(product.category) == cat.id) {
+                      if (product.shopid  === Session.get('shop')._id ||  product.shopid === 1 ) {
+                        return(
+                          <div key={i} className="myproducts btn" style={{border:product.shopid  === Session.get('shop')._id ? '3px solid #FF9800' : '' }}>
+                          <div className='myproductname' onClick={this.addToBill.bind(this,product)}>{product.name}</div>
+                          <div className='myproductquantity'>{product.quantity ? product.quantity : null}</div>
+                          {  product.quantity == null  ? null :<span className="glyphicon glyphicon-minus-sign myproducticon"  onClick={this.minusproduct.bind(this,product)}></span>}
+                          <div className='myproductprice' onClick={this.addToBill.bind(this,product)}> ₹{product.price}</div>
+                          </div>
+                        )
+                      }
                     }
                   })
                 }

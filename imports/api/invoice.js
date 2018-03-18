@@ -7,8 +7,9 @@ Counter = new Mongo.Collection("counter");
 Meteor.methods({
 
 'invoice.insert'(shopid,name,phno,products,amount,paymenttype){
+  let genid = getNextSequence("projectId");
   var insert = InvoiceApi.insert({
-    seq:getNextSequence("projectId"),
+    seq:genid,
     shopid:shopid,
     name,
     phno,
@@ -17,7 +18,11 @@ Meteor.methods({
     amount,
     paymenttype,
    });
-   return insert;
+   let result = {
+     result:insert,
+     seq:genid
+   }
+   return result;
 },
 'invoice.remove'(shopid){
   InvoiceApi.remove(shopid);
