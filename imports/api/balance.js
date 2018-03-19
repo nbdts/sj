@@ -38,4 +38,7 @@ if (Meteor.isServer) {
   Meteor.publish('balance', function userPublication(){
     return  BalanceApi.find();
   });
+  Meteor.publish('balancebyshopid', function userPublication(shopid){
+    return  BalanceApi.find({shopid});
+  });
 }

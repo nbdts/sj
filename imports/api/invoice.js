@@ -45,6 +45,9 @@ if (Meteor.isServer) {
   Meteor.publish('invoicebyshopid', function userPublication(shopid){
     return  InvoiceApi.find({shopid})
   });
+  Meteor.publish('invoiceByShopIdAndDateWise', function userPublication(shopid,date){
+    return  InvoiceApi.find({shopid,createdAt:{$gte:date}})
+  });
   Meteor.startup(function () {
       Counter._ensureIndex({"type": 1});
       if (Counter.find({type: "projectId"}).count() == 0) Counter.insert({type: "projectId", seq: 0});

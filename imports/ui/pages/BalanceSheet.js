@@ -45,11 +45,11 @@ export default class BalanceSheet extends Component {
      var month= today.getMonth()+1;
      var year= today.getFullYear();
      this.linkracker = Tracker.autorun(()=> {
-        Meteor.subscribe("expense");
-        Meteor.subscribe("balance");
-        Meteor.subscribe("invoice");
+        Meteor.subscribe("expenseByShopIdAndDateWise",this.props.match.params.id,new Date(`${year}/${month}/${date}`));
+        Meteor.subscribe("invoiceByShopIdAndDateWise",this.props.match.params.id,new Date(`${year}/${month}/${date}`));
         let expenses = ExpenseApi.find({createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.match.params.id}).fetch();
-        let invoices = InvoiceApi.find({createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.match.params.id}).fetch();
+        let invoices = InvoiceApi.find().fetch();
+        // let invoices = InvoiceApi.find({createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.match.params.id}).fetch();
         this.setState({expenses});
         this.setState({invoices});
     });
@@ -119,14 +119,21 @@ export default class BalanceSheet extends Component {
    }
  }
   render(){
-    let price=0;
-    let mytotal= this.state.invoices.map((invoice)=>{
-          return(price=parseFloat(price)+parseFloat(invoice.amount));
-    })
-    let expense=0;
-    let myexpense= this.state.expenses.map((exp)=>{
-          return(expense=parseFloat(expense)+parseFloat(exp.price));
-    })
+    if (this.state.invoices.length === 0 && this.state.expenses.length === 0 ) {
+      return (
+        <div className="progress">
+          <div className="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style={{width:'45%'}}>
+            <span className="sr-only">45% Complete</span>
+          </div>
+        </div>
+      )
+    }else {
+    let mytotal= this.state.invoices.reduce((sum,invoice)=>{
+          return parseFloat(sum)+ parseFloat(invoice.amount)
+    },0)
+    let myexpense= this.state.expenses.reduce((sum,exp)=>{
+          return parseFloat(sum) + parseFloat(exp.price)
+    },0)
     return(
       <div>
       <Header/>
@@ -158,7 +165,7 @@ export default class BalanceSheet extends Component {
             <div style={{display:'flex',flex:1,marginTop:10,flexWrap:'wrap'}}>
 
                 <div style={{flex:1,borderRight:'groove',flexFlow:'column',minWidth:400}}>
-                    <div  style={{display:'flex',flex:1,height:50,justifyContent:'space-between',alignItems:'center',fontSize:20,padding:8}}><div className="text-info text-uppercase">Invoices List</div> <div className="text-primary">Total : {mytotal[mytotal.length-1]}</div></div>
+                    <div  style={{display:'flex',flex:1,height:50,justifyContent:'space-between',alignItems:'center',fontSize:20,padding:8}}><div className="text-info text-uppercase">Invoices List</div> <div className="text-primary">Total : {mytotal}</div></div>
                       <div className="panel panel-default" style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center',borderTop:'groove',borderBottom:'groove'}}>
                           <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Sr. No.</div>
                           <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Name</div>
@@ -205,7 +212,7 @@ export default class BalanceSheet extends Component {
 
                 <div style={{flex:1,flexFlow:'column',minWidth:400}}>
                 <input type="checkbox"  onChange={this.handleCheckBOx.bind(this)}/>{this.state.expensetype == 0 ? "material" : "misc"}
-                <div style={{display:'flex',flex:1,height:50,justifyContent:'space-between',alignItems:'center',fontSize:20,padding:8}}><div className="text-info text-uppercase">Expenses List</div> <div className="text-primary">Total : {myexpense[myexpense.length-1]}</div></div>
+                <div style={{display:'flex',flex:1,height:50,justifyContent:'space-between',alignItems:'center',fontSize:20,padding:8}}><div className="text-info text-uppercase">Expenses List</div> <div className="text-primary">Total : {myexpense}</div></div>
                   <div className="panel panel-default" style={{display:'flex',flex:1,height:30,justifyContent:'center',alignItems:'center',borderTop:'groove',borderBottom:'groove'}}>
                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Sr. No.</div>
                       <div style={{display:'flex',flex:1,justifyContent:'center',alignItems:'center'}}>Item</div>
@@ -242,5 +249,6 @@ export default class BalanceSheet extends Component {
         </div>
 
     );
+   }
   }
 }
