@@ -20,23 +20,6 @@ export default class ExpenseForm  extends Component {
   }
 
 
-  componentWillMount(){
-      this.linkracker = Tracker.autorun(()=> {
-        Meteor.subscribe("expense");
-        let expenses = ExpenseApi.find({}).fetch();
-          this.setState({expenses});
-      });
-  }
-  componentWillUnmount(){
-    this.linkracker.stop();
-  }
-
-
-    test(){
-      let today=new Date()
-       date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-      }
-
 
     handleChange(event) {
       let object = {};
@@ -62,7 +45,6 @@ export default class ExpenseForm  extends Component {
     }
 
   render(){
-    this.test()
     return(
        <div style={styles.mainBox}>
        <h1 style={{textAlign:'center'}} >Enter Expense</h1>

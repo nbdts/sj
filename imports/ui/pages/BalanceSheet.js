@@ -121,8 +121,8 @@ export default class BalanceSheet extends Component {
   render(){
     if (this.state.invoices.length === 0 && this.state.expenses.length === 0 ) {
       return (
-        <div className="progress">
-          <div className="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style={{width:'45%'}}>
+        <div className="progress" style={{position:"fixed",width:200,top:'50%',left:"50%",WebkitTransform: "translate(-50%, -50%)",transform: "translate(-50%, -50%)"}}>
+          <div className="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style={{width:"60%"}}>
             <span className="sr-only">45% Complete</span>
           </div>
         </div>

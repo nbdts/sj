@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Tracker } from 'meteor/tracker';
 import {Session} from 'meteor/session';
-import {BalanceApi} from '../../api/balance';
 
 export default class BalanceForm  extends Component {
   constructor() {
@@ -12,16 +11,7 @@ export default class BalanceForm  extends Component {
       type:'',
     }
   }
-  componentWillMount(){
-      this.linkracker = Tracker.autorun(()=> {
-        Meteor.subscribe("balance");
-        let balanceapi = BalanceApi.find({}).fetch();
-          this.setState({balanceapi});
-      });
-  }
-  componentWillUnmount(){
-    this.linkracker.stop();
-  }
+
 
     handleChange(event) {
       let object = {};
@@ -62,14 +52,10 @@ export default class BalanceForm  extends Component {
 
         })
     }
-
-
     render(){
       return(
        <div style={styles.mainBox}>
        <h1 style={{textAlign:'center'}} >Enter Balance</h1>
-       <h3 style={{textAlign:'center'}} >{date}</h3>
-
        <div style={styles.inputs}>
 
      <select onChange={this.handleClick.bind(this)} style={{margin:5}}>

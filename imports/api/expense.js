@@ -22,6 +22,6 @@ if (Meteor.isServer) {
     return  ExpenseApi.find();
   });
   Meteor.publish('expenseByShopIdAndDateWise', function userPublication(shopid,date){
-    return  ExpenseApi.find({shopid,createdAt:{$gte:date}});
+    return  ExpenseApi.find({shopid,createdAt:{$gte:date}},{sort: {createdAt: -1}});
   });
 }

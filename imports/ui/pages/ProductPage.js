@@ -28,10 +28,9 @@ export default class ProductPage  extends Component {
   componentWillMount(){
       this.linkracker = Tracker.autorun(()=> {
         Meteor.subscribe("product");
-        let productsbyshop = ProductApi.find({shopid:Session.get('shop')._id}).fetch();
-        let productsbytype = ProductApi.find({shopid:1}).fetch();
-        const products = [...productsbyshop, ...productsbytype];
-          this.setState({products});
+        Meteor.subscribe("product");
+        let products = ProductApi.find({}).fetch();
+        this.setState({products});
       });
   }
   componentWillUnmount(){
@@ -141,9 +140,18 @@ export default class ProductPage  extends Component {
       }
 
   render(){
+    if (this.state.products.length === 0 ) {
+      return (
+        <div className="progress" style={{position:"fixed",width:200,top:'50%',left:"50%",WebkitTransform: "translate(-50%, -50%)",transform: "translate(-50%, -50%)"}}>
+          <div className="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style={{width:"60%"}}>
+            <span className="sr-only">45% Complete</span>
+          </div>
+        </div>
+      )
+    }else {
     return(
       <div style={{padding:10,display:"flex",flexWrap:"wrap",flex:1,justifyContent:'center',flexFlow:'column'}}>
-      <button className="button"   onClick={this.openModal} >Add Product</button>
+      <button className="btn btn-primary btn-lg" style={{position:'fixed',bottom:20,right:20,zIndex:10,borderRadius:'50%',fontSize:20}}   onClick={this.openModal} >+</button>
       <Modal
          isModalOpen={this.state.isModalOpen}
          closeModal={this.closeModal}
@@ -192,8 +200,8 @@ export default class ProductPage  extends Component {
 
          </Modal>
 
-
-      <div style={{display:'flex',flexWrap:'wrap',flexFlow:'column'}}>
+      <div style={{display:'flex',flexWrap:'wrap',flexFlow:'column',justifyContent:'center',alignItems:'center'}}>
+      <h1>Products Details</h1>
       {
         this.state.products.map((product,i)=>{
           return (<ProductSinlgeItem product={product}  key={i} isAdmin={true} ProductUpdate={this.ProductUpdate.bind(this)}/>)
@@ -202,6 +210,7 @@ export default class ProductPage  extends Component {
       </div>
       </div>
     );
+   }
   }
 }
 const modalStyle = {

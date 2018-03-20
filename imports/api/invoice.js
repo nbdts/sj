@@ -46,7 +46,7 @@ if (Meteor.isServer) {
     return  InvoiceApi.find({shopid})
   });
   Meteor.publish('invoiceByShopIdAndDateWise', function userPublication(shopid,date){
-    return  InvoiceApi.find({shopid,createdAt:{$gte:date}})
+    return  InvoiceApi.find({shopid,createdAt:{$gte:date}},{sort: {createdAt: -1}})
   });
   Meteor.startup(function () {
       Counter._ensureIndex({"type": 1});
