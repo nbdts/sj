@@ -48,7 +48,7 @@ export default class BalanceSheet extends Component {
         Meteor.subscribe("expenseByShopIdAndDateWise",this.props.match.params.id,new Date(`${year}/${month}/${date}`));
         Meteor.subscribe("invoiceByShopIdAndDateWise",this.props.match.params.id,new Date(`${year}/${month}/${date}`));
         let expenses = ExpenseApi.find({createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.match.params.id}).fetch();
-        let invoices = InvoiceApi.find().fetch();
+        let invoices = InvoiceApi.find({}).fetch();
         // let invoices = InvoiceApi.find({createdAt:{$gte:new Date(`${year}/${month}/${date}`)},shopid:this.props.match.params.id}).fetch();
         this.setState({expenses});
         this.setState({invoices});

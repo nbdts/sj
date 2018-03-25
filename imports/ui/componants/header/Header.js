@@ -17,7 +17,6 @@ class Header extends Component {
           this.closeModal = this.closeModal.bind(this);
 		      this.openModal = this.openModal.bind(this);
   }
-  y
 
   closeModal() {
     this.setState({
